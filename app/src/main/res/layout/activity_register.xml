@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:scrollbars="none"
+>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    >
+
+        <ImageView
+            android:id="@+id/img_bg_login"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space145"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/space90"
+            android:src="@mipmap/ic_login_bg"/>
+
+        <RelativeLayout
+            android:layout_width="@dimen/space88"
+            android:layout_height="@dimen/space88"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/space40"
+            android:background="@drawable/shape_grey_circle">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="旋"
+                android:textColor="@color/btn_green"
+                android:textSize="48sp"
+            />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_name_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_bg_login"
+            android:layout_marginLeft="@dimen/space25"
+            android:layout_marginRight="@dimen/space25"
+            android:layout_marginTop="@dimen/space15">
+
+            <com.xfcar.driver.widget.ClearEditText
+                android:id="@+id/et_name_register"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space50"
+                android:layout_marginRight="@dimen/space5"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="请输入用户名"
+                android:inputType="text"
+                android:maxLength="11"
+                android:textColor="@color/font_primary"
+                android:textColorHint="@color/hint_text_color"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/font_normal"
+            />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/div_line_height"
+            android:layout_below="@+id/rl_name_register"
+            android:layout_marginLeft="@dimen/space25"
+            android:layout_marginRight="@dimen/space25"
+            android:background="@color/divider_dark"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_name_register"
+            android:layout_marginLeft="@dimen/space25"
+            android:layout_marginRight="@dimen/space25"
+        >
+
+            <com.xfcar.driver.widget.ClearEditText
+                android:id="@+id/et_phone_number"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space50"
+                android:layout_marginRight="@dimen/space5"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="@string/account_hint_name"
+                android:inputType="number"
+                android:maxLength="11"
+                android:textColor="@color/font_primary"
+                android:textColorHint="@color/hint_text_color"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/font_normal"
+            />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/div_line_height"
+            android:layout_below="@+id/rl_phone_number"
+            android:layout_marginLeft="@dimen/space25"
+            android:layout_marginRight="@dimen/space25"
+            android:background="@color/divider_dark"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_pwdLayout_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_phone_number"
+            android:layout_marginLeft="@dimen/space25"
+            android:layout_marginRight="@dimen/space25"
+        >
+
+            <com.xfcar.driver.widget.ClearEditText
+                android:id="@+id/et_setPwd_register"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space50"
+                android:layout_marginRight="@dimen/space15"
+                android:layout_toLeftOf="@+id/rl_eyeLayout_register"
+                android:background="@null"
+                android:digits="0123456789abcdefghijgklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^*()_-+{}[]\|.,，。?:;/'="
+                android:gravity="center_vertical"
+                android:hint="@string/account_hint_set_pwd"
+                android:inputType="textEmailAddress"
+                android:maxLength="12"
+                android:textColor="@color/font_primary"
+                android:textColorHint="@color/hint_text_color"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/font_normal"
+            />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/div_line_height"
+                android:layout_below="@+id/et_setPwd_register"
+                android:background="@color/divider_dark"/>
+
+            <RelativeLayout
+                android:id="@+id/rl_eyeLayout_register"
+                android:layout_width="@dimen/space30"
+                android:layout_height="@dimen/space50"
+                android:layout_alignParentRight="true"
+            >
+
+                <ImageView
+                    android:id="@+id/iv_eyes_register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/selector_eyes"
+                />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <Spinner
+            android:id="@+id/sp_user_type"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space50"
+            android:layout_below="@+id/rl_pwdLayout_register"
+            android:spinnerMode="dialog"
+            android:entries="@array/user_type"
+            android:background="@color/white"
+        />
+
+        <LinearLayout
+            android:id="@+id/ll_btn_register"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/space10"
+            android:layout_below="@+id/sp_user_type"
+            android:layout_marginTop="@dimen/space20"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/bt_register_register"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/space40"
+                android:layout_marginLeft="@dimen/space20"
+                android:layout_marginRight="@dimen/space20"
+                android:background="@drawable/selector_green_btn_login"
+                android:gravity="center"
+                android:text="@string/account_name_register"
+                android:textColor="@color/background_primary"
+                android:textSize="@dimen/font_large" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>

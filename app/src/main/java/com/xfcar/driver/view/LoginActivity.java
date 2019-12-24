@@ -1,7 +1,9 @@
 package com.xfcar.driver.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -71,6 +73,13 @@ public class LoginActivity extends BaseActivity {
             }
         });
 
+        findViewById(R.id.tv_register).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(RegisterActivity.class, 1001);
+            }
+        });
+
         findViewById(R.id.bt_login).setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -113,16 +122,26 @@ public class LoginActivity extends BaseActivity {
         });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == 1001) {
+            if (data != null && data.getExtras() != null) {
+                String mobile = data.getExtras().getString("mobile");
+                mEtUserName.setText(mobile);
+            }
+        }
+    }
+
     private void executeLogin(String username, String code) {
         mRequester.login(username, code, new ResultCallback<String>() {
             @Override
             public void onSuccess(String s) {
-                L.i(s);
+                toastMsg(s);
             }
 
             @Override
             public void onFail(String msg) {
-                L.i(msg);
+                toastMsg(msg);
             }
         });
     }

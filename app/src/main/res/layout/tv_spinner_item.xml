@@ -1,0 +1,14 @@
+<TextView
+    android:id="@+id/tv_spinner_item"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/space50"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:textColor="@color/font_primary"
+    android:textColorHint="@color/hint_text_color"
+    android:textCursorDrawable="@null"
+    android:textSize="@dimen/font_normal"
+    android:paddingLeft="@dimen/space25"
+    android:paddingRight="@dimen/space25"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+/>

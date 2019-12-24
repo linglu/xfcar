@@ -116,11 +116,24 @@
             android:layout_marginRight="@dimen/space25"
             android:background="@color/divider_dark"/>
 
+
+        <TextView
+            android:id="@+id/tv_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_code_register"
+            android:layout_marginTop="@dimen/space10"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/space25"
+            android:text="注册"
+            android:textColor="@color/font_special"
+        />
+
         <LinearLayout
             android:id="@+id/ll_btn_login"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/rl_code_register"
+            android:layout_below="@+id/tv_register"
             android:layout_marginBottom="@dimen/space10"
             android:layout_marginTop="@dimen/space15"
             android:orientation="horizontal">
