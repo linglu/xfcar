@@ -4,10 +4,11 @@ package com.xfcar.driver;
  * @author linky
  */
 
+import android.app.Activity;
 import android.app.Application;
+import android.os.Bundle;
 
 import com.bumptech.glide.Glide;
-import com.xfcar.driver.data.ACache;
 import com.xfcar.driver.utils.L;
 
 /**
@@ -17,6 +18,8 @@ import com.xfcar.driver.utils.L;
 public class LibApplication extends Application {
 
     public static LibApplication sInstance;
+    private ActivityLifecycleCallbacks callbacks;
+    public Activity mCurAct;
 
     @Override
     public void onCreate() {
@@ -24,7 +27,7 @@ public class LibApplication extends Application {
         L.init();
 
         sInstance = this;
-        ACache.init(this);
+        registerActivity();
     }
 
     @Override
@@ -45,6 +48,49 @@ public class LibApplication extends Application {
     @Override
     public void onTerminate() {
         super.onTerminate();
+        unregisterActivityLifecycleCallbacks(callbacks);
+    }
+
+    private void registerActivity() {
+
+        //注册对app内所有activity 的生命周期监听
+        callbacks = new ActivityLifecycleCallbacks() {
+            @Override
+            public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+
+            }
+
+            @Override
+            public void onActivityStarted(Activity activity) {
+
+            }
+
+            @Override
+            public void onActivityResumed(Activity activity) {
+                mCurAct = activity;
+            }
+
+            @Override
+            public void onActivityPaused(Activity activity) {
+
+            }
+
+            @Override
+            public void onActivityStopped(Activity activity) {
+
+            }
+
+            @Override
+            public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
+
+            }
+
+            @Override
+            public void onActivityDestroyed(Activity activity) {
+
+            }
+        };
+        registerActivityLifecycleCallbacks(callbacks);
     }
 
 }

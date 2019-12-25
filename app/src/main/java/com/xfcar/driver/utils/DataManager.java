@@ -13,6 +13,7 @@ public class DataManager {
     private Context mContext;
 
     private final String MOBILE = "MOBILE";
+    private final String LOGIN = "LOGIN";
 
     public DataManager(Context context) {
         mPref = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
@@ -26,4 +27,17 @@ public class DataManager {
     public String getMobile() {
         return mPref.getString(MOBILE, "");
     }
+
+    public void setUserId(String userId) {
+        mPref.edit().putString(LOGIN, userId).apply();
+    }
+
+    public String getUserId() {
+        return mPref.getString(LOGIN, null);
+    }
+
+    public boolean isLogin() {
+        return getUserId() != null;
+    }
+
 }

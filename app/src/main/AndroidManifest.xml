@@ -4,34 +4,106 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
     <application
         android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/net_security_config"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/BaseTheme">
+
         <activity
-            android:name=".view.LoginActivity"
+            android:name=".view.WelcomeActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/BaseTheme"
+            android:theme="@style/AppTheme.Launcher"
         >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:host="bai.com"
+                    android:scheme="http"
+                />
+            </intent-filter>
         </activity>
 
         <activity
             android:name=".MainActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"
         />
 
         <activity
             android:name=".view.RegisterActivity"
+            android:screenOrientation="portrait"
+        />
+
+        <activity
+            android:name=".view.LoginActivity"
+            android:screenOrientation="portrait"
+        />
+
+        <activity
+            android:name=".view.CarManageActivity"
+            android:screenOrientation="portrait"
+        />
+
+        <activity
+            android:name=".view.OneKeyLockActivity"
+            android:screenOrientation="portrait"
+        />
+
+
+        <activity
+            android:name=".view.OneKeyUnlockActivity"
+            android:screenOrientation="portrait"
+        />
+
+
+        <activity
+            android:name=".view.BluetoothKeyActivity"
+            android:screenOrientation="portrait"
+        />
+
+
+        <activity
+            android:name=".view.CarPositionActivity"
+            android:screenOrientation="portrait"
+        />
+
+
+        <activity
+            android:name=".view.ClaimPayActivity"
+            android:screenOrientation="portrait"
+        />
+
+
+        <activity
+            android:name=".view.RepairActivity"
+            android:screenOrientation="portrait"
+        />
+
+
+        <activity
+            android:name=".view.CarInfoActivity"
+            android:screenOrientation="portrait"
+        />
+
+
+        <activity
+            android:name=".view.CarSecurityActivity"
             android:screenOrientation="portrait"
         />
 

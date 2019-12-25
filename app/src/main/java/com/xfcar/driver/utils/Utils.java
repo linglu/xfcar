@@ -48,6 +48,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.xfcar.driver.App;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;

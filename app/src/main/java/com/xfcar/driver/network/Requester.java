@@ -1,6 +1,9 @@
 package com.xfcar.driver.network;
 
 
+import android.os.Build;
+
+import com.xfcar.driver.data.ACache;
 import com.xfcar.driver.model.bean.SysUserEntity;
 import com.xfcar.driver.network.converter.FastjsonConverterFactory;
 import com.xfcar.driver.utils.L;
@@ -8,6 +11,8 @@ import com.xfcar.driver.utils.L;
 import java.io.IOException;
 import java.util.HashMap;
 
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.converter.gson.GsonConverterFactory;
 import rx.android.schedulers.AndroidSchedulers;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -30,21 +35,66 @@ public class Requester {
     public Requester() {
 
         if (client == null) {
-            client = new OkHttpClient.Builder()
-                    .addInterceptor(new Interceptor() {
-                        @Override
-                        public Response intercept(Chain chain) throws IOException {
-                            Request request = chain.request();
-                            L.i("request get " + request.url());
-                            return chain.proceed(request);
-                        }
-                    }).build();
+
+            HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+            logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+            OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+            httpClient.addInterceptor(logging);  // <-- this is the important line!
+            httpClient.addInterceptor(new Interceptor() {
+                @Override
+                public Response intercept(Chain chain) throws IOException {
+
+                    Request request = chain.request();
+                    Request.Builder builder = request.newBuilder();
+
+                    if (request.url().toString().contains("login")) {
+                        L.i("add cookie");
+                        builder.addHeader("Cookie", ACache.COOKIE);
+                    }
+
+//                    Request.Builder builder = request.newBuilder();
+//                    if
+//                    if(cookie!=null) {
+//                        builder.addHeader("Cookie", cookie);
+//                        if (Build.VERSION.SDK != null && Build.VERSION.SDK_INT > 13) {
+//                            builder.addHeader("Connection", "close");
+//                        }
+//                    }
+
+                    // 获取到 response
+                    Response response = chain.proceed(builder.build());
+                    L.i("headers : " + response.headers().toString());
+
+                    String setCookie = response.header("Set-Cookie");
+                    if (setCookie != null) {
+                        String cookie = setCookie.split(";")[0];
+                        L.i("Cookie : " + cookie);
+                        ACache.COOKIE = cookie;
+                    }
+
+                    return response;
+                }
+            });
+
+            client = httpClient.build();
+//            client = new OkHttpClient.Builder()
+//                    .addInterceptor(new Interceptor() {
+//                        @Override
+//                        public Response intercept(Chain chain) throws IOException {
+//                            Request request = chain.request();
+//                            L.i("request " + request.url());
+//                            L.i("" + request.headers().toString());
+//                            return chain.proceed(request);
+//                        }
+//                    }).build();
         }
 
 
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
-                    .baseUrl("http://39.108.166.99:9000/")
+//                    .baseUrl("http://xuanfeng.xiaomy.net")
+                    .baseUrl("http://39.108.166.99:9000")
                     .client(client)
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .addConverterFactory(FastjsonConverterFactory.create())
@@ -80,17 +130,14 @@ public class Requester {
                 });
     }
 
-    public void login(String mobile, String code, final ResultCallback<String> callback) {
-        HashMap<String, String> map = new HashMap<>();
-        map.put("mobile", mobile);
-        map.put("smsCode", code);
-        service.login(map)
+    public void login(String mobile, String code, final ResultCallback<SysUserEntity> callback) {
+        service.login(mobile, code)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new NetworkSubscriber<String>() {
+                .subscribe(new NetworkSubscriber<SysUserEntity>() {
 
                     @Override
-                    public void onSuccess(String res) {
+                    public void onSuccess(SysUserEntity res) {
                         callback.onSuccess(res);
                     }
 

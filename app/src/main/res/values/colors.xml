@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">#C4B454</color>
+    <color name="colorPrimaryDark">#8C6D1B</color>
     <color name="colorAccent">#D81B60</color>
 
     <color name="viewfinder_mask">#333333</color>
@@ -23,8 +23,8 @@
 
     <color name="app_primary">#20bf7a</color>
     <color name="color_hs000">#000000</color>
-    <color name="btn_green">@color/app_primary</color>
-    <color name="btn_green_press">#21bb79</color>
+    <color name="btn_green">@color/colorPrimary</color>
+    <color name="btn_green_press">#8C6D1B</color>
     <color name="btn_white">#ffffff</color>
     <color name="btn_white_press">#e5e5e5</color>
     <color name="btn_red">#ea3e25</color>
@@ -101,7 +101,7 @@
     <color name="font_secondary">#666666</color>
     <color name="font_negative">#999999</color>
     <color name="font_hint">#cccccc</color>
-    <color name="font_special">#20bf7a</color><!--价格文字与重要数字跟标签文字的用色-->
+    <color name="font_special">@color/colorPrimary</color>
     <color name="font_red">#ef0404</color>
     <color name="font_red_car">#ff3333</color>
     <color name="font_green">#39bc30</color>

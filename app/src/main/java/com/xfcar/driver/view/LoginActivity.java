@@ -10,10 +10,11 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.xfcar.driver.R;
+import com.xfcar.driver.model.bean.SysUserEntity;
 import com.xfcar.driver.mvp.BaseActivity;
 import com.xfcar.driver.network.Requester;
 import com.xfcar.driver.network.ResultCallback;
-import com.xfcar.driver.utils.L;
+import com.xfcar.driver.utils.DataManager;
 import com.xfcar.driver.utils.SafeHandler;
 import com.xfcar.driver.utils.ToastUtils;
 import com.xfcar.driver.utils.Utils;
@@ -31,16 +32,20 @@ public class LoginActivity extends BaseActivity {
     private String mPhoneNumber;
     private Button mBtGetCaptcha;
     private Requester mRequester = new Requester();
+    private DataManager mDataManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        mDataManager = new DataManager(this);
+
         mEtUserName = findViewById(R.id.et_username_login);
         mEtVerifyCode = findViewById(R.id.et_code_login);
         mBtGetCaptcha = findViewById(R.id.btn_getCode);
 
+        mEtUserName.setText(mDataManager.getMobile());
 
         findViewById(R.id.btn_getCode).setOnClickListener(new View.OnClickListener() {
 
@@ -133,15 +138,23 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void executeLogin(String username, String code) {
-        mRequester.login(username, code, new ResultCallback<String>() {
+        mRequester.login(username, code, new ResultCallback<SysUserEntity>() {
             @Override
-            public void onSuccess(String s) {
-                toastMsg(s);
+            public void onSuccess(SysUserEntity s) {
+                toastMsg("登录成功");
+                mDataManager.setUserId(String.valueOf(s.userId));
+                mDataManager.setMobile(s.mobile);
+                setResult(RESULT_OK);
+                finish();
             }
 
             @Override
             public void onFail(String msg) {
-                toastMsg(msg);
+                if ("401".equals(msg)) {
+
+                } else {
+                    toastMsg(msg);
+                }
             }
         });
     }
@@ -161,7 +174,7 @@ public class LoginActivity extends BaseActivity {
                 helper.mBtGetCaptcha.setBackgroundResource(R.drawable.shape_button_green);
                 helper.mBtGetCaptcha.setEnabled(true);
                 helper.mTimer.cancel();
-                helper.DurRetGetCode = 120;
+                helper.DurRetGetCode = 60;
             } else {
                 helper.mBtGetCaptcha.setBackgroundResource(R.drawable.shape_button_green);
                 helper.mBtGetCaptcha.setEnabled(false);
@@ -174,7 +187,7 @@ public class LoginActivity extends BaseActivity {
         }
     }
 
-    private int DurRetGetCode = 120;
+    private int DurRetGetCode = 60;
     private boolean mCanGetCode = true;
     private Timer mTimer;
     private CustomHandler mHandler = new CustomHandler(this);
@@ -199,7 +212,11 @@ public class LoginActivity extends BaseActivity {
     protected void onStop() {
         super.onStop();
         if (mTimer != null) {
+            mBtGetCaptcha.setText(mGetCodeBtnTitle);
+            mBtGetCaptcha.setBackgroundResource(R.drawable.shape_button_green);
+            mBtGetCaptcha.setEnabled(true);
             mTimer.cancel();
+            DurRetGetCode = 120;
         }
     }
 }

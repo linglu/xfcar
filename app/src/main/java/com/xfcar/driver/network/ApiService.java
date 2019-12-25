@@ -70,9 +70,8 @@ public interface ApiService {
 
     // 登录接口
     @FormUrlEncoded
-    @POST("/ioc/login/mobile")
-//    Observable<Response<String>> login(@Field("mobile") String mobile, @Field("smsCode") String smsCode);
-    Observable<Response<String>> login(@FieldMap Map<String, String> map);
+    @POST("ioc/login/mobile")
+    Observable<Response<SysUserEntity>> login(@Field("mobile") String mobile, @Field("smsCode") String smsCode);
 
     @POST("/ioc/alarmRecord/add")
     Observable<Response> alarmRecordAdd(@Body AlarmRecordEntity alarmrecordentity);
