@@ -73,6 +73,11 @@ public interface ApiService {
     @POST("ioc/login/mobile")
     Observable<Response<SysUserEntity>> login(@Field("mobile") String mobile, @Field("smsCode") String smsCode);
 
+    // 退出接口
+    @POST("ioc/logout")
+    Observable<Response<String>> logout();
+
+
     @POST("/ioc/alarmRecord/add")
     Observable<Response> alarmRecordAdd(@Body AlarmRecordEntity alarmrecordentity);
 

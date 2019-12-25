@@ -9,6 +9,7 @@ import com.xfcar.driver.network.converter.FastjsonConverterFactory;
 import com.xfcar.driver.utils.L;
 
 import java.io.IOException;
+import java.nio.channels.AsynchronousChannel;
 import java.util.HashMap;
 
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -48,8 +49,7 @@ public class Requester {
                     Request request = chain.request();
                     Request.Builder builder = request.newBuilder();
 
-                    if (request.url().toString().contains("login")) {
-                        L.i("add cookie");
+                    if (ACache.COOKIE != null) {
                         builder.addHeader("Cookie", ACache.COOKIE);
                     }
 
@@ -69,8 +69,11 @@ public class Requester {
                     String setCookie = response.header("Set-Cookie");
                     if (setCookie != null) {
                         String cookie = setCookie.split(";")[0];
-                        L.i("Cookie : " + cookie);
-                        ACache.COOKIE = cookie;
+                        if (cookie.contains("JSESSIONID")) {
+                            ACache.COOKIE = cookie;
+                        } else {
+                            ACache.COOKIE = null;
+                        }
                     }
 
                     return response;
@@ -104,6 +107,24 @@ public class Requester {
         if (service == null) {
             service = retrofit.create(ApiService.class);
         }
+    }
+
+    public void logout(final ResultCallback<String> callback) {
+        service.logout()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetworkSubscriber<String>() {
+
+                    @Override
+                    public void onSuccess(String o) {
+                        callback.onSuccess(o);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        callback.onFail(msg);
+                    }
+                });
     }
 
     // 注册

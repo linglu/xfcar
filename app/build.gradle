@@ -9,12 +9,47 @@ android {
         versionCode 1
         versionName "1.0"
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+    signingConfigs {
+
+        Properties props = new Properties()
+        def propFile = file('private.properties')
+        props.load(new FileInputStream(propFile))
+        if (propFile.canRead()) {
+
+            release {
+                storeFile file(props['STORE_FILE'])
+                storePassword props['STORE_PASSWORD']
+                keyPassword props['KEY_PASSWORD']
+                keyAlias props['KEY_ALIAS']
+            }
+
+            debug {
+                storeFile file(props['STORE_FILE'])
+                storePassword props['STORE_PASSWORD']
+                keyPassword props['KEY_PASSWORD']
+                keyAlias props['KEY_ALIAS']
+            }
+
+        } else {
+            println 'RELEASE BUILD NOT FOUND SIGNING FILE'
+            android.buildTypes.release.signingConfig = null
         }
     }
+
+    buildTypes {
+        release {
+
+            // 是否混淆
+            minifyEnabled false
+
+            // 是否移除无用资源
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
 }
 
 dependencies {

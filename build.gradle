@@ -14,6 +14,10 @@ buildscript {
     }
 }
 
+def isReleaseBuild() {
+    return android.defaultConfig.versionName.contains("SNAPSHOT") == false
+}
+
 allprojects {
     repositories {
         google()

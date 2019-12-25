@@ -4,7 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-    android:text="mine"/>
-
+    <Button
+        android:id="@+id/bt_logout"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/space40"
+        android:layout_marginLeft="@dimen/space20"
+        android:layout_marginRight="@dimen/space20"
+        android:background="@drawable/selector_green_btn_login"
+        android:gravity="center"
+        android:text="退出登录"
+        android:layout_centerInParent="true"
+        android:textColor="@color/background_primary"
+        android:textSize="@dimen/font_large"
+    />
 </RelativeLayout>
