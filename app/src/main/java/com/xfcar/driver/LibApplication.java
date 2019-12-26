@@ -9,7 +9,10 @@ import android.app.Application;
 import android.os.Bundle;
 
 import com.bumptech.glide.Glide;
+import com.xfcar.driver.utils.DataManager;
 import com.xfcar.driver.utils.L;
+
+import okhttp3.Cookie;
 
 /**
  * @author Linky
@@ -20,6 +23,7 @@ public class LibApplication extends Application {
     public static LibApplication sInstance;
     private ActivityLifecycleCallbacks callbacks;
     public Activity mCurAct;
+    private DataManager mDataManager;
 
     @Override
     public void onCreate() {
@@ -27,7 +31,16 @@ public class LibApplication extends Application {
         L.init();
 
         sInstance = this;
+        mDataManager = new DataManager(this);
         registerActivity();
+    }
+
+    public void updateCookie(String cookie) {
+        mDataManager.setCookie(cookie);
+    }
+
+    public String getCookie() {
+        return mDataManager.getCookie();
     }
 
     @Override

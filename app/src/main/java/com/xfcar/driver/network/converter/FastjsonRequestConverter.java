@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -65,8 +66,9 @@ public class FastjsonRequestConverter<T> implements Converter<T, RequestBody> {
                 field.setAccessible(true);
                 objVal = field.get(obj);
                 // 如果为null值 则不计入 md5摘要 ，因为 http传输层 不会把null值送出去 modified by janyo at 2015-5-7
-                if (objVal != null)
+                if (!Modifier.isFinal(field.getModifiers()) && objVal != null) {
                     hashMap.put(field.getName(), objVal);
+                }
             }
         }
 

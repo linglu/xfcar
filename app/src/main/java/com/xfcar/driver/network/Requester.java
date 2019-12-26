@@ -1,26 +1,29 @@
 package com.xfcar.driver.network;
 
 
-import android.os.Build;
-
-import com.xfcar.driver.data.ACache;
+import com.xfcar.driver.App;
+import com.xfcar.driver.model.adapterbean.CarInfoBean;
+import com.xfcar.driver.model.adapterbean.ClaimPayBean;
+import com.xfcar.driver.model.adapterbean.RepairBean;
+import com.xfcar.driver.model.bean.CarObjectId;
+import com.xfcar.driver.model.bean.Command;
 import com.xfcar.driver.model.bean.SysUserEntity;
+import com.xfcar.driver.model.bean.UserEntity;
 import com.xfcar.driver.network.converter.FastjsonConverterFactory;
 import com.xfcar.driver.utils.L;
 
 import java.io.IOException;
-import java.nio.channels.AsynchronousChannel;
-import java.util.HashMap;
+import java.util.List;
 
-import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.converter.gson.GsonConverterFactory;
-import rx.android.schedulers.AndroidSchedulers;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.Result;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
@@ -49,8 +52,9 @@ public class Requester {
                     Request request = chain.request();
                     Request.Builder builder = request.newBuilder();
 
-                    if (ACache.COOKIE != null) {
-                        builder.addHeader("Cookie", ACache.COOKIE);
+                    String cookie = App.sInstance.getCookie();
+                    if (cookie != null) {
+                        builder.addHeader("Cookie", cookie);
                     }
 
 //                    Request.Builder builder = request.newBuilder();
@@ -68,11 +72,11 @@ public class Requester {
 
                     String setCookie = response.header("Set-Cookie");
                     if (setCookie != null) {
-                        String cookie = setCookie.split(";")[0];
-                        if (cookie.contains("JSESSIONID")) {
-                            ACache.COOKIE = cookie;
+                        String newCookie = setCookie.split(";")[0];
+                        if (newCookie.contains("JSESSIONID")) {
+                            App.sInstance.updateCookie(newCookie);
                         } else {
-                            ACache.COOKIE = null;
+                            App.sInstance.updateCookie(null);
                         }
                     }
 
@@ -107,6 +111,98 @@ public class Requester {
         if (service == null) {
             service = retrofit.create(ApiService.class);
         }
+    }
+
+    public void monitorPosition(String objectId, final ResultCallback<String> callback) {
+        service.monitorPosition(new CarObjectId(objectId))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetworkSubscriber<String>() {
+
+                    @Override
+                    public void onSuccess(String o) {
+                        callback.onSuccess(o);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        callback.onFail(msg);
+                    }
+                });
+    }
+
+    public void carOperateCommand(String company, String carNo, String macid, String carCmd,
+                                  final ResultCallback<String> callback) {
+        Command cmd = new Command(company, carNo, macid, carCmd);
+        service.carOperateCommand(cmd)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetworkSubscriber<String>() {
+
+                    @Override
+                    public void onSuccess(String o) {
+                        callback.onSuccess(o);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        callback.onFail(msg);
+                    }
+                });
+    }
+
+    public void getCarInfoByUser(String userId, final ResultCallback<List<CarInfoBean>> callback) {
+        service.getCarInfoByUser(new UserEntity(Integer.parseInt(userId)))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetworkSubscriber<List<CarInfoBean>>() {
+
+                    @Override
+                    public void onSuccess(List<CarInfoBean> o) {
+                        callback.onSuccess(o);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        callback.onFail(msg);
+                    }
+                });
+    }
+
+    public void getMaintainByUser(String userId, final ResultCallback<List<RepairBean>> callback) {
+        service.getMaintainByUser(new UserEntity(Integer.parseInt(userId)))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetworkSubscriber<List<RepairBean>>() {
+
+                    @Override
+                    public void onSuccess(List<RepairBean> o) {
+                        callback.onSuccess(o);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        callback.onFail(msg);
+                    }
+                });
+    }
+
+    public void getInsuranceByUser(String userId, final ResultCallback<List<ClaimPayBean>> callback) {
+        service.getInsuranceByUser(new UserEntity(Integer.parseInt(userId)))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetworkSubscriber<List<ClaimPayBean>>() {
+
+                    @Override
+                    public void onSuccess(List<ClaimPayBean> o) {
+                        callback.onSuccess(o);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        callback.onFail(msg);
+                    }
+                });
     }
 
     public void logout(final ResultCallback<String> callback) {

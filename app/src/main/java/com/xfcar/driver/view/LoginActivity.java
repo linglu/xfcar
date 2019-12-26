@@ -45,7 +45,8 @@ public class LoginActivity extends BaseActivity {
         mEtVerifyCode = findViewById(R.id.et_code_login);
         mBtGetCaptcha = findViewById(R.id.btn_getCode);
 
-        mEtUserName.setText(mDataManager.getMobile());
+//        mEtUserName.setText(mDataManager.getMobile());
+        mEtUserName.setText("18924238534");
 
         findViewById(R.id.btn_getCode).setOnClickListener(new View.OnClickListener() {
 

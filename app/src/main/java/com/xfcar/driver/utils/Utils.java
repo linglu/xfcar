@@ -1,6 +1,7 @@
 package com.xfcar.driver.utils;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -31,12 +32,15 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.os.StrictMode;
+import android.provider.Settings;
+import android.support.annotation.RequiresPermission;
 import android.support.v4.app.NotificationManagerCompat;
 import android.telephony.TelephonyManager;
 import android.text.Html;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Display;
 import android.view.KeyCharacterMap;
@@ -58,6 +62,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -73,6 +78,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -1577,4 +1583,35 @@ public class Utils {
         }
         return false;
     }
+
+    @SuppressLint("MissingPermission")
+    public static String getIMEI(Context context){
+        TelephonyManager manager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        if (manager == null) {
+            return "";
+        }
+        try {
+            Method method = manager.getClass().getMethod("getImei", int.class);
+            String imei1 = (String) method.invoke(manager, 0);
+            String imei2 = (String) method.invoke(manager, 1);
+            L.i(String.format("imei1 : %s, imei2: %s", imei1, imei2));
+            if(TextUtils.isEmpty(imei2)){
+                return imei1;
+            }
+            if(!TextUtils.isEmpty(imei1)){
+                //因为手机卡插在不同位置，获取到的imei1和imei2值会交换，所以取它们的最小值,保证拿到的imei都是同一个
+                String imei = "";
+                if(imei1.compareTo(imei2) <= 0){
+                    imei = imei1;
+                }else{
+                    imei = imei2;
+                }
+                return imei;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "null";
+    }
+
 }

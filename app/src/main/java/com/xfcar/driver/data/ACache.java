@@ -6,5 +6,4 @@ package com.xfcar.driver.data;
  */
 public class ACache {
 
-    public static String COOKIE = "";
 }

@@ -1,10 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+>
 
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-    android:text="send bill"/>
 
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space60"
+    >
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="订单分享"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font16"
+        />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space20"
+        android:gravity="center"
+        android:orientation="horizontal"
+    >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@mipmap/ic_launcher"
+            android:text="转给附近司机"
+        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space20"
+            android:drawableTop="@mipmap/ic_launcher"
+            android:text="预约短途出租"
+        />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space20"
+        android:drawableRight="@drawable/ic_rightarrow"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/space15"
+        android:paddingRight="@dimen/space15"
+        android:text="2019年8月"
+
+    />
+
+    <View android:layout_width="match_parent"
+          android:layout_height="@dimen/space1"
+          android:background="@color/divider_gray"
+          android:layout_marginRight="@dimen/space15"
+          android:layout_marginLeft="@dimen/space15"
+    />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_bill_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/space15"
+    />
+
+</LinearLayout>

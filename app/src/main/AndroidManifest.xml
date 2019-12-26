@@ -7,6 +7,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -67,7 +69,7 @@
 
 
         <activity
-            android:name=".view.OneKeyUnlockActivity"
+            android:name=".view.CarOperateActivity"
             android:screenOrientation="portrait"
         />
 
@@ -85,13 +87,22 @@
 
 
         <activity
-            android:name=".view.ClaimPayActivity"
+            android:name=".view.ClaimPayDetailActivity"
             android:screenOrientation="portrait"
         />
 
+        <activity
+            android:name=".view.ClaimPayListActivity"
+            android:screenOrientation="portrait"
+        />
 
         <activity
-            android:name=".view.RepairActivity"
+            android:name=".view.RepairDetailActivity"
+            android:screenOrientation="portrait"
+        />
+
+        <activity
+            android:name=".view.RepairListActivity"
             android:screenOrientation="portrait"
         />
 
@@ -101,6 +112,10 @@
             android:screenOrientation="portrait"
         />
 
+        <activity
+            android:name=".view.CarListInfoActivity"
+            android:screenOrientation="portrait"
+        />
 
         <activity
             android:name=".view.CarSecurityActivity"

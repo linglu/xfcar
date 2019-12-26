@@ -63,21 +63,4 @@ public class WelcomeActivity extends BaseActivity {
         }
     }
 
-    // 系统对权限请求的响应
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (requestCode == 1001) {
-            int total = 0;
-            for (int re : grantResults) {
-                total += re;
-            }
-
-            if (total != 0) {
-                finish();
-            }
-        }
-    }
-
 }

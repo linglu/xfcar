@@ -14,6 +14,7 @@ public class DataManager {
 
     private final String MOBILE = "MOBILE";
     private final String LOGIN = "LOGIN";
+    private final String COOKIE = "COOKIE";
 
     public DataManager(Context context) {
         mPref = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
@@ -34,6 +35,14 @@ public class DataManager {
 
     public String getUserId() {
         return mPref.getString(LOGIN, null);
+    }
+
+    public void setCookie(String cookie) {
+        mPref.edit().putString(COOKIE, cookie).apply();
+    }
+
+    public String getCookie() {
+        return mPref.getString(COOKIE, null);
     }
 
     public boolean isLogin() {

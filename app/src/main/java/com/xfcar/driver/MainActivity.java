@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.xfcar.driver.mvp.BaseActivity;
 import com.xfcar.driver.utils.DataManager;
+import com.xfcar.driver.utils.L;
+import com.xfcar.driver.utils.Utils;
 import com.xfcar.driver.view.LoginActivity;
 import com.xfcar.driver.view.fragment.HomePageFragment;
 import com.xfcar.driver.view.fragment.MineFragment;
@@ -63,12 +65,16 @@ public class MainActivity extends BaseActivity {
     private String[] ps = new String[]{
             Manifest.permission.ACCESS_COARSE_LOCATION,
             Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.READ_PHONE_STATE,
     };
 
     private void initPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                    || checkSelfPermission(Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(ps, 1001);
+            } else {
+                L.i("IMEI : " + Utils.getIMEI(this));
             }
         }
     }
@@ -78,6 +84,25 @@ public class MainActivity extends BaseActivity {
         if (requestCode == 1001) {
             if (resultCode == RESULT_OK) {
 
+            }
+        }
+    }
+
+    // 系统对权限请求的响应
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == 1001) {
+            int total = 0;
+            for (int re : grantResults) {
+                total += re;
+            }
+
+            if (total != 0) {
+                finish();
+            } else {
+                L.i("IMEI : " + Utils.getIMEI(this));
             }
         }
     }

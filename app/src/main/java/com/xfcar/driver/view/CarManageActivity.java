@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.xfcar.driver.R;
+import com.xfcar.driver.model.bean.Command;
 import com.xfcar.driver.model.viewbean.FunctionBean;
 import com.xfcar.driver.mvp.BaseActivity;
 import com.xfcar.driver.view.adapter.FunctionAdapter;
@@ -49,13 +50,17 @@ public class CarManageActivity extends BaseActivity {
 
                 switch (appBean.name) {
                     case "车辆信息":
-                        startActivity(CarInfoActivity.class);
+                        startActivity(CarListInfoActivity.class);
                         break;
                     case "一键开门":
-                        startActivity(OneKeyLockActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("CMD_OPERATE", Command.SN_SAFEOFF);
+                        startActivity(CarOperateActivity.class, bundle);
                         break;
                     case "一键上锁":
-                        startActivity(OneKeyUnlockActivity.class);
+                        bundle = new Bundle();
+                        bundle.putString("CMD_OPERATE", Command.SN_SAFEON);
+                        startActivity(CarOperateActivity.class, bundle);
                         break;
                     case "蓝牙钥匙":
                         startActivity(BluetoothKeyActivity.class);
@@ -64,10 +69,10 @@ public class CarManageActivity extends BaseActivity {
                         startActivity(CarPositionActivity.class);
                         break;
                     case "理赔":
-                        startActivity(ClaimPayActivity.class);
+                        startActivity(ClaimPayListActivity.class);
                         break;
                     case "维修":
-                        startActivity(RepairActivity.class);
+                        startActivity(RepairListActivity.class);
                         break;
                     case "车辆安全":
                         startActivity(CarSecurityActivity.class);
