@@ -1,8 +1,6 @@
 package com.xfcar.driver.view.fragment;
 
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +19,8 @@ import com.xfcar.driver.view.OneKeyAlarmActivity;
 import com.xfcar.driver.view.RechargeActivity;
 import com.xfcar.driver.view.adapter.FunctionAdapter;
 
-import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 import rx.functions.Action1;
 

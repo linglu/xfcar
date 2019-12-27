@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -13,8 +12,10 @@ import android.widget.EditText;
 
 import com.xfcar.driver.utils.ToastUtils;
 
+import androidx.fragment.app.FragmentActivity;
 
-public abstract class BaseActivity extends AppCompatActivity {
+
+public abstract class BaseActivity extends FragmentActivity {
     private boolean mIsActivityDestroyed = false;
     private boolean isInResume = false;
 

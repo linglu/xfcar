@@ -5,13 +5,9 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
-import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.xfcar.driver.mvp.BaseActivity;
 import com.xfcar.driver.utils.DataManager;
 import com.xfcar.driver.utils.L;
@@ -21,10 +17,12 @@ import com.xfcar.driver.view.fragment.HomePageFragment;
 import com.xfcar.driver.view.fragment.MineFragment;
 import com.xfcar.driver.view.fragment.SendBillFragment;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 public class MainActivity extends BaseActivity {
 
     private DataManager mDataManager;
-    private FrameLayout mFlContainer;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -52,7 +50,6 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         initPermission();
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        mFlContainer = findViewById(R.id.fl_container);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         getSupportFragmentManager().beginTransaction().add(R.id.fl_container, new HomePageFragment()).commit();
 
@@ -81,6 +78,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(resultCode, resultCode, data);
         if (requestCode == 1001) {
             if (resultCode == RESULT_OK) {
 
