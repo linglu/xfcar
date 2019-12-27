@@ -7,7 +7,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import com.wangpeiyuan.cycleviewpager2.CycleViewPager2;
 import com.xfcar.driver.R;
+import com.xfcar.driver.model.adapterbean.PagerBean;
 import com.xfcar.driver.model.viewbean.FunctionBean;
 import com.xfcar.driver.mvp.BaseFragment;
 import com.xfcar.driver.utils.L;
@@ -18,6 +20,7 @@ import com.xfcar.driver.view.InviteActivity;
 import com.xfcar.driver.view.OneKeyAlarmActivity;
 import com.xfcar.driver.view.RechargeActivity;
 import com.xfcar.driver.view.adapter.FunctionAdapter;
+import com.xfcar.driver.view.adapter.ViewPagerAdapter;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,9 +34,10 @@ public class HomePageFragment extends BaseFragment {
 
     private RecyclerView mRvFunction;
     private FunctionAdapter mAdapter;
+    private ViewPagerAdapter mVpAdapter;
     private ViewFlipper mVfAdvDisplay;
     private String[] mNotices = {"广告1", "广告2", "广告3"};
-    private ViewPager2 mVpFlipHrznt;
+    private CycleViewPager2 mCvpPager;
 
     @Override
     protected int getContentViewLayoutId() {
@@ -98,9 +102,26 @@ public class HomePageFragment extends BaseFragment {
         mVfAdvDisplay.setFlipInterval(2000);
         mVfAdvDisplay.startFlipping();
 
+        mCvpPager = mRootView.findViewById(R.id.cvp_pager);
+        mVpAdapter = new ViewPagerAdapter(mActivity);
+        mCvpPager.setAdapter(mVpAdapter);
+        mVpAdapter.setData(PagerBean.mockPagers());
 
-//        mVpFlipHrznt = mRootView.findViewById(R.id.vp_flip_horizontal);
-//        mVpFlipHrznt.setAdapter(mAdapter);
+        //设置指示符
+//        mCvpPager.setIndicator(indicator);
+
+        //设置自动轮播间隔
+        mCvpPager.setAutoTurning(5000);
+
+        //设置切换效果，可以多个效果组合
+//        mCvpPager.setPageTransformer(compositePageTransformer);
+
+        //添加间距
+//        mCvpPager.addItemDecoration(itemDecoration);
+
+        //添加切换监听
+//        mCvpPager.registerOnPageChangeCallback(pageChangeCallback);
+//        mCvpPager.setOffscreenPageLimit(limit);
+        mCvpPager.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
     }
-
 }

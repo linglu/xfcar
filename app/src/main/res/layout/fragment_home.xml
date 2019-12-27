@@ -10,6 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/space160"
     >
+        <com.wangpeiyuan.cycleviewpager2.CycleViewPager2
+            android:id="@+id/cvp_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+         />
 
         <ViewFlipper
             android:id="@+id/view_flipper"
@@ -18,14 +23,6 @@
             android:inAnimation="@anim/anim_in"
             android:outAnimation="@anim/anim_out"
         />
-
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/vp_flip_horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-        />
-
     </FrameLayout>
 
 
