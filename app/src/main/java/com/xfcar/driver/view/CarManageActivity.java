@@ -34,7 +34,7 @@ public class CarManageActivity extends BaseActivity {
         TextView tv = findViewById(R.id.tv_title);
         tv.setText("车辆管理");
 
-        findViewById(R.id.iv_return_back).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.rl_return_back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();

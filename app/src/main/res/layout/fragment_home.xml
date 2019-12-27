@@ -6,23 +6,36 @@
     android:orientation="vertical"
 >
 
-    <TextView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/space160"
-        android:gravity="center"
-        android:text="轮播图"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/font18"
-    />
+    >
+
+        <ViewFlipper
+            android:id="@+id/view_flipper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inAnimation="@anim/anim_in"
+            android:outAnimation="@anim/anim_out"
+        />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_flip_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+        />
+
+    </FrameLayout>
 
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_function"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.0"
         android:layout_marginLeft="@dimen/space15"
         android:layout_marginRight="@dimen/space15"
+        android:layout_weight="1.0"
     />
 
     <TextView

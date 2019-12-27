@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest package="com.xfcar.driver"
           xmlns:android="http://schemas.android.com/apk/res/android">
-
     <uses-permission android:name="android.permission.INTERNET"/>
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -17,19 +13,15 @@
         android:networkSecurityConfig="@xml/net_security_config"
         android:supportsRtl="true"
         android:theme="@style/BaseTheme">
-
         <activity
             android:name=".view.WelcomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Launcher"
         >
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -40,163 +32,164 @@
                 />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
         />
-
         <activity
             android:name=".view.RegisterActivity"
             android:screenOrientation="portrait"
         />
-
         <activity
             android:name=".view.LoginActivity"
             android:screenOrientation="portrait"
         />
-
         <activity
             android:name=".view.CarManageActivity"
             android:screenOrientation="portrait"
         />
-
         <activity
             android:name=".view.OneKeyLockActivity"
             android:screenOrientation="portrait"
         />
-
 
         <activity
             android:name=".view.CarOperateActivity"
             android:screenOrientation="portrait"
         />
 
-
         <activity
             android:name=".view.BluetoothKeyActivity"
             android:screenOrientation="portrait"
         />
-
 
         <activity
             android:name=".view.CarPositionActivity"
             android:screenOrientation="portrait"
         />
 
-
         <activity
             android:name=".view.ClaimPayDetailActivity"
             android:screenOrientation="portrait"
         />
-
         <activity
             android:name=".view.ClaimPayListActivity"
             android:screenOrientation="portrait"
         />
-
         <activity
             android:name=".view.RepairDetailActivity"
             android:screenOrientation="portrait"
         />
-
         <activity
             android:name=".view.RepairListActivity"
             android:screenOrientation="portrait"
         />
 
-
         <activity
             android:name=".view.CarInfoActivity"
             android:screenOrientation="portrait"
         />
-
         <activity
             android:name=".view.CarListInfoActivity"
             android:screenOrientation="portrait"
         />
-
         <activity
             android:name=".view.CarSecurityActivity"
             android:screenOrientation="portrait"
         />
-
         <activity
             android:name=".view.MyWalletActivity"
             android:screenOrientation="portrait"
         />
-
 
         <activity
             android:name=".view.MyScoreActivity"
             android:screenOrientation="portrait"
         />
 
-
         <activity
             android:name=".view.MyMessageActivity"
             android:screenOrientation="portrait"
         />
 
-
         <activity
             android:name=".view.SettingActivity"
             android:screenOrientation="portrait"
         />
-
         <activity
             android:name=".view.AccountActivity"
             android:screenOrientation="portrait"
         />
-
 
         <activity
             android:name=".view.EmergencyActivity"
             android:screenOrientation="portrait"
         />
 
-
         <activity
             android:name=".view.ContactUsActivity"
             android:screenOrientation="portrait"
         />
 
-
         <activity
             android:name=".view.AboutActivity"
             android:screenOrientation="portrait"
         />
-
         <activity
             android:name=".view.BalanceActivity"
             android:screenOrientation="portrait"
         />
-
 
         <activity
             android:name=".view.ReceiptActivity"
             android:screenOrientation="portrait"
         />
 
-
         <activity
             android:name=".view.SearchInfoActivity"
             android:screenOrientation="portrait"
         />
 
-
         <activity
             android:name=".view.DedutPercentActivity"
             android:screenOrientation="portrait"
         />
-
-
+        <activity
+            android:name=".view.SendOthersActivity"
+            android:screenOrientation="portrait"
+        />
         <activity
             android:name=".view.ShareRewardActivity"
             android:screenOrientation="portrait"
         />
+        <activity
+            android:name=".view.SbscrbShortActivity"
+            android:screenOrientation="portrait"
+        />
+        <activity
+            android:name=".view.BuyOrRentCarActivity"
+            android:screenOrientation="portrait"
+        />
 
+        <activity
+            android:name=".view.CarReRentActivity"
+            android:screenOrientation="portrait"
+        />
+
+        <activity
+            android:name=".view.RechargeActivity"
+            android:screenOrientation="portrait"
+        />
+
+        <activity
+            android:name=".view.InviteActivity"
+            android:screenOrientation="portrait"
+        />
+
+        <activity
+            android:name=".view.OneKeyAlarmActivity"
+            android:screenOrientation="portrait"
+        />
     </application>
-
 </manifest>

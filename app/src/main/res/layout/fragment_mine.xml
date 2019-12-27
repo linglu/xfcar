@@ -6,6 +6,24 @@
     android:orientation="vertical"
 >
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space60"
+    >
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="我的"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font16"
+        />
+
+    </RelativeLayout>
+
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_function"
         android:layout_marginTop="@dimen/space50"
