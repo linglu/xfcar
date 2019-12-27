@@ -1,24 +1,30 @@
 package com.xfcar.driver.view.fragment;
 
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.xfcar.driver.R;
+import com.xfcar.driver.model.viewbean.FunctionBean;
 import com.xfcar.driver.mvp.BaseFragment;
-import com.xfcar.driver.network.Requester;
-import com.xfcar.driver.network.ResultCallback;
-import com.xfcar.driver.utils.DataManager;
-import com.xfcar.driver.utils.L;
-import com.xfcar.driver.view.LoginActivity;
+import com.xfcar.driver.view.MyMessageActivity;
+import com.xfcar.driver.view.MyScoreActivity;
+import com.xfcar.driver.view.MyWalletActivity;
+import com.xfcar.driver.view.SettingActivity;
+import com.xfcar.driver.view.adapter.FunctionAdapter;
+
+import rx.functions.Action1;
 
 /**
  * @author linky
  */
 public class MineFragment extends BaseFragment {
 
-    private Requester mRequester = new Requester();
+    private RecyclerView mRvFunction;
+    private FunctionAdapter mAdapter;
 
     @Override
     protected int getContentViewLayoutId() {
@@ -34,27 +40,29 @@ public class MineFragment extends BaseFragment {
     }
 
     private void init() {
-
-       mRootView.findViewById(R.id.bt_logout).setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-
-               final DataManager dataManager = new DataManager(mActivity);
-                mRequester.logout(new ResultCallback<String>() {
-                    @Override
-                    public void onSuccess(String s) {
-                        toastMsg("退出登录成功");
-                        dataManager.setUserId(null);
-                        startActivity(LoginActivity.class);
-                        mActivity.finish();
-                    }
-
-                    @Override
-                    public void onFail(String msg) {
-                        toastMsg(msg);
-                    }
-                });
-           }
-       });
+        mRvFunction = mRootView.findViewById(R.id.rv_function);
+        mRvFunction.setLayoutManager(new GridLayoutManager(mActivity, 2));
+        mAdapter = new FunctionAdapter(mActivity);
+        mAdapter.setCallback(new Action1<FunctionBean>() {
+            @Override
+            public void call(FunctionBean appBean) {
+                switch (appBean.name) {
+                    case "我的钱包":
+                        startActivity(MyWalletActivity.class);
+                        break;
+                    case "我的积分":
+                        startActivity(MyScoreActivity.class);
+                        break;
+                    case "我的消息":
+                        startActivity(MyMessageActivity.class);
+                        break;
+                    case "权限设置":
+                        startActivity(SettingActivity.class);
+                        break;
+                }
+            }
+        });
+        mRvFunction.setAdapter(mAdapter);
+        mAdapter.setData(FunctionBean.mockMineBeans());
     }
 }

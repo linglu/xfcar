@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space60"
+    >
+
+        <ImageView
+            android:id="@+id/iv_return_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_return_back"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/space20"
+        />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="权限设置"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font16"
+        />
+
+    </RelativeLayout>
+    
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space1"
+        android:background="@color/gray"
+    />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space1"
+        android:layout_marginTop="@dimen/space20"
+        android:background="@color/gray"
+    />
+    <TextView
+        android:id="@+id/tv_account"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space40"
+        android:drawableRight="@drawable/ic_rightarrow"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/space15"
+        android:paddingRight="@dimen/space15"
+        android:text="帐号与安全"
+    />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space1"
+        android:background="@color/gray"
+    />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space1"
+        android:layout_marginTop="@dimen/space20"
+        android:background="@color/gray"
+    />
+    <TextView
+        android:id="@+id/tv_emergency"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space40"
+        android:drawableRight="@drawable/ic_rightarrow"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/space15"
+        android:paddingRight="@dimen/space15"
+        android:text="紧急联系人"
+    />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space1"
+        android:background="@color/gray"
+    />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space1"
+        android:layout_marginTop="@dimen/space20"
+        android:background="@color/gray"
+    />
+    <TextView
+        android:id="@+id/tv_contact_us"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space40"
+        android:drawableRight="@drawable/ic_rightarrow"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/space15"
+        android:paddingRight="@dimen/space15"
+        android:text="联系我们"
+    />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space1"
+        android:background="@color/gray"
+    />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space1"
+        android:layout_marginTop="@dimen/space20"
+        android:background="@color/gray"
+    />
+    <TextView
+        android:id="@+id/tv_about"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space40"
+        android:drawableRight="@drawable/ic_rightarrow"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/space15"
+        android:paddingRight="@dimen/space15"
+        android:text="关于旋风卫士"
+    />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space1"
+        android:background="@color/gray"
+    />
+
+    <Button
+        android:id="@+id/bt_logout"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/space40"
+        android:layout_marginLeft="@dimen/space20"
+        android:layout_marginRight="@dimen/space20"
+        android:background="@drawable/selector_green_btn_login"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/space20"
+        android:text="退出登录"
+        android:layout_centerInParent="true"
+        android:textColor="@color/background_primary"
+        android:textSize="@dimen/font_large"
+    />
+
+</LinearLayout>

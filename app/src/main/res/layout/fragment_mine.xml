@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+>
 
-    <Button
-        android:id="@+id/bt_logout"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/space40"
-        android:layout_marginLeft="@dimen/space20"
-        android:layout_marginRight="@dimen/space20"
-        android:background="@drawable/selector_green_btn_login"
-        android:gravity="center"
-        android:text="退出登录"
-        android:layout_centerInParent="true"
-        android:textColor="@color/background_primary"
-        android:textSize="@dimen/font_large"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_function"
+        android:layout_marginTop="@dimen/space50"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0"
+        android:layout_marginLeft="@dimen/space15"
+        android:layout_marginRight="@dimen/space15"
     />
-</RelativeLayout>
+
+</LinearLayout>
