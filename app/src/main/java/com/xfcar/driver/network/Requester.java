@@ -8,6 +8,8 @@ import com.xfcar.driver.model.adapterbean.RentCarInfoBean;
 import com.xfcar.driver.model.adapterbean.RepairBean;
 import com.xfcar.driver.model.bean.CarObjectId;
 import com.xfcar.driver.model.bean.Command;
+import com.xfcar.driver.model.bean.QRCodeBean;
+import com.xfcar.driver.model.bean.ShortRentEntity;
 import com.xfcar.driver.model.bean.SysUserEntity;
 import com.xfcar.driver.model.bean.UserEntity;
 import com.xfcar.driver.network.converter.FastjsonConverterFactory;
@@ -100,8 +102,8 @@ public class Requester {
 
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
-//                    .baseUrl("http://xuanfeng.xiaomy.net")
-                    .baseUrl("http://39.108.166.99:9000")
+                    .baseUrl("http://xuanfeng.xiaomy.net")
+//                    .baseUrl("http://39.108.166.99:9000")
                     .client(client)
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .addConverterFactory(FastjsonConverterFactory.create())
@@ -157,6 +159,46 @@ public class Requester {
 
                     @Override
                     public void onSuccess(List<RentCarInfoBean> o) {
+                        callback.onSuccess(o);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        callback.onFail(msg);
+                    }
+                });
+    }
+
+    public void appPaymentsourceGetqrcode(final ResultCallback<QRCodeBean> callback) {
+        service.appPaymentsourceGetqrcode()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetworkSubscriber<QRCodeBean>() {
+
+                    @Override
+                    public void onSuccess(QRCodeBean o) {
+                        callback.onSuccess(o);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        callback.onFail(msg);
+                    }
+                });
+    }
+
+    public void appCarShortrentAdd(String userId, String carNo, String date, final ResultCallback<String> callback) {
+        ShortRentEntity entity = new ShortRentEntity();
+        entity.userId = Integer.parseInt(userId);
+        entity.carNo = carNo;
+        entity.subletDate = date;
+        service.appCarShortrentAdd(entity)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetworkSubscriber<String>() {
+
+                    @Override
+                    public void onSuccess(String o) {
                         callback.onSuccess(o);
                     }
 

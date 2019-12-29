@@ -12,6 +12,7 @@ import com.xfcar.driver.model.bean.CarMaintainEntity;
 import com.xfcar.driver.model.bean.CarObjectId;
 import com.xfcar.driver.model.bean.Command;
 import com.xfcar.driver.model.bean.LeasebackEntity;
+import com.xfcar.driver.model.bean.QRCodeBean;
 import com.xfcar.driver.model.bean.ShortRentEntity;
 import com.xfcar.driver.model.bean.SysUserEntity;
 import com.xfcar.driver.model.bean.UserEntity;
@@ -93,7 +94,7 @@ public interface ApiService {
 
     //['App公司账户信息配置表']
     @GET("ioc/app/paymentSource/getQrCode")
-    Observable<Response<String>> appPaymentsourceGetqrcode();
+    Observable<Response<QRCodeBean>> appPaymentsourceGetqrcode();
 
     //App充值: JSON格式传参userId
     @POST("ioc/app/recharge/getRechargeByUser")

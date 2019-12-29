@@ -38,13 +38,11 @@
         android:background="@color/gray"
     />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_car_function"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.0"
-        android:layout_marginLeft="@dimen/space15"
-        android:layout_marginRight="@dimen/space15"
-    />
+    <ImageView
+        android:id="@+id/iv_receipt_qrcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/gray_50"
+        />
 
 </LinearLayout>
