@@ -22,6 +22,7 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
 
     private void initView() {
         findViewById(R.id.iv_return_back).setOnClickListener(this);
+        findViewById(R.id.tv_modify_mobile).setOnClickListener(this);
     }
 
     @Override
@@ -29,6 +30,8 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
         int id = v.getId();
         if (id == R.id.iv_return_back) {
             finish();
+        } else if (id == R.id.tv_modify_mobile) {
+//            startActivity();
         }
     }
 }

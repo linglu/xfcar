@@ -2,21 +2,50 @@ package com.xfcar.driver.view;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.xfcar.driver.R;
+import com.xfcar.driver.model.adapterbean.CarInfoBean;
+import com.xfcar.driver.model.bean.CarSecurityBean;
 import com.xfcar.driver.mvp.BaseActivity;
+import com.xfcar.driver.network.Requester;
+import com.xfcar.driver.network.ResultCallback;
+import com.xfcar.driver.utils.DataManager;
 
 public class CarSecurityActivity extends BaseActivity implements View.OnClickListener {
+
+    private Requester mRequester = new Requester();
+    private DataManager mDataManager;
+    private TextView mTvEngineNo;
+    private TextView mTvMobile;
+    private TextView mTvCarInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_security);
         initView();
+        mDataManager = new DataManager(this);
+        mRequester.appCarGetsecurityinfo(mDataManager.getUserId(), new ResultCallback<CarSecurityBean>() {
+            @Override
+            public void onSuccess(CarSecurityBean bean) {
+                mTvEngineNo.setText(String.format("发动机号：%s", bean.engineNo));
+                mTvMobile.setText(String.format("手机号：%s", bean.mobile));
+                mTvCarInfo.setText(String.format("车牌号：%s", bean.carInfo));
+            }
+
+            @Override
+            public void onFail(String msg) {
+                toastMsg(msg);
+            }
+        });
     }
 
     private void initView() {
-        findViewById(R.id.iv_return_back).setOnClickListener(this);
+        findViewById(R.id.iv_return_back).setOnClickListener(this);;
+        mTvEngineNo = findViewById(R.id.tv_engine_no);
+        mTvMobile = findViewById(R.id.tv_mobile);
+        mTvCarInfo = findViewById(R.id.tv_car_info);
     }
 
     @Override

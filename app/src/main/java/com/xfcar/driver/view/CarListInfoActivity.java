@@ -16,6 +16,7 @@ import com.xfcar.driver.utils.DataManager;
 import com.xfcar.driver.utils.L;
 import com.xfcar.driver.view.adapter.CarInfoAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import rx.functions.Action1;
@@ -34,11 +35,12 @@ public class CarListInfoActivity extends BaseActivity implements View.OnClickLis
         initView();
 
         mDataManager = new DataManager(this);
-        mRequester.getCarInfoByUser(mDataManager.getUserId(), new ResultCallback<List<CarInfoBean>>() {
+        mRequester.getCarInfoByUser(mDataManager.getUserId(), new ResultCallback<CarInfoBean>() {
             @Override
-            public void onSuccess(List<CarInfoBean> s) {
-                L.i("onSuccess: " + s.size());
-                mAdapter.setData(s);
+            public void onSuccess(CarInfoBean s) {
+                List<CarInfoBean> lc = new ArrayList<>();
+                lc.add(s);
+                mAdapter.setData(lc);
             }
 
             @Override

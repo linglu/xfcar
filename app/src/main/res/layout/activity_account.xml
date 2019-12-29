@@ -38,13 +38,21 @@
         android:background="@color/gray"
     />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_car_function"
+    <TextView
+        android:id="@+id/tv_modify_mobile"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.0"
-        android:layout_marginLeft="@dimen/space15"
-        android:layout_marginRight="@dimen/space15"
-    />
+        android:layout_height="@dimen/space40"
+        android:drawableRight="@drawable/ic_rightarrow"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/space15"
+        android:paddingRight="@dimen/space15"
+        android:text="修改手机号"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space1"
+        android:background="@color/gray"
+        />
 
 </LinearLayout>

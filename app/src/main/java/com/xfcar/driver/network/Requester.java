@@ -7,6 +7,7 @@ import com.xfcar.driver.model.adapterbean.ClaimPayBean;
 import com.xfcar.driver.model.adapterbean.RentCarInfoBean;
 import com.xfcar.driver.model.adapterbean.RepairBean;
 import com.xfcar.driver.model.bean.CarObjectId;
+import com.xfcar.driver.model.bean.CarSecurityBean;
 import com.xfcar.driver.model.bean.Command;
 import com.xfcar.driver.model.bean.QRCodeBean;
 import com.xfcar.driver.model.bean.ShortRentEntity;
@@ -24,6 +25,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.Result;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -209,6 +211,24 @@ public class Requester {
                 });
     }
 
+    public void appCarGetsecurityinfo(String userId, final ResultCallback<CarSecurityBean> callback) {
+        service.appCarGetsecurityinfo(new UserEntity(Integer.parseInt(userId)))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetworkSubscriber<CarSecurityBean>() {
+
+                    @Override
+                    public void onSuccess(CarSecurityBean o) {
+                        callback.onSuccess(o);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        callback.onFail(msg);
+                    }
+                });
+    }
+
     public void carOperateCommand(String company, String carNo, String macid, String carCmd,
                                   final ResultCallback<String> callback) {
         Command cmd = new Command(company, carNo, macid, carCmd);
@@ -229,14 +249,14 @@ public class Requester {
                 });
     }
 
-    public void getCarInfoByUser(String userId, final ResultCallback<List<CarInfoBean>> callback) {
+    public void getCarInfoByUser(String userId, final ResultCallback<CarInfoBean> callback) {
         service.appCarGetcarinfobyuser(new UserEntity(Integer.parseInt(userId)))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new NetworkSubscriber<List<CarInfoBean>>() {
+                .subscribe(new NetworkSubscriber<CarInfoBean>() {
 
                     @Override
-                    public void onSuccess(List<CarInfoBean> o) {
+                    public void onSuccess(CarInfoBean o) {
                         callback.onSuccess(o);
                     }
 

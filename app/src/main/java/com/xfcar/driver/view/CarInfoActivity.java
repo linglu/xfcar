@@ -11,8 +11,6 @@ import com.xfcar.driver.network.Requester;
 import com.xfcar.driver.network.ResultCallback;
 import com.xfcar.driver.utils.DataManager;
 
-import java.util.List;
-
 public class CarInfoActivity extends BaseActivity implements View.OnClickListener {
 
     private TextView mTvId;
@@ -32,40 +30,47 @@ public class CarInfoActivity extends BaseActivity implements View.OnClickListene
     private TextView mTvCreatedate;
     private TextView mTvUpdateby;
     private TextView mTvUpdatedate;
-    private CarInfoBean mCarInfoBean;
+    private DataManager mDataManager;
+    private Requester mRequester = new Requester();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_info);
-        if (getIntent().getExtras() != null) {
-            mCarInfoBean = getIntent().getExtras().getParcelable("car_info_bean");
+        initView();
 
-            initView();
-            initData();
-        } else {
-            finish();
-        }
+        mDataManager = new DataManager(this);
+        mRequester.getCarInfoByUser(mDataManager.getUserId(), new ResultCallback<CarInfoBean>() {
+            @Override
+            public void onSuccess(CarInfoBean s) {
+                initData(s);
+            }
+
+            @Override
+            public void onFail(String msg) {
+                toastMsg(msg);
+            }
+        });
     }
 
-    private void initData() {
-        mTvId.setText(String.format("id: %s", mCarInfoBean.id));
-        mTvCarno.setText(String.format("carNo: %s", mCarInfoBean.carNo));
-        mTvEngineno.setText(String.format("engineNo: %s", mCarInfoBean.engineNo));
-        mTvBrand.setText(String.format("brand: %s", mCarInfoBean.brand));
-        mTvModelno.setText(String.format("modelNo: %s", mCarInfoBean.modelNo));
-        mTvStatus.setText(String.format("status: %s", mCarInfoBean.status));
-        mTvType.setText(String.format("type: %s", mCarInfoBean.type));
-        mTvUsername.setText(String.format("username: %s", mCarInfoBean.username));
-        mTvUserid.setText(String.format("userId: %s", mCarInfoBean.userId));
-        mTvCompany.setText(String.format("company: %s", mCarInfoBean.company));
-        mTvMacid.setText(String.format("macid: %s", mCarInfoBean.macid));
-        mTvObjectid.setText(String.format("objectid: %s", mCarInfoBean.objectid));
-        mTvDelflag.setText(String.format("delFlag: %s", mCarInfoBean.delFlag));
-        mTvCreateby.setText(String.format("createBy: %s", mCarInfoBean.createBy));
-        mTvCreatedate.setText(String.format("createDate: %s", mCarInfoBean.createDate));
-        mTvUpdateby.setText(String.format("updateBy: %s", mCarInfoBean.updateBy));
-        mTvUpdatedate.setText(String.format("updateDate: %s", mCarInfoBean.updateDate));
+    private void initData(CarInfoBean carInfoBean) {
+        mTvId.setText(String.format("id: %s", carInfoBean.id));
+        mTvCarno.setText(String.format("carNo: %s", carInfoBean.carNo));
+        mTvEngineno.setText(String.format("engineNo: %s", carInfoBean.engineNo));
+        mTvBrand.setText(String.format("brand: %s", carInfoBean.brand));
+        mTvModelno.setText(String.format("modelNo: %s", carInfoBean.modelNo));
+        mTvStatus.setText(String.format("status: %s", carInfoBean.status));
+        mTvType.setText(String.format("type: %s", carInfoBean.type));
+        mTvUsername.setText(String.format("username: %s", carInfoBean.username));
+        mTvUserid.setText(String.format("userId: %s", carInfoBean.userId));
+        mTvCompany.setText(String.format("company: %s", carInfoBean.company));
+        mTvMacid.setText(String.format("macid: %s", carInfoBean.macid));
+        mTvObjectid.setText(String.format("objectid: %s", carInfoBean.objectid));
+        mTvDelflag.setText(String.format("delFlag: %s", carInfoBean.delFlag));
+        mTvCreateby.setText(String.format("createBy: %s", carInfoBean.createBy));
+        mTvCreatedate.setText(String.format("createDate: %s", carInfoBean.createDate));
+        mTvUpdateby.setText(String.format("updateBy: %s", carInfoBean.updateBy));
+        mTvUpdatedate.setText(String.format("updateDate: %s", carInfoBean.updateDate));
     }
 
     private void initView() {

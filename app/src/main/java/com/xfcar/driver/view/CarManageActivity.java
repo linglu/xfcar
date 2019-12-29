@@ -50,7 +50,7 @@ public class CarManageActivity extends BaseActivity {
 
                 switch (appBean.name) {
                     case "车辆信息":
-                        startActivity(CarListInfoActivity.class);
+                        startActivity(CarInfoActivity.class);
                         break;
                     case "一键开门":
                         Bundle bundle = new Bundle();

@@ -10,8 +10,6 @@ import com.xfcar.driver.network.Requester;
 import com.xfcar.driver.network.ResultCallback;
 import com.xfcar.driver.utils.DataManager;
 
-import java.util.List;
-
 public class CarPositionActivity extends BaseActivity implements View.OnClickListener {
 
     private DataManager mDataManager;
@@ -24,19 +22,16 @@ public class CarPositionActivity extends BaseActivity implements View.OnClickLis
         initView();
 
         mDataManager = new DataManager(this);
-        mRequester.getCarInfoByUser(mDataManager.getUserId(), new ResultCallback<List<CarInfoBean>>() {
+        mRequester.getCarInfoByUser(mDataManager.getUserId(), new ResultCallback<CarInfoBean>() {
             @Override
-            public void onSuccess(List<CarInfoBean> carInfoBeans) {
-                mRequester.monitorPosition(carInfoBeans.get(0).objectid, new ResultCallback<String>() {
-
+            public void onSuccess(CarInfoBean carInfoBeans) {
+                mRequester.monitorPosition(carInfoBeans.objectid, new ResultCallback<String>() {
                     @Override
                     public void onSuccess(String s) {
-
                     }
 
                     @Override
                     public void onFail(String msg) {
-
                     }
                 });
             }

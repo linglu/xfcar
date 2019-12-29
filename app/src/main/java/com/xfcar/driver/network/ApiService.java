@@ -7,6 +7,7 @@ import com.xfcar.driver.model.adapterbean.RepairBean;
 import com.xfcar.driver.model.bean.AlarmRecordEntity;
 import com.xfcar.driver.model.bean.AmountRechargeEntity;
 import com.xfcar.driver.model.bean.CarObjectId;
+import com.xfcar.driver.model.bean.CarSecurityBean;
 import com.xfcar.driver.model.bean.Command;
 import com.xfcar.driver.model.bean.QRCodeBean;
 import com.xfcar.driver.model.bean.ShortRentEntity;
@@ -51,7 +52,7 @@ public interface ApiService {
 
     //App车辆信息: JSON格式传参userId
     @POST("ioc/app/car/getCarInfoByUser")
-    Observable<Response<List<CarInfoBean>>> appCarGetcarinfobyuser(@Body UserEntity userEntity);
+    Observable<Response<CarInfoBean>> appCarGetcarinfobyuser(@Body UserEntity userEntity);
 
     //App车辆理赔: JSON格式传参userId
     @POST("ioc/app/car/insurance/getInsuranceByUser")
@@ -76,10 +77,6 @@ public interface ApiService {
     @GET("ioc/app/car/sellModel/getList")
     Observable<Response<List<RentCarInfoBean>>> appCarSellModelGetList();
 
-    //App平台销卖出租车型表
-    @POST("ioc/app/car/sellModel/list")
-    Observable<Response<String>> appCarSellmodelList(@Body Object object);
-
     //预约短租: Json格式传参：subletDate 转租时间
     @POST("ioc/app/car/shortRent/add")
     Observable<Response<String>> appCarShortrentAdd(@Body ShortRentEntity shortrententity);
@@ -95,4 +92,22 @@ public interface ApiService {
     //App充值: JSON格式传参userId
     @POST("ioc/app/recharge/getRechargeByUser")
     Observable<Response<String>> appRechargeGetrechargebyuser(@Body AmountRechargeEntity amountrechargeentity);
+
+//    =================
+
+    //App车辆信息: JSON格式传参userId
+    @POST("ioc/app/car/getSecurityInfo")
+    Observable<Response<CarSecurityBean>> appCarGetsecurityinfo(@Body UserEntity ue);
+
+    //App平台销卖出租车型表: 默认pageNumber=1，pageSize=10
+    @POST("ioc/app/car/sellModel/list")
+    Observable<Response<String>> appCarSellmodelList(@Body QueryBody body);
+
+    //预约短租: Json格式传参：userId 用户ID
+    @POST("ioc/app/car/shortRent/getRentByUser")
+    Observable<Response<String>> appCarShortrentGetrentbyuser(@Body ShortRentEntity shortrententity);
+
+    //App用户: JSON格式,修改手机和密码传参password, mobile；修改紧急联系人和联络方式传参：contactUame, contactMobile
+    @POST("ioc/app/user/updateByUser")
+    Observable<Response<String>> appUserUpdatebyuser(@Body SysUserEntity sysuserentity);
 }

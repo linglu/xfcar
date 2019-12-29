@@ -38,10 +38,9 @@ public class CarOperateActivity extends BaseActivity implements View.OnClickList
 
         initView();
         mDataManager = new DataManager(this);
-        mRequester.getCarInfoByUser(mDataManager.getUserId(), new ResultCallback<List<CarInfoBean>>() {
+        mRequester.getCarInfoByUser(mDataManager.getUserId(), new ResultCallback<CarInfoBean>() {
             @Override
-            public void onSuccess(List<CarInfoBean> carInfoBeans) {
-                CarInfoBean carInfo = carInfoBeans.get(0);
+            public void onSuccess(CarInfoBean carInfo) {
                 mRequester.carOperateCommand(
                         carInfo.company, carInfo.carNo,
                         Utils.getIMEI(CarOperateActivity.this),
