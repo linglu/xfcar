@@ -6,12 +6,8 @@ import com.xfcar.driver.model.adapterbean.RentCarInfoBean;
 import com.xfcar.driver.model.adapterbean.RepairBean;
 import com.xfcar.driver.model.bean.AlarmRecordEntity;
 import com.xfcar.driver.model.bean.AmountRechargeEntity;
-import com.xfcar.driver.model.bean.CarInfoEntity;
-import com.xfcar.driver.model.bean.CarInsuranceEntity;
-import com.xfcar.driver.model.bean.CarMaintainEntity;
 import com.xfcar.driver.model.bean.CarObjectId;
 import com.xfcar.driver.model.bean.Command;
-import com.xfcar.driver.model.bean.LeasebackEntity;
 import com.xfcar.driver.model.bean.QRCodeBean;
 import com.xfcar.driver.model.bean.ShortRentEntity;
 import com.xfcar.driver.model.bean.SysUserEntity;
@@ -93,8 +89,8 @@ public interface ApiService {
     Observable<Response<String>> appMonitorPosition(@Body CarObjectId objectId);
 
     //['App公司账户信息配置表']
-    @GET("ioc/app/paymentSource/getQrCode")
-    Observable<Response<QRCodeBean>> appPaymentsourceGetqrcode();
+    @GET("ioc/app/getPaymentSource")
+    Observable<Response<QRCodeBean>> getPaymentSource(@Query("type") int type);
 
     //App充值: JSON格式传参userId
     @POST("ioc/app/recharge/getRechargeByUser")

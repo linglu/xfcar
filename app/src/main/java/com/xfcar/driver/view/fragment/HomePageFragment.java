@@ -23,7 +23,6 @@ import com.xfcar.driver.utils.DataManager;
 import com.xfcar.driver.utils.L;
 import com.xfcar.driver.view.BuyOrRentCarActivity;
 import com.xfcar.driver.view.CarManageActivity;
-import com.xfcar.driver.view.CarReRentActivity;
 import com.xfcar.driver.view.InviteActivity;
 import com.xfcar.driver.view.RechargeActivity;
 import com.xfcar.driver.view.adapter.FunctionAdapter;
@@ -31,11 +30,12 @@ import com.xfcar.driver.view.adapter.ViewPagerAdapter;
 import com.xfcar.driver.view.dialog.ConfirmDialog;
 
 import rx.functions.Action1;
+import rx.functions.Action2;
 
 /**
  * @author Linky
  */
-public class HomePageFragment extends BaseFragment implements DialogInterface.OnDismissListener {
+public class HomePageFragment extends BaseFragment implements Action1<String> {
 
     private RecyclerView mRvFunction;
     private FunctionAdapter mAdapter;
@@ -71,7 +71,12 @@ public class HomePageFragment extends BaseFragment implements DialogInterface.On
                         startActivity(BuyOrRentCarActivity.class);
                         break;
                     case "车辆返租":
-                        startActivity(CarReRentActivity.class);
+//                        startActivity(CarReRentActivity.class);
+
+                        Bundle bundle = new Bundle();
+                        bundle.putString("title", "车辆返租");
+                        ConfirmDialog dlg = ConfirmDialog.newInstance(bundle);
+                        dlg.show(getChildFragmentManager(), "CNFRM_DLG");
                         break;
                     case "租金充值":
                         startActivity(RechargeActivity.class);
@@ -81,7 +86,9 @@ public class HomePageFragment extends BaseFragment implements DialogInterface.On
                         break;
                     case "一键报警":
 //                        startActivity(OneKeyAlarmActivity.class);
-                        ConfirmDialog dlg = ConfirmDialog.newInstance(null);
+                        bundle = new Bundle();
+                        bundle.putString("title", "一键报警");
+                        dlg = ConfirmDialog.newInstance(bundle);
                         dlg.show(getChildFragmentManager(), "CNFRM_DLG");
                         break;
                 }
@@ -133,19 +140,39 @@ public class HomePageFragment extends BaseFragment implements DialogInterface.On
     }
 
     @Override
-    public void onDismiss(DialogInterface dialog) {
+    public void call(String s) {
         Requester requester = new Requester();
         DataManager dataManager = new DataManager(mActivity);
-        requester.appCarLeasebackOnekey(dataManager.getUserId(), new ResultCallback<String>() {
-            @Override
-            public void onSuccess(String s) {
-                toastMsg("报警成功");
-            }
 
-            @Override
-            public void onFail(String msg) {
-                toastMsg("报警失败");
-            }
-        });
+        switch (s) {
+            case "车辆返租":
+                requester.appCarLeasebackOnekey(dataManager.getUserId(), new ResultCallback<String>() {
+                    @Override
+                    public void onSuccess(String s) {
+                        toastMsg("提交成功");
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        toastMsg("提交失败");
+                    }
+                });
+                break;
+            case "一键报警":
+                requester.appCarLeasebackOnekey(dataManager.getUserId(), new ResultCallback<String>() {
+                    @Override
+                    public void onSuccess(String s) {
+                        toastMsg("报警成功");
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        toastMsg("报警失败");
+                    }
+                });
+                break;
+        }
+
+
     }
 }

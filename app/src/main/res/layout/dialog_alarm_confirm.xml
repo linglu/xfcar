@@ -12,6 +12,7 @@
         >
 
         <TextView
+            android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="@dimen/space44"
             android:gravity="center"

@@ -169,8 +169,8 @@ public class Requester {
                 });
     }
 
-    public void appPaymentsourceGetqrcode(final ResultCallback<QRCodeBean> callback) {
-        service.appPaymentsourceGetqrcode()
+    public void getPaymentSource(final ResultCallback<QRCodeBean> callback) {
+        service.getPaymentSource(2)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetworkSubscriber<QRCodeBean>() {

@@ -24,7 +24,7 @@ public class ReceiptActivity extends BaseActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receipt);
         initView();
-        mRequester.appPaymentsourceGetqrcode(new ResultCallback<QRCodeBean>() {
+        mRequester.getPaymentSource(new ResultCallback<QRCodeBean>() {
             @Override
             public void onSuccess(QRCodeBean qrCodeBean) {
                 L.i("QR code : " + qrCodeBean.qrCode);
