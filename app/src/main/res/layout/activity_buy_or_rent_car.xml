@@ -1,30 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
->
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/space60"
-    >
+        android:layout_height="@dimen/space60">
 
         <RelativeLayout
             android:id="@+id/rl_return_back"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:paddingRight="@dimen/space20"
-        >
+            android:paddingRight="@dimen/space20">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/space20"
-                android:src="@mipmap/ic_return_back"
-            />
+                android:src="@mipmap/ic_return_back" />
 
         </RelativeLayout>
 
@@ -35,24 +30,133 @@
             android:layout_centerInParent="true"
             android:text="购车租车"
             android:textColor="@color/black"
-            android:textSize="@dimen/font16"
-        />
+            android:textSize="@dimen/font16" />
 
     </RelativeLayout>
-    
+
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/space1"
-        android:background="@color/gray"
-    />
+        android:background="@color/gray" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_car_function"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.0"
-        android:layout_marginLeft="@dimen/space15"
-        android:layout_marginRight="@dimen/space15"
-    />
+        android:layout_height="@dimen/space50"
+        android:layout_marginTop="@dimen/space20"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/space20"
+        android:paddingRight="@dimen/space20">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="车辆型号"
+            android:textSize="@dimen/font_normal" />
+
+        <Spinner
+            android:id="@+id/sp_rent_car"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/space20"
+            android:spinnerMode="dialog" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_buy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space20"
+        android:layout_marginTop="@dimen/space20"
+        android:text="全款购买: 24000000"
+        android:textSize="@dimen/font_normal" />
+
+    <TextView
+        android:id="@+id/tv_rent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space20"
+        android:layout_marginTop="@dimen/space20"
+        android:text="以租代购"
+        android:textSize="@dimen/font_normal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space44"
+        android:layout_marginLeft="@dimen/space20"
+        android:layout_marginTop="@dimen/space20"
+        android:layout_marginRight="@dimen/space20"
+        android:background="@drawable/shape_square"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12个月付清"
+            android:layout_marginLeft="@dimen/space20"
+            android:textSize="@dimen/font_normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space30"
+            android:text="￥20000元/月"
+            android:textSize="@dimen/font_normal" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space44"
+        android:layout_marginLeft="@dimen/space20"
+        android:layout_marginTop="@dimen/space20"
+        android:layout_marginRight="@dimen/space20"
+        android:background="@drawable/shape_square"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="24个月付清"
+            android:layout_marginLeft="@dimen/space20"
+            android:textSize="@dimen/font_normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space30"
+            android:text="￥10000元/月"
+            android:textSize="@dimen/font_normal" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space44"
+        android:layout_marginLeft="@dimen/space20"
+        android:layout_marginTop="@dimen/space20"
+        android:layout_marginRight="@dimen/space20"
+        android:background="@drawable/shape_square"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="36个月付清"
+            android:layout_marginLeft="@dimen/space20"
+            android:textSize="@dimen/font_normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space30"
+            android:text="￥666.67元/月"
+            android:textSize="@dimen/font_normal" />
+
+    </LinearLayout>
 
 </LinearLayout>

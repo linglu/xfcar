@@ -13,6 +13,7 @@ import com.xfcar.driver.mvp.BaseActivity;
 import com.xfcar.driver.network.Requester;
 import com.xfcar.driver.network.ResultCallback;
 import com.xfcar.driver.utils.DataManager;
+import com.xfcar.driver.utils.L;
 import com.xfcar.driver.view.adapter.CarInfoAdapter;
 
 import java.util.List;
@@ -36,6 +37,7 @@ public class CarListInfoActivity extends BaseActivity implements View.OnClickLis
         mRequester.getCarInfoByUser(mDataManager.getUserId(), new ResultCallback<List<CarInfoBean>>() {
             @Override
             public void onSuccess(List<CarInfoBean> s) {
+                L.i("onSuccess: " + s.size());
                 mAdapter.setData(s);
             }
 

@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:paddingLeft="@dimen/space20"
+    android:paddingRight="@dimen/space20"
 >
 
     <RelativeLayout

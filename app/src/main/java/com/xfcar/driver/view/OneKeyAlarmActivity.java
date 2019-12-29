@@ -6,6 +6,7 @@ import android.view.View;
 import com.xfcar.driver.R;
 import com.xfcar.driver.mvp.BaseActivity;
 import com.xfcar.driver.network.Requester;
+import com.xfcar.driver.network.ResultCallback;
 import com.xfcar.driver.utils.DataManager;
 
 public class OneKeyAlarmActivity extends BaseActivity implements View.OnClickListener {
@@ -18,6 +19,17 @@ public class OneKeyAlarmActivity extends BaseActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_one_key_alarm);
         initView();
+        mRequester.appCarLeasebackOnekey(mDataManager.getUserId(), new ResultCallback<String>() {
+            @Override
+            public void onSuccess(String s) {
+                finish();
+            }
+
+            @Override
+            public void onFail(String msg) {
+
+            }
+        });
     }
 
     private void initView() {

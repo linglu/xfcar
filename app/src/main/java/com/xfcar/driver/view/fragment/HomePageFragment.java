@@ -1,5 +1,6 @@
 package com.xfcar.driver.view.fragment;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,30 +8,34 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
+
 import com.wangpeiyuan.cycleviewpager2.CycleViewPager2;
 import com.xfcar.driver.R;
 import com.xfcar.driver.model.adapterbean.PagerBean;
 import com.xfcar.driver.model.viewbean.FunctionBean;
 import com.xfcar.driver.mvp.BaseFragment;
+import com.xfcar.driver.network.Requester;
+import com.xfcar.driver.network.ResultCallback;
+import com.xfcar.driver.utils.DataManager;
 import com.xfcar.driver.utils.L;
 import com.xfcar.driver.view.BuyOrRentCarActivity;
 import com.xfcar.driver.view.CarManageActivity;
 import com.xfcar.driver.view.CarReRentActivity;
 import com.xfcar.driver.view.InviteActivity;
-import com.xfcar.driver.view.OneKeyAlarmActivity;
 import com.xfcar.driver.view.RechargeActivity;
 import com.xfcar.driver.view.adapter.FunctionAdapter;
 import com.xfcar.driver.view.adapter.ViewPagerAdapter;
+import com.xfcar.driver.view.dialog.ConfirmDialog;
 
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.ViewPager2;
 import rx.functions.Action1;
 
 /**
  * @author Linky
  */
-public class HomePageFragment extends BaseFragment {
+public class HomePageFragment extends BaseFragment implements DialogInterface.OnDismissListener {
 
     private RecyclerView mRvFunction;
     private FunctionAdapter mAdapter;
@@ -75,7 +80,9 @@ public class HomePageFragment extends BaseFragment {
                         startActivity(InviteActivity.class);
                         break;
                     case "一键报警":
-                        startActivity(OneKeyAlarmActivity.class);
+//                        startActivity(OneKeyAlarmActivity.class);
+                        ConfirmDialog dlg = ConfirmDialog.newInstance(null);
+                        dlg.show(getChildFragmentManager(), "CNFRM_DLG");
                         break;
                 }
             }
@@ -123,5 +130,22 @@ public class HomePageFragment extends BaseFragment {
 //        mCvpPager.registerOnPageChangeCallback(pageChangeCallback);
 //        mCvpPager.setOffscreenPageLimit(limit);
         mCvpPager.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
+    }
+
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        Requester requester = new Requester();
+        DataManager dataManager = new DataManager(mActivity);
+        requester.appCarLeasebackOnekey(dataManager.getUserId(), new ResultCallback<String>() {
+            @Override
+            public void onSuccess(String s) {
+                toastMsg("报警成功");
+            }
+
+            @Override
+            public void onFail(String msg) {
+                toastMsg("报警失败");
+            }
+        });
     }
 }
