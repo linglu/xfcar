@@ -21,7 +21,7 @@ public class CarPositionActivity extends BaseActivity implements View.OnClickLis
         setContentView(R.layout.activity_car_position);
         initView();
 
-        mDataManager = new DataManager(this);
+
         mRequester.getCarInfoByUser(mInstance, mDataManager.getUserId(), new ResultCallback<CarInfoBean>() {
             @Override
             public void onSuccess(CarInfoBean carInfoBeans) {

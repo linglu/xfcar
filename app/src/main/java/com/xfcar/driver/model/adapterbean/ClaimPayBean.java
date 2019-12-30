@@ -8,7 +8,7 @@ import android.os.Parcelable;
  */
 public class ClaimPayBean implements Parcelable {
     public String id;
-    public String userId;
+    public int userId;
     public String userName;
     public String idCardNumber;
     public String carNo;
@@ -23,7 +23,6 @@ public class ClaimPayBean implements Parcelable {
     public String updateBy;
     public String updateDate;
 
-
     @Override
     public int describeContents() {
         return 0;
@@ -32,7 +31,7 @@ public class ClaimPayBean implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.id);
-        dest.writeString(this.userId);
+        dest.writeInt(this.userId);
         dest.writeString(this.userName);
         dest.writeString(this.idCardNumber);
         dest.writeString(this.carNo);
@@ -53,7 +52,7 @@ public class ClaimPayBean implements Parcelable {
 
     protected ClaimPayBean(Parcel in) {
         this.id = in.readString();
-        this.userId = in.readString();
+        this.userId = in.readInt();
         this.userName = in.readString();
         this.idCardNumber = in.readString();
         this.carNo = in.readString();

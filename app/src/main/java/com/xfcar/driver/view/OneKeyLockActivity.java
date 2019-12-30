@@ -25,7 +25,7 @@ public class OneKeyLockActivity extends BaseActivity implements View.OnClickList
         setContentView(R.layout.activity_car_operate);
         initView();
 
-        mDataManager = new DataManager(this);
+
         mRequester.getCarInfoByUser(mInstance, mDataManager.getUserId(), new ResultCallback<CarInfoBean>() {
             @Override
             public void onSuccess(CarInfoBean carInfo) {

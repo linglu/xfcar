@@ -18,7 +18,7 @@ import java.util.TimerTask;
 /**
  * @author linky
  */
-public class ModifyMobileActivity extends BaseActivity implements View.OnClickListener {
+public class ModifyPwdActivity extends BaseActivity implements View.OnClickListener {
 
     private EditText mEtMobile;
     private EditText mEtCode;
@@ -28,7 +28,7 @@ public class ModifyMobileActivity extends BaseActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_modify_mobile);
+        setContentView(R.layout.activity_modify_pwd);
         initView();
     }
 
@@ -76,15 +76,15 @@ public class ModifyMobileActivity extends BaseActivity implements View.OnClickLi
         }
     }
 
-    private final static class CustomHandler extends SafeHandler<ModifyMobileActivity> {
+    private final static class CustomHandler extends SafeHandler<ModifyPwdActivity> {
 
-        public CustomHandler(ModifyMobileActivity objs) {
+        public CustomHandler(ModifyPwdActivity objs) {
             super(objs);
         }
 
         @Override
         public void handlerMessageAction(Message msg) {
-            ModifyMobileActivity helper = getObj();
+            ModifyPwdActivity helper = getObj();
             if (helper.mCanGetCode) {
                 helper.mBtGetCaptcha.setText(helper.mGetCodeBtnTitle);
                 helper.mBtGetCaptcha.setBackgroundResource(R.drawable.shape_button_green);

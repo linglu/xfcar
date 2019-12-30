@@ -25,7 +25,7 @@ public class CarSecurityActivity extends BaseActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_security);
         initView();
-        mDataManager = new DataManager(this);
+
         mRequester.appCarGetsecurityinfo(mInstance, mDataManager.getUserId(), new ResultCallback<CarSecurityBean>() {
             @Override
             public void onSuccess(CarSecurityBean bean) {

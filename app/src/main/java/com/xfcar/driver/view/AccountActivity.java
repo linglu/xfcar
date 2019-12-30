@@ -10,9 +10,6 @@ import com.xfcar.driver.utils.DataManager;
 
 public class AccountActivity extends BaseActivity implements View.OnClickListener {
 
-    private Requester mRequester = new Requester();
-    private DataManager mDataManager;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +29,8 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
             finish();
         } else if (id == R.id.tv_modify_mobile) {
             startActivity(ModifyMobileActivity.class);
+        } else if (id == R.id.tv_modify_pwd) {
+            startActivity(ModifyPwdActivity.class);
         }
     }
 }

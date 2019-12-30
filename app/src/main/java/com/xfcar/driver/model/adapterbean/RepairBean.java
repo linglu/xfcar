@@ -8,7 +8,7 @@ import android.os.Parcelable;
  */
 public class RepairBean implements Parcelable {
     public String id;
-    public String userId;
+    public int userId;
     public String userName;
     public String carNo;
     public String amount;
@@ -31,7 +31,7 @@ public class RepairBean implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.id);
-        dest.writeString(this.userId);
+        dest.writeInt(this.userId);
         dest.writeString(this.userName);
         dest.writeString(this.carNo);
         dest.writeString(this.amount);
@@ -51,7 +51,7 @@ public class RepairBean implements Parcelable {
 
     protected RepairBean(Parcel in) {
         this.id = in.readString();
-        this.userId = in.readString();
+        this.userId = in.readInt();
         this.userName = in.readString();
         this.carNo = in.readString();
         this.amount = in.readString();

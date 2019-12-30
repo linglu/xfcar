@@ -34,7 +34,7 @@ public class CarListInfoActivity extends BaseActivity implements View.OnClickLis
         setContentView(R.layout.activity_claim_pay);
         initView();
 
-        mDataManager = new DataManager(this);
+
         mRequester.getCarInfoByUser(mInstance, mDataManager.getUserId(), new ResultCallback<CarInfoBean>() {
             @Override
             public void onSuccess(CarInfoBean s) {

@@ -26,7 +26,7 @@ public class WelcomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        mDataManager = new DataManager(this);
+
         mTimer = new Timer();
         mTimer.schedule(new TimerTask() {
             @Override

@@ -7,15 +7,11 @@ import android.widget.EditText;
 
 import com.xfcar.driver.R;
 import com.xfcar.driver.mvp.BaseActivity;
-import com.xfcar.driver.network.Requester;
 import com.xfcar.driver.network.ResultCallback;
-import com.xfcar.driver.utils.DataManager;
 import com.xfcar.driver.utils.Utils;
 
 public class EmergencyActivity extends BaseActivity implements View.OnClickListener {
 
-    private Requester mRequester = new Requester();
-    private DataManager mDataManager;
     private EditText mEtName;
     private EditText mEtMobile;
 
@@ -48,15 +44,12 @@ public class EmergencyActivity extends BaseActivity implements View.OnClickListe
                 mEtMobile.requestFocus();
             } else {
                 // 开始提交
-                mRequester.appUserUpdatebyuser(mInstance, mEtName.getText().toString(), mEtMobile.getText().toString(), 0,
+                mRequester.appUserUpdateContactByUser(mInstance, mDataManager.getUserId(), mEtName.getText().toString(), mEtMobile.getText().toString(),
                         new ResultCallback<String>() {
                             @Override
                             public void onSuccess(String o) {
-//                                toastMsg("注册成功");
-//                                Intent intent = new Intent();
-//                                intent.putExtra("mobile", mEtMobile.getText().toString());
-//                                setResult(RESULT_OK, intent);
-//                                finish();
+                                toastMsg("添加成功");
+                                finish();
                             }
 
                             @Override

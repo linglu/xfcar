@@ -31,7 +31,7 @@ public abstract class NetworkSubscriber<T> extends Subscriber<Response<T>> {
             if (he.code() == 401) {
 
                 DataManager dataManager = new DataManager(App.sInstance.mCurAct);
-                dataManager.setUserId(null);
+                dataManager.setUserId(0);
 
                 // 跳转到 登录界面
                 Intent intent = new Intent(App.sInstance.mCurAct, LoginActivity.class);

@@ -31,7 +31,7 @@ public class RepairListActivity extends BaseActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_repair);
         initView();
-        mDataManager = new DataManager(this);
+
         mRequester.getMaintainByUser(mInstance, mDataManager.getUserId(), new ResultCallback<List<RepairBean>>() {
             @Override
             public void onSuccess(List<RepairBean> s) {

@@ -53,7 +53,7 @@ public class MainActivity extends BaseActivity {
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         getSupportFragmentManager().beginTransaction().add(R.id.fl_container, new HomePageFragment()).commit();
 
-        mDataManager = new DataManager(this);
+
         if (!mDataManager.isLogin()) {
             startActivityForResult(LoginActivity.class, 1001);
         }

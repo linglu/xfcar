@@ -107,7 +107,11 @@ public interface ApiService {
     @POST("ioc/app/car/shortRent/getRentByUser")
     Observable<Response<String>> appCarShortrentGetrentbyuser(@Body ShortRentEntity shortrententity);
 
+
     //App用户: JSON格式,修改手机和密码传参password, mobile；修改紧急联系人和联络方式传参：contactUame, contactMobile
-    @POST("ioc/app/user/updateByUser")
-    Observable<Response<String>> appUserUpdatebyuser(@Body SysUserEntity sysuserentity);
+    @POST("ioc/app/user/updateContactByUser")
+    Observable<Response<String>> appUserUpdateContactByUser(@Body SysUserEntity sysuserentity);
+
+    @POST("ioc/app/user/updatePwByUser")
+    Observable<Response<String>> appUserUpdatePwByUser(@Body SysUserEntity sysuserentity);
 }

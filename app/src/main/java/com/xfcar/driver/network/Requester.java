@@ -108,8 +108,8 @@ public class Requester {
 
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
-                    .baseUrl("http://xuanfeng.xiaomy.net")
-//                    .baseUrl("http://39.108.166.99:9000")
+//                    .baseUrl("http://xuanfeng.xiaomy.net")
+                    .baseUrl("http://39.108.166.99:9000")
                     .client(client)
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .addConverterFactory(FastjsonConverterFactory.create())
@@ -121,9 +121,9 @@ public class Requester {
         }
     }
 
-    public void appCarLeasebackOnekey(FragmentActivity act, String userId, final ResultCallback<String> callback) {
+    public void appCarLeasebackOnekey(FragmentActivity act, int userId, final ResultCallback<String> callback) {
         showLoadingDialog(act);
-        service.appCarLeasebackOnekey(new UserEntity(Integer.parseInt(userId)))
+        service.appCarLeasebackOnekey(new UserEntity(userId))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetworkSubscriber<String>() {
@@ -205,10 +205,10 @@ public class Requester {
                 });
     }
 
-    public void appCarShortrentAdd(FragmentActivity act, String userId, String carNo, String date, final ResultCallback<String> callback) {
+    public void appCarShortrentAdd(FragmentActivity act, int userId, String carNo, String date, final ResultCallback<String> callback) {
         showLoadingDialog(act);
         ShortRentEntity entity = new ShortRentEntity();
-        entity.userId = Integer.parseInt(userId);
+        entity.userId = userId;
         entity.carNo = carNo;
         entity.subletDate = date;
         service.appCarShortrentAdd(entity)
@@ -230,9 +230,9 @@ public class Requester {
                 });
     }
 
-    public void appCarGetsecurityinfo(FragmentActivity act, String userId, final ResultCallback<CarSecurityBean> callback) {
+    public void appCarGetsecurityinfo(FragmentActivity act, int userId, final ResultCallback<CarSecurityBean> callback) {
         showLoadingDialog(act);
-        service.appCarGetsecurityinfo(new UserEntity(Integer.parseInt(userId)))
+        service.appCarGetsecurityinfo(new UserEntity(userId))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetworkSubscriber<CarSecurityBean>() {
@@ -274,9 +274,9 @@ public class Requester {
                 });
     }
 
-    public void getCarInfoByUser(FragmentActivity act, String userId, final ResultCallback<CarInfoBean> callback) {
+    public void getCarInfoByUser(FragmentActivity act, int userId, final ResultCallback<CarInfoBean> callback) {
         showLoadingDialog(act);
-        service.appCarGetcarinfobyuser(new UserEntity(Integer.parseInt(userId)))
+        service.appCarGetcarinfobyuser(new UserEntity(userId))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetworkSubscriber<CarInfoBean>() {
@@ -295,9 +295,9 @@ public class Requester {
                 });
     }
 
-    public void getMaintainByUser(FragmentActivity act, String userId, final ResultCallback<List<RepairBean>> callback) {
+    public void getMaintainByUser(FragmentActivity act, int userId, final ResultCallback<List<RepairBean>> callback) {
         showLoadingDialog(act);
-        service.appCarMaintainGetmaintainbyuser(new UserEntity(Integer.parseInt(userId)))
+        service.appCarMaintainGetmaintainbyuser(new UserEntity(userId))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetworkSubscriber<List<RepairBean>>() {
@@ -316,9 +316,9 @@ public class Requester {
                 });
     }
 
-    public void getInsuranceByUser(FragmentActivity act, String userId, final ResultCallback<List<ClaimPayBean>> callback) {
+    public void getInsuranceByUser(FragmentActivity act, int userId, final ResultCallback<List<ClaimPayBean>> callback) {
         showLoadingDialog(act);
-        service.appCarInsuranceGetinsurancebyuser(new UserEntity(Integer.parseInt(userId)))
+        service.appCarInsuranceGetinsurancebyuser(new UserEntity(userId))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetworkSubscriber<List<ClaimPayBean>>() {
@@ -358,17 +358,16 @@ public class Requester {
                 });
     }
 
-    public void appUserUpdatebyuser(FragmentActivity act, String name, String mobile, int type, final ResultCallback<String> callback) {
+    public void appUserUpdateContactByUser(FragmentActivity act, int userId, String name, String mobile, final ResultCallback<String> callback) {
         showLoadingDialog(act);
         SysUserEntity entity = new SysUserEntity();
-        if (type == 0) {
-            entity.contactMobile = mobile;
-            entity.contactName = name;
-        } else {
-            entity.username = name;
-            entity.mobile = mobile;
-        }
-        service.appUserUpdatebyuser(entity)
+        entity.userId = userId;
+        entity.contactMobile = mobile;
+        entity.contactName = name;
+//      entity.username = name;
+//      entity.mobile = mobile;
+
+        service.appUserUpdateContactByUser(entity)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetworkSubscriber<String>() {

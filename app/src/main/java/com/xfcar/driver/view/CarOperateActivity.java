@@ -37,7 +37,7 @@ public class CarOperateActivity extends BaseActivity implements View.OnClickList
         }
 
         initView();
-        mDataManager = new DataManager(this);
+
         mRequester.getCarInfoByUser(mInstance, mDataManager.getUserId(), new ResultCallback<CarInfoBean>() {
             @Override
             public void onSuccess(CarInfoBean carInfo) {

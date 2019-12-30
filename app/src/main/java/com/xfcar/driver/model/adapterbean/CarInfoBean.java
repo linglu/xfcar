@@ -15,7 +15,7 @@ public class CarInfoBean implements Parcelable {
     public String status;
     public String type;
     public String username;
-    public String userId;
+    public int userId;
     public String company;
     public String macid;
     public String objectid;
@@ -41,7 +41,7 @@ public class CarInfoBean implements Parcelable {
         dest.writeString(this.status);
         dest.writeString(this.type);
         dest.writeString(this.username);
-        dest.writeString(this.userId);
+        dest.writeInt(this.userId);
         dest.writeString(this.company);
         dest.writeString(this.macid);
         dest.writeString(this.objectid);
@@ -64,7 +64,7 @@ public class CarInfoBean implements Parcelable {
         this.status = in.readString();
         this.type = in.readString();
         this.username = in.readString();
-        this.userId = in.readString();
+        this.userId = in.readInt();
         this.company = in.readString();
         this.macid = in.readString();
         this.objectid = in.readString();

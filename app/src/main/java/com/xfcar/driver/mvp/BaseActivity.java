@@ -11,6 +11,9 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
+import com.xfcar.driver.App;
+import com.xfcar.driver.network.Requester;
+import com.xfcar.driver.utils.DataManager;
 import com.xfcar.driver.utils.ToastUtils;
 
 import androidx.fragment.app.FragmentActivity;
@@ -20,6 +23,8 @@ public abstract class BaseActivity extends FragmentActivity {
     private boolean mIsActivityDestroyed = false;
     private boolean isInResume = false;
     protected FragmentActivity mInstance = this;
+    protected Requester mRequester = new Requester();
+    protected DataManager mDataManager = App.sInstance.mDataManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

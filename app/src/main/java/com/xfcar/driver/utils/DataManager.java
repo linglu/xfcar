@@ -29,12 +29,12 @@ public class DataManager {
         return mPref.getString(MOBILE, "");
     }
 
-    public void setUserId(String userId) {
-        mPref.edit().putString(LOGIN, userId).apply();
+    public void setUserId(int userId) {
+        mPref.edit().putInt(LOGIN, userId).apply();
     }
 
-    public String getUserId() {
-        return mPref.getString(LOGIN, null);
+    public Integer getUserId() {
+        return mPref.getInt(LOGIN, 0);
     }
 
     public void setCookie(String cookie) {
@@ -46,7 +46,7 @@ public class DataManager {
     }
 
     public boolean isLogin() {
-        return getUserId() != null;
+        return getUserId() != 0;
     }
 
 }

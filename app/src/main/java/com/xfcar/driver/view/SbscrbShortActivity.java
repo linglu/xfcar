@@ -39,7 +39,7 @@ public class SbscrbShortActivity extends BaseActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sbscrb_short);
         initView();
-        mDataManager = new DataManager(this);
+
     }
 
     private void initView() {

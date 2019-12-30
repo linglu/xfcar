@@ -23,7 +23,7 @@ public class LibApplication extends Application {
     public static LibApplication sInstance;
     private ActivityLifecycleCallbacks callbacks;
     public Activity mCurAct;
-    private DataManager mDataManager;
+    public DataManager mDataManager;
 
     @Override
     public void onCreate() {
@@ -31,7 +31,7 @@ public class LibApplication extends Application {
         L.init();
 
         sInstance = this;
-        mDataManager = new DataManager(this);
+
         registerActivity();
     }
 

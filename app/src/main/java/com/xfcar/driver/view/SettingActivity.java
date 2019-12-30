@@ -37,7 +37,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                     @Override
                     public void onSuccess(String s) {
                         toastMsg("退出登录成功");
-                        dataManager.setUserId(null);
+                        dataManager.setUserId(0);
                         startActivity(LoginActivity.class);
                         finish();
                     }

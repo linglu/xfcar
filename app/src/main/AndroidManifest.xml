@@ -143,6 +143,11 @@
         />
 
         <activity
+            android:name=".view.ModifyPwdActivity"
+            android:screenOrientation="portrait"
+        />
+
+        <activity
             android:name=".view.BalanceActivity"
             android:screenOrientation="portrait"
         />

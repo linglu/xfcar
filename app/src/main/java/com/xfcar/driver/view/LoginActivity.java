@@ -39,7 +39,7 @@ public class LoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mDataManager = new DataManager(this);
+
 
         mEtUserName = findViewById(R.id.et_username_login);
         mEtVerifyCode = findViewById(R.id.et_code_login);
@@ -144,7 +144,7 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onSuccess(SysUserEntity s) {
                 toastMsg("登录成功");
-                mDataManager.setUserId(String.valueOf(s.userId));
+                mDataManager.setUserId(s.userId);
                 mDataManager.setMobile(s.mobile);
                 setResult(RESULT_OK);
                 finish();
