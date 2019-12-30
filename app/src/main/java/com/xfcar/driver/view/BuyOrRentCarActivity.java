@@ -31,7 +31,7 @@ public class BuyOrRentCarActivity extends BaseActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_or_rent_car);
         initView();
-        mRequester.appCarSellModelGetList(new ResultCallback<List<RentCarInfoBean>>() {
+        mRequester.appCarSellModelGetList(mInstance, new ResultCallback<List<RentCarInfoBean>>() {
             @Override
             public void onSuccess(List<RentCarInfoBean> s) {
                 mSAdapter.setData(s);

@@ -146,7 +146,7 @@ public class HomePageFragment extends BaseFragment implements Action1<String> {
 
         switch (s) {
             case "车辆返租":
-                requester.appCarLeasebackOnekey(dataManager.getUserId(), new ResultCallback<String>() {
+                requester.appCarLeasebackOnekey(mActivity, dataManager.getUserId(), new ResultCallback<String>() {
                     @Override
                     public void onSuccess(String s) {
                         toastMsg("提交成功");
@@ -159,7 +159,7 @@ public class HomePageFragment extends BaseFragment implements Action1<String> {
                 });
                 break;
             case "一键报警":
-                requester.appCarLeasebackOnekey(dataManager.getUserId(), new ResultCallback<String>() {
+                requester.appCarLeasebackOnekey(mActivity, dataManager.getUserId(), new ResultCallback<String>() {
                     @Override
                     public void onSuccess(String s) {
                         toastMsg("报警成功");

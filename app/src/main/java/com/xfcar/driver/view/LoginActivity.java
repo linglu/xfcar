@@ -63,7 +63,7 @@ public class LoginActivity extends BaseActivity {
                     mEtUserName.setText("");
                     mEtUserName.requestFocus();
                 } else {
-                    mRequester.getVerifyCode(mPhoneNumber, new ResultCallback<String>() {
+                    mRequester.getVerifyCode(mInstance, mPhoneNumber, new ResultCallback<String>() {
                         @Override
                         public void onSuccess(String s) {
                             mEtVerifyCode.setText(s);
@@ -130,6 +130,7 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1001) {
             if (data != null && data.getExtras() != null) {
                 String mobile = data.getExtras().getString("mobile");
@@ -139,7 +140,7 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void executeLogin(String username, String code) {
-        mRequester.login(username, code, new ResultCallback<SysUserEntity>() {
+        mRequester.login(mInstance, username, code, new ResultCallback<SysUserEntity>() {
             @Override
             public void onSuccess(SysUserEntity s) {
                 toastMsg("登录成功");

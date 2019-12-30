@@ -32,7 +32,7 @@ public class RepairListActivity extends BaseActivity implements View.OnClickList
         setContentView(R.layout.activity_repair);
         initView();
         mDataManager = new DataManager(this);
-        mRequester.getMaintainByUser(mDataManager.getUserId(), new ResultCallback<List<RepairBean>>() {
+        mRequester.getMaintainByUser(mInstance, mDataManager.getUserId(), new ResultCallback<List<RepairBean>>() {
             @Override
             public void onSuccess(List<RepairBean> s) {
                 mAdapter.setData(s);

@@ -71,9 +71,9 @@ public class FunctionBean {
     public static List<FunctionBean> mockCarFuncBeans() {
         int[] imgs = new int[]{R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher,
                 R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher,
-                R.mipmap.ic_launcher, R.mipmap.ic_launcher};
+                R.mipmap.ic_launcher};
 
-        String[] names = new String[]{"一键开门", "一键上锁", "蓝牙钥匙", "位置", "理赔", "维修", "车辆信息", "车辆安全"};
+        String[] names = new String[]{"一键开门", "一键上锁", "位置", "理赔", "维修", "车辆信息", "车辆安全"};
 
         List<FunctionBean> beans = new ArrayList<>();
         for (int i = 0; i < imgs.length; i++) {

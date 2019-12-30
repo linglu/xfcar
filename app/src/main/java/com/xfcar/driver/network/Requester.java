@@ -14,18 +14,22 @@ import com.xfcar.driver.model.bean.ShortRentEntity;
 import com.xfcar.driver.model.bean.SysUserEntity;
 import com.xfcar.driver.model.bean.UserEntity;
 import com.xfcar.driver.network.converter.FastjsonConverterFactory;
+import com.xfcar.driver.utils.DialogLoading;
 import com.xfcar.driver.utils.L;
+import com.xfcar.driver.utils.RxSchedulersHelper;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.List;
+import java.util.Map;
 
+import androidx.fragment.app.FragmentActivity;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.Result;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -117,7 +121,8 @@ public class Requester {
         }
     }
 
-    public void appCarLeasebackOnekey(String userId, final ResultCallback<String> callback) {
+    public void appCarLeasebackOnekey(FragmentActivity act, String userId, final ResultCallback<String> callback) {
+        showLoadingDialog(act);
         service.appCarLeasebackOnekey(new UserEntity(Integer.parseInt(userId)))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -125,17 +130,20 @@ public class Requester {
 
                     @Override
                     public void onSuccess(String o) {
+                        dismissLoadingDialog();
                         callback.onSuccess(o);
                     }
 
                     @Override
                     public void onFail(String msg) {
+                        dismissLoadingDialog();
                         callback.onFail(msg);
                     }
                 });
     }
 
-    public void monitorPosition(String objectId, final ResultCallback<String> callback) {
+    public void monitorPosition(FragmentActivity act, String objectId, final ResultCallback<String> callback) {
+        showLoadingDialog(act);
         service.appMonitorPosition(new CarObjectId(objectId))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -143,17 +151,20 @@ public class Requester {
 
                     @Override
                     public void onSuccess(String o) {
+                        dismissLoadingDialog();
                         callback.onSuccess(o);
                     }
 
                     @Override
                     public void onFail(String msg) {
+                        dismissLoadingDialog();
                         callback.onFail(msg);
                     }
                 });
     }
 
-    public void appCarSellModelGetList(final ResultCallback<List<RentCarInfoBean>> callback) {
+    public void appCarSellModelGetList(FragmentActivity act, final ResultCallback<List<RentCarInfoBean>> callback) {
+        showLoadingDialog(act);
         service.appCarSellModelGetList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -161,17 +172,20 @@ public class Requester {
 
                     @Override
                     public void onSuccess(List<RentCarInfoBean> o) {
+                        dismissLoadingDialog();
                         callback.onSuccess(o);
                     }
 
                     @Override
                     public void onFail(String msg) {
+                        dismissLoadingDialog();
                         callback.onFail(msg);
                     }
                 });
     }
 
-    public void getPaymentSource(final ResultCallback<QRCodeBean> callback) {
+    public void getPaymentSource(FragmentActivity act, final ResultCallback<QRCodeBean> callback) {
+        showLoadingDialog(act);
         service.getPaymentSource(2)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -179,17 +193,20 @@ public class Requester {
 
                     @Override
                     public void onSuccess(QRCodeBean o) {
+                        dismissLoadingDialog();
                         callback.onSuccess(o);
                     }
 
                     @Override
                     public void onFail(String msg) {
+                        dismissLoadingDialog();
                         callback.onFail(msg);
                     }
                 });
     }
 
-    public void appCarShortrentAdd(String userId, String carNo, String date, final ResultCallback<String> callback) {
+    public void appCarShortrentAdd(FragmentActivity act, String userId, String carNo, String date, final ResultCallback<String> callback) {
+        showLoadingDialog(act);
         ShortRentEntity entity = new ShortRentEntity();
         entity.userId = Integer.parseInt(userId);
         entity.carNo = carNo;
@@ -201,17 +218,20 @@ public class Requester {
 
                     @Override
                     public void onSuccess(String o) {
+                        dismissLoadingDialog();
                         callback.onSuccess(o);
                     }
 
                     @Override
                     public void onFail(String msg) {
+                        dismissLoadingDialog();
                         callback.onFail(msg);
                     }
                 });
     }
 
-    public void appCarGetsecurityinfo(String userId, final ResultCallback<CarSecurityBean> callback) {
+    public void appCarGetsecurityinfo(FragmentActivity act, String userId, final ResultCallback<CarSecurityBean> callback) {
+        showLoadingDialog(act);
         service.appCarGetsecurityinfo(new UserEntity(Integer.parseInt(userId)))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -219,18 +239,21 @@ public class Requester {
 
                     @Override
                     public void onSuccess(CarSecurityBean o) {
+                        dismissLoadingDialog();
                         callback.onSuccess(o);
                     }
 
                     @Override
                     public void onFail(String msg) {
+                        dismissLoadingDialog();
                         callback.onFail(msg);
                     }
                 });
     }
 
-    public void carOperateCommand(String company, String carNo, String macid, String carCmd,
+    public void carOperateCommand(FragmentActivity act, String company, String carNo, String macid, String carCmd,
                                   final ResultCallback<String> callback) {
+        showLoadingDialog(act);
         Command cmd = new Command(company, carNo, macid, carCmd);
         service.appCarOperateCommand(cmd)
                 .subscribeOn(Schedulers.io())
@@ -239,17 +262,20 @@ public class Requester {
 
                     @Override
                     public void onSuccess(String o) {
+                        dismissLoadingDialog();
                         callback.onSuccess(o);
                     }
 
                     @Override
                     public void onFail(String msg) {
+                        dismissLoadingDialog();
                         callback.onFail(msg);
                     }
                 });
     }
 
-    public void getCarInfoByUser(String userId, final ResultCallback<CarInfoBean> callback) {
+    public void getCarInfoByUser(FragmentActivity act, String userId, final ResultCallback<CarInfoBean> callback) {
+        showLoadingDialog(act);
         service.appCarGetcarinfobyuser(new UserEntity(Integer.parseInt(userId)))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -257,17 +283,20 @@ public class Requester {
 
                     @Override
                     public void onSuccess(CarInfoBean o) {
+                        dismissLoadingDialog();
                         callback.onSuccess(o);
                     }
 
                     @Override
                     public void onFail(String msg) {
+                        dismissLoadingDialog();
                         callback.onFail(msg);
                     }
                 });
     }
 
-    public void getMaintainByUser(String userId, final ResultCallback<List<RepairBean>> callback) {
+    public void getMaintainByUser(FragmentActivity act, String userId, final ResultCallback<List<RepairBean>> callback) {
+        showLoadingDialog(act);
         service.appCarMaintainGetmaintainbyuser(new UserEntity(Integer.parseInt(userId)))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -275,17 +304,20 @@ public class Requester {
 
                     @Override
                     public void onSuccess(List<RepairBean> o) {
+                        dismissLoadingDialog();
                         callback.onSuccess(o);
                     }
 
                     @Override
                     public void onFail(String msg) {
+                        dismissLoadingDialog();
                         callback.onFail(msg);
                     }
                 });
     }
 
-    public void getInsuranceByUser(String userId, final ResultCallback<List<ClaimPayBean>> callback) {
+    public void getInsuranceByUser(FragmentActivity act, String userId, final ResultCallback<List<ClaimPayBean>> callback) {
+        showLoadingDialog(act);
         service.appCarInsuranceGetinsurancebyuser(new UserEntity(Integer.parseInt(userId)))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -293,17 +325,20 @@ public class Requester {
 
                     @Override
                     public void onSuccess(List<ClaimPayBean> o) {
+                        dismissLoadingDialog();
                         callback.onSuccess(o);
                     }
 
                     @Override
                     public void onFail(String msg) {
+                        dismissLoadingDialog();
                         callback.onFail(msg);
                     }
                 });
     }
 
-    public void logout(final ResultCallback<String> callback) {
+    public void logout(FragmentActivity act, final ResultCallback<String> callback) {
+        showLoadingDialog(act);
         service.logout()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -311,18 +346,49 @@ public class Requester {
 
                     @Override
                     public void onSuccess(String o) {
+                        dismissLoadingDialog();
                         callback.onSuccess(o);
                     }
 
                     @Override
                     public void onFail(String msg) {
+                        dismissLoadingDialog();
                         callback.onFail(msg);
                     }
                 });
     }
 
+    public void appUserUpdatebyuser(FragmentActivity act, String name, String mobile, int type, final ResultCallback<String> callback) {
+        showLoadingDialog(act);
+        SysUserEntity entity = new SysUserEntity();
+        if (type == 0) {
+            entity.contactMobile = mobile;
+            entity.contactName = name;
+        } else {
+            entity.username = name;
+            entity.mobile = mobile;
+        }
+        service.appUserUpdatebyuser(entity)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetworkSubscriber<String>() {
+                    @Override
+                    public void onSuccess(String s) {
+                        dismissLoadingDialog();
+                        callback.onSuccess(s);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        dismissLoadingDialog();
+                        callback.onFail(msg);
+                    }
+                });
+        }
+
     // 注册
-    public void register(String name, String mobile, String pwd, int userType, final ResultCallback<Object> callback) {
+    public void register(FragmentActivity act, String name, String mobile, String pwd, int userType, final ResultCallback<Object> callback) {
+        showLoadingDialog(act);
         SysUserEntity sue = new SysUserEntity();
         sue.username = name;
         sue.mobile = mobile;
@@ -335,17 +401,20 @@ public class Requester {
 
                     @Override
                     public void onSuccess(Object o) {
+                        dismissLoadingDialog();
                         callback.onSuccess(o);
                     }
 
                     @Override
                     public void onFail(String msg) {
+                        dismissLoadingDialog();
                         callback.onFail(msg);
                     }
                 });
     }
 
-    public void login(String mobile, String code, final ResultCallback<SysUserEntity> callback) {
+    public void login(FragmentActivity act, String mobile, String code, final ResultCallback<SysUserEntity> callback) {
+        showLoadingDialog(act);
         service.login(mobile, code)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -353,17 +422,20 @@ public class Requester {
 
                     @Override
                     public void onSuccess(SysUserEntity res) {
+                        dismissLoadingDialog();
                         callback.onSuccess(res);
                     }
 
                     @Override
                     public void onFail(String msg) {
+                        dismissLoadingDialog();
                         callback.onFail(msg);
                     }
                 });
     }
 
-    public void getVerifyCode(String mobile, final ResultCallback<String> callback) {
+    public void getVerifyCode(FragmentActivity act, String mobile, final ResultCallback<String> callback) {
+        showLoadingDialog(act);
         service.verifyCode(mobile)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -371,14 +443,23 @@ public class Requester {
 
                     @Override
                     public void onSuccess(String res) {
+                        dismissLoadingDialog();
                         callback.onSuccess(res);
                     }
 
                     @Override
                     public void onFail(String msg) {
+                        dismissLoadingDialog();
                         callback.onFail(msg);
                     }
                 });
     }
 
+    private void showLoadingDialog(FragmentActivity act) {
+        DialogLoading.show(act.getSupportFragmentManager());
+    }
+
+    private void dismissLoadingDialog() {
+        DialogLoading.dismiss();
+    }
 }

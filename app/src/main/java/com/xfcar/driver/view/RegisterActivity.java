@@ -100,7 +100,7 @@ public class RegisterActivity extends BaseActivity {
                         userType = 30;
                     }
 
-                    mRequester.register(mEtName.getText().toString(), mEtMobile.getText().toString(),
+                    mRequester.register(mInstance, mEtName.getText().toString(), mEtMobile.getText().toString(),
                             mEtPwd.getText().toString(), userType, new ResultCallback<Object>() {
                                 @Override
                                 public void onSuccess(Object o) {

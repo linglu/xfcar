@@ -22,10 +22,10 @@ public class CarPositionActivity extends BaseActivity implements View.OnClickLis
         initView();
 
         mDataManager = new DataManager(this);
-        mRequester.getCarInfoByUser(mDataManager.getUserId(), new ResultCallback<CarInfoBean>() {
+        mRequester.getCarInfoByUser(mInstance, mDataManager.getUserId(), new ResultCallback<CarInfoBean>() {
             @Override
             public void onSuccess(CarInfoBean carInfoBeans) {
-                mRequester.monitorPosition(carInfoBeans.objectid, new ResultCallback<String>() {
+                mRequester.monitorPosition(mInstance, carInfoBeans.objectid, new ResultCallback<String>() {
                     @Override
                     public void onSuccess(String s) {
                     }

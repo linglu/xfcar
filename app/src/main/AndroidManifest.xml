@@ -136,6 +136,12 @@
             android:name=".view.AboutActivity"
             android:screenOrientation="portrait"
         />
+
+        <activity
+            android:name=".view.ModifyMobileActivity"
+            android:screenOrientation="portrait"
+        />
+
         <activity
             android:name=".view.BalanceActivity"
             android:screenOrientation="portrait"

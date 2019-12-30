@@ -48,104 +48,104 @@
         <TextView
             android:id="@+id/tv_id"
             style="@style/common_text_view"
-            android:text="id: %s"
+            android:text="id: "
         />
 
         <TextView
             android:id="@+id/tv_car_no"
             style="@style/common_text_view"
-            android:text="carNo: %s"
+            android:text="carNo: "
         />
 
         <TextView
             android:id="@+id/tv_engine_no"
             style="@style/common_text_view"
-            android:text="engineNo: %s"
+            android:text="engineNo: "
         />
 
         <TextView
             android:id="@+id/tv_brand"
             style="@style/common_text_view"
-            android:text="brand: %s"
+            android:text="brand: "
         />
 
         <TextView
             android:id="@+id/tv_model_no"
             style="@style/common_text_view"
-            android:text="modelNo: %s"
+            android:text="modelNo: "
         />
 
         <TextView
             android:id="@+id/tv_status"
             style="@style/common_text_view"
-            android:text="status: %s"
+            android:text="status: "
         />
 
         <TextView
             android:id="@+id/tv_type"
             style="@style/common_text_view"
-            android:text="type: %s"
+            android:text="type: "
         />
 
         <TextView
             android:id="@+id/tv_username"
             style="@style/common_text_view"
-            android:text="username: %s"
+            android:text="username: "
         />
 
         <TextView
             android:id="@+id/tv_user_id"
             style="@style/common_text_view"
-            android:text="userId: %s"
+            android:text="userId: "
         />
 
         <TextView
             android:id="@+id/tv_company"
             style="@style/common_text_view"
-            android:text="company: %s"
+            android:text="company: "
         />
 
         <TextView
             android:id="@+id/tv_macid"
             style="@style/common_text_view"
-            android:text="macid: %s"
+            android:text="macid: "
         />
 
         <TextView
             android:id="@+id/tv_objectid"
             style="@style/common_text_view"
             android:textSize="@dimen/font_small"
-            android:text="objectid: %s"
+            android:text="objectid: "
         />
 
         <TextView
             android:id="@+id/tv_del_flag"
             style="@style/common_text_view"
-            android:text="delFlag: %s"
+            android:text="delFlag: "
         />
 
         <TextView
             android:id="@+id/tv_create_by"
             style="@style/common_text_view"
-            android:text="createBy: %s"
+            android:text="createBy: "
         />
 
         <TextView
             android:id="@+id/tv_create_date"
             style="@style/common_text_view"
-            android:text="createDate: %s"
+            android:text="createDate: "
         />
 
         <TextView
             android:id="@+id/tv_update_by"
             style="@style/common_text_view"
-            android:text="updateBy: %s"
+            android:text="updateBy: "
         />
 
         <TextView
             android:id="@+id/tv_update_date"
             style="@style/common_text_view"
-            android:text="updateDate: %s"
+            android:text="updateDate: "
         />
 
     </LinearLayout>

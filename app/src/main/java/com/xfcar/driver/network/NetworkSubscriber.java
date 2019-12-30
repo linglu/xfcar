@@ -26,7 +26,7 @@ public abstract class NetworkSubscriber<T> extends Subscriber<Response<T>> {
     public void onError(Throwable e) {
         L.i("onError " + Log.getStackTraceString(e));
 
-        if (e instanceof HttpException){
+        if (e instanceof HttpException) {
             HttpException he = (HttpException) e;
             if (he.code() == 401) {
 
@@ -45,9 +45,8 @@ public abstract class NetworkSubscriber<T> extends Subscriber<Response<T>> {
             } else {
                 ToastUtils.show(App.sInstance.mCurAct, "网络异常");
             }
-        } else {
-            onFail(e.getMessage());
         }
+        onFail(e.getMessage());
     }
 
     @Override

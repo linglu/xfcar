@@ -1,5 +1,6 @@
 package com.xfcar.driver.mvp;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -18,6 +19,7 @@ import androidx.fragment.app.FragmentActivity;
 public abstract class BaseActivity extends FragmentActivity {
     private boolean mIsActivityDestroyed = false;
     private boolean isInResume = false;
+    protected FragmentActivity mInstance = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

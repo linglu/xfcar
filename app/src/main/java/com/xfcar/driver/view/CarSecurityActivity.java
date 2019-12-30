@@ -26,7 +26,7 @@ public class CarSecurityActivity extends BaseActivity implements View.OnClickLis
         setContentView(R.layout.activity_car_security);
         initView();
         mDataManager = new DataManager(this);
-        mRequester.appCarGetsecurityinfo(mDataManager.getUserId(), new ResultCallback<CarSecurityBean>() {
+        mRequester.appCarGetsecurityinfo(mInstance, mDataManager.getUserId(), new ResultCallback<CarSecurityBean>() {
             @Override
             public void onSuccess(CarSecurityBean bean) {
                 mTvEngineNo.setText(String.format("发动机号：%s", bean.engineNo));

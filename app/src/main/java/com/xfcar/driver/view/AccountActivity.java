@@ -31,7 +31,7 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
         if (id == R.id.iv_return_back) {
             finish();
         } else if (id == R.id.tv_modify_mobile) {
-//            startActivity();
+            startActivity(ModifyMobileActivity.class);
         }
     }
 }

@@ -40,7 +40,7 @@ public class CarInfoActivity extends BaseActivity implements View.OnClickListene
         initView();
 
         mDataManager = new DataManager(this);
-        mRequester.getCarInfoByUser(mDataManager.getUserId(), new ResultCallback<CarInfoBean>() {
+        mRequester.getCarInfoByUser(mInstance, mDataManager.getUserId(), new ResultCallback<CarInfoBean>() {
             @Override
             public void onSuccess(CarInfoBean s) {
                 initData(s);

@@ -26,10 +26,10 @@ public class OneKeyLockActivity extends BaseActivity implements View.OnClickList
         initView();
 
         mDataManager = new DataManager(this);
-        mRequester.getCarInfoByUser(mDataManager.getUserId(), new ResultCallback<CarInfoBean>() {
+        mRequester.getCarInfoByUser(mInstance, mDataManager.getUserId(), new ResultCallback<CarInfoBean>() {
             @Override
             public void onSuccess(CarInfoBean carInfo) {
-                mRequester.carOperateCommand(
+                mRequester.carOperateCommand(mInstance,
                         carInfo.company, carInfo.carNo,
                         Utils.getIMEI(OneKeyLockActivity.this),
                         Command.SN_SAFEON,

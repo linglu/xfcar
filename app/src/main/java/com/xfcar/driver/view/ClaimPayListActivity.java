@@ -32,7 +32,7 @@ public class ClaimPayListActivity extends BaseActivity implements View.OnClickLi
         initView();
 
         mDataManager = new DataManager(this);
-        mRequester.getInsuranceByUser(mDataManager.getUserId(), new ResultCallback<List<ClaimPayBean>>() {
+        mRequester.getInsuranceByUser(mInstance, mDataManager.getUserId(), new ResultCallback<List<ClaimPayBean>>() {
             @Override
             public void onSuccess(List<ClaimPayBean> s) {
                 mAdapter.setData(s);

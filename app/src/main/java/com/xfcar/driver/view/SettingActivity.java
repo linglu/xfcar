@@ -33,7 +33,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
            public void onClick(View v) {
 
                final DataManager dataManager = new DataManager(SettingActivity.this);
-                mRequester.logout(new ResultCallback<String>() {
+                mRequester.logout(mInstance, new ResultCallback<String>() {
                     @Override
                     public void onSuccess(String s) {
                         toastMsg("退出登录成功");

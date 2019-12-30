@@ -19,7 +19,7 @@ public class OneKeyAlarmActivity extends BaseActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_one_key_alarm);
         initView();
-        mRequester.appCarLeasebackOnekey(mDataManager.getUserId(), new ResultCallback<String>() {
+        mRequester.appCarLeasebackOnekey(mInstance, mDataManager.getUserId(), new ResultCallback<String>() {
             @Override
             public void onSuccess(String s) {
                 finish();

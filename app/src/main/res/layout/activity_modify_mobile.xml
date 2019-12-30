@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="紧急联系人"
+            android:text="修改手机号"
             android:textColor="@color/black"
             android:textSize="@dimen/font16"
         />
@@ -38,30 +38,24 @@
         android:background="@color/gray"
     />
 
-    <RelativeLayout
+    <com.xfcar.driver.widget.ClearEditText
+        android:id="@+id/et_new_mobile"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/space50"
         android:layout_marginLeft="@dimen/space25"
         android:layout_marginRight="@dimen/space25"
-        android:layout_marginTop="@dimen/space15">
-
-        <com.xfcar.driver.widget.ClearEditText
-            android:id="@+id/et_emergency_name"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/space50"
-            android:layout_marginRight="@dimen/space5"
-            android:paddingLeft="@dimen/space20"
-            android:background="@null"
-            android:gravity="center_vertical"
-            android:hint="请输入用户名"
-            android:inputType="text"
-            android:maxLength="11"
-            android:textColor="@color/font_primary"
-            android:textColorHint="@color/hint_text_color"
-            android:textCursorDrawable="@null"
-            android:textSize="@dimen/font_normal"
-        />
-    </RelativeLayout>
+        android:layout_marginTop="@dimen/space15"
+        android:background="@null"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        android:hint="请输入新手机号码"
+        android:inputType="number"
+        android:maxLength="11"
+        android:textColor="@color/font_primary"
+        android:textColorHint="@color/hint_text_color"
+        android:textCursorDrawable="@null"
+        android:textSize="@dimen/font_large"
+    />
 
     <View
         android:layout_width="match_parent"
@@ -70,29 +64,43 @@
         android:layout_marginRight="@dimen/space25"
         android:background="@color/divider_dark"/>
 
+
     <RelativeLayout
+        android:id="@+id/rl_code_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/space25"
-        android:layout_marginRight="@dimen/space25"
-    >
+        android:layout_marginRight="@dimen/space25">
 
         <com.xfcar.driver.widget.ClearEditText
-            android:id="@+id/et_emergency_mobile"
+            android:id="@+id/et_code"
             android:layout_width="match_parent"
             android:layout_height="@dimen/space50"
-            android:paddingLeft="@dimen/space20"
-            android:layout_marginRight="@dimen/space5"
+            android:hint="输入验证码"
+            android:textColorHint="@color/hint_text_color"
             android:background="@null"
             android:gravity="center_vertical"
-            android:hint="@string/account_hint_name"
-            android:inputType="number"
-            android:maxLength="11"
-            android:textColor="@color/font_primary"
-            android:textColorHint="@color/hint_text_color"
-            android:textCursorDrawable="@null"
             android:textSize="@dimen/font_normal"
+            android:textColor="@color/font_primary"
+            android:inputType="number"
+            android:layout_toLeftOf="@+id/btn_getCode"
+            android:layout_marginRight="@dimen/space10"
+            android:textCursorDrawable="@null"
+            android:maxLength="6"
         />
+
+        <Button
+            android:id="@+id/btn_getCode"
+            android:layout_width="@dimen/space120"
+            android:layout_height="@dimen/space35"
+            android:background="@drawable/shape_button_green"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="获取验证码"
+            android:textSize="@dimen/font_normal"
+            android:textColor="@color/font_special"
+        />
+
     </RelativeLayout>
 
     <View
@@ -106,20 +114,21 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/space10"
-        android:layout_marginTop="@dimen/space20"
+        android:layout_marginTop="@dimen/space15"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn_submit"
+            android:id="@+id/btn_modify"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/space40"
             android:layout_marginLeft="@dimen/space20"
             android:layout_marginRight="@dimen/space20"
             android:background="@drawable/selector_green_btn_login"
             android:gravity="center"
-            android:text="@string/submit"
+            android:text="确认修改"
             android:textColor="@color/background_primary"
-            android:textSize="@dimen/font_large" />
+            android:textSize="@dimen/font_large"/>
+
     </LinearLayout>
 
 </LinearLayout>

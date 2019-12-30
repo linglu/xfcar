@@ -35,7 +35,7 @@ public class CarListInfoActivity extends BaseActivity implements View.OnClickLis
         initView();
 
         mDataManager = new DataManager(this);
-        mRequester.getCarInfoByUser(mDataManager.getUserId(), new ResultCallback<CarInfoBean>() {
+        mRequester.getCarInfoByUser(mInstance, mDataManager.getUserId(), new ResultCallback<CarInfoBean>() {
             @Override
             public void onSuccess(CarInfoBean s) {
                 List<CarInfoBean> lc = new ArrayList<>();
