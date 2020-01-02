@@ -21,8 +21,8 @@ import rx.functions.Action1;
 
 public class RepairListActivity extends BaseActivity implements View.OnClickListener {
 
-    private Requester mRequester = new Requester();
-    private DataManager mDataManager;
+
+
     private RecyclerView mRvRepair;
     private RepairAdapter mAdapter;
 

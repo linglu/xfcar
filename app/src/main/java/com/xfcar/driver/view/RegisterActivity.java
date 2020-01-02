@@ -29,7 +29,7 @@ public class RegisterActivity extends BaseActivity {
     private EditText mEtPwd;
     private EditText mEtMobile;
     private ImageView mIvEyes;
-    private Requester mRequester = new Requester();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,0 +1,26 @@
+method_path,rqst_method,response_obj,method_describe,in,req_body,body_type
+/app/alarmRecord/oneKeyAlarm,post,XfResult,App报警记录: JSON格式传参userId,body,"{'in': 'body', 'name': 'alarm', 'description': 'alarm', 'required': True, 'schema': {'$ref': '#/definitions/AlarmRecordEntity'}}",0
+/app/car/getCarInfoByUser,post,XfResult,App车辆信息: JSON格式传参userId,body,"{'in': 'body', 'name': 'carInfo', 'description': 'carInfo', 'required': True, 'schema': {'$ref': '#/definitions/CarInfoEntity'}}",0
+/app/car/getSecurityInfo,post,XfResult,App车辆信息: JSON格式传参userId,body,"{'in': 'body', 'name': 'carInfo', 'description': 'carInfo', 'required': True, 'schema': {'$ref': '#/definitions/CarInfoEntity'}}",0
+/app/car/insurance/getInsuranceByUser,post,XfResult,App车辆理赔: JSON格式传参userId,body,"{'in': 'body', 'name': 'carInsurance', 'description': 'carInsurance', 'required': True, 'schema': {'$ref': '#/definitions/CarInsuranceEntity'}}",0
+/app/car/leaseback/oneKey,post,XfResult,App预约返租: JSON格式传参userId,body,"{'in': 'body', 'name': 'leaseback', 'description': 'leaseback', 'required': True, 'schema': {'$ref': '#/definitions/LeasebackEntity'}}",0
+/app/car/maintain/getMaintainByUser,post,XfResult,App车辆维护: JSON格式传参userId,body,"{'in': 'body', 'name': 'carMaintain', 'description': 'carMaintain', 'required': True, 'schema': {'$ref': '#/definitions/CarMaintainEntity'}}",0
+/app/car/operate/command,post,XfResult,"App车辆操作: 传参：carNo, command",body,"{'in': 'body', 'name': 'command', 'description': 'command', 'required': True, 'schema': {'$ref': '#/definitions/Command'}}",0
+/app/car/sellModel/getList,get,XfResult,['App平台销卖出租车型表'],,{},3
+/app/car/sellModel/info/{id},post,XfResult,App平台销卖出租车型表,path,"{'name': 'id', 'in': 'path', 'description': 'id', 'required': True, 'type': 'integer', 'format': 'int32'}",1
+/app/car/sellModel/list,post,XfResult,App平台销卖出租车型表: 默认pageNumber=1，pageSize=10,query,"{'name': 'params', 'in': 'query', 'description': ""{'pageNumber':'1', 'pageSize':'10'}"", 'required': True, 'type': 'ref'}",2
+/app/car/shortRent/add,post,XfResult,App预约短租: Json格式传参：subletDate 转租时间，userId 用户ID,body,"{'in': 'body', 'name': 'shortRent', 'description': 'shortRent', 'required': True, 'schema': {'$ref': '#/definitions/ShortRentEntity'}}",0
+/app/car/shortRent/getRentByUser,post,XfResult,App预约短租: Json格式传参：userId 用户ID,body,"{'in': 'body', 'name': 'shortRent', 'description': 'shortRent', 'required': True, 'schema': {'$ref': '#/definitions/ShortRentEntity'}}",0
+/app/companyInfo/find,post,XfResult,公司信息表: Json格式，传参：enLogogram 公司字母缩写,body,"{'in': 'body', 'name': 'params', 'description': 'params', 'required': True, 'schema': {'type': 'object'}}",0
+/app/document/info,post,XfResult,App系统文章类，管理系统文章，包括注册协议等等: Json格式，传参 mark,body,"{'in': 'body', 'name': 'params', 'description': 'params', 'required': True, 'schema': {'type': 'object'}}",0
+/app/getPaymentSource,get,XfResult,App公司账户信息配置表: Json传参 type: 1-支付宝 2-微信 3-银行,query,"{'name': 'account', 'in': 'query', 'description': '银行卡号', 'required': False, 'type': 'string'}",2
+/app/integralGoods/findByGoodsTag,post,XfResult,App积分商品,body,"{'in': 'body', 'name': 'integralGoodsVo', 'description': 'integralGoodsVo', 'required': True, 'schema': {'$ref': '#/definitions/IntegralGoodsVo'}}",0
+/app/monitor/position,post,XfResult,App车况监控: 参数：objectid（车牌号和手机串号绑定后生成返回的ID，保存在车辆信息表中）,body,"{'in': 'body', 'name': 'params', 'description': 'params', 'required': True, 'schema': {'type': 'object'}}",0
+/app/recharge/getRechargeByUser,post,XfResult,App充值: JSON格式传参userId,body,"{'in': 'body', 'name': 'amountRecharge', 'description': 'amountRecharge', 'required': True, 'schema': {'$ref': '#/definitions/AmountRechargeEntity'}}",0
+/app/user/integralGoodsOrder/exchange,post,XfResult,App用户积分消费订单表,body,"{'in': 'body', 'name': 'exchangeGoods', 'description': 'exchangeGoods', 'required': True, 'schema': {'$ref': '#/definitions/ExchangeGoods'}}",0
+/app/user/integralLog/list,post,XfResult,App用户获得积分日志表: Json传参：userId,body,"{'in': 'body', 'name': 'params', 'description': 'params', 'required': True, 'schema': {'type': 'object'}}",0
+/app/user/inviteFriend/add,post,XfResult,"App邀请好友: Json传参：userId, userName, inviteFriendName, invitePhone",body,"{'in': 'body', 'name': 'inviteFriend', 'description': 'inviteFriend', 'required': True, 'schema': {'$ref': '#/definitions/InviteFriendEntity'}}",0
+/app/user/inviteFriend/byMonth,post,XfResult,App邀请好友: Json传参：create_date:当月日期,body,"{'in': 'body', 'name': 'month', 'description': 'month', 'required': True, 'schema': {'type': 'object', 'additionalProperties': {'type': 'object'}}}",0
+/app/user/inviteFriend/inviteReward,post,XfResult,App邀请好友: Json传参：userId,body,"{'in': 'body', 'name': 'userId', 'description': 'userId', 'required': True, 'schema': {'type': 'object', 'additionalProperties': {'type': 'object'}}}",0
+/app/user/updateContactByUser,post,XfResult,"App用户: JSON格式传参userId, contactName, contactMobile",body,"{'in': 'body', 'name': 'contactDTO', 'description': 'contactDTO', 'required': True, 'schema': {'$ref': '#/definitions/ContactDTO'}}",0
+/app/user/updatePwByUser,post,XfResult,"App用户: JSON格式传参userId, oldPassword, newPassword, mobile",body,"{'in': 'body', 'name': 'passwordVO', 'description': 'passwordVO', 'required': True, 'schema': {'$ref': '#/definitions/PasswordVO'}}",0

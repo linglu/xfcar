@@ -6,11 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
 import com.xfcar.driver.R;
-import com.xfcar.driver.model.bean.Command;
 import com.xfcar.driver.model.viewbean.FunctionBean;
 import com.xfcar.driver.mvp.BaseActivity;
-import com.xfcar.driver.network.Requester;
-import com.xfcar.driver.utils.DataManager;
 import com.xfcar.driver.view.adapter.FunctionAdapter;
 
 import rx.functions.Action1;

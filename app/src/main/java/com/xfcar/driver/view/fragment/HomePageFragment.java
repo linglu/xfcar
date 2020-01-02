@@ -1,6 +1,5 @@
 package com.xfcar.driver.view.fragment;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.wangpeiyuan.cycleviewpager2.CycleViewPager2;
+import com.xfcar.driver.App;
 import com.xfcar.driver.R;
 import com.xfcar.driver.model.adapterbean.PagerBean;
 import com.xfcar.driver.model.viewbean.FunctionBean;
@@ -30,7 +30,6 @@ import com.xfcar.driver.view.adapter.ViewPagerAdapter;
 import com.xfcar.driver.view.dialog.ConfirmDialog;
 
 import rx.functions.Action1;
-import rx.functions.Action2;
 
 /**
  * @author Linky
@@ -142,11 +141,12 @@ public class HomePageFragment extends BaseFragment implements Action1<String> {
     @Override
     public void call(String s) {
         Requester requester = new Requester();
-        DataManager dataManager = new DataManager(mActivity);
+        DataManager dataManager = App.sInstance.mDataManager;
+
 
         switch (s) {
             case "车辆返租":
-                requester.appCarLeasebackOnekey(mActivity, dataManager.getUserId(), new ResultCallback<String>() {
+                requester.appCarLeasebackOneKey(mActivity, dataManager.getUserId(), new ResultCallback<String>() {
                     @Override
                     public void onSuccess(String s) {
                         toastMsg("提交成功");
@@ -159,7 +159,7 @@ public class HomePageFragment extends BaseFragment implements Action1<String> {
                 });
                 break;
             case "一键报警":
-                requester.appCarLeasebackOnekey(mActivity, dataManager.getUserId(), new ResultCallback<String>() {
+                requester.appCarLeasebackOneKey(mActivity, dataManager.getUserId(), new ResultCallback<String>() {
                     @Override
                     public void onSuccess(String s) {
                         toastMsg("报警成功");

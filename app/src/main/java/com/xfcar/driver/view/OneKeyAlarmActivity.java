@@ -11,15 +11,15 @@ import com.xfcar.driver.utils.DataManager;
 
 public class OneKeyAlarmActivity extends BaseActivity implements View.OnClickListener {
 
-    private Requester mRequester = new Requester();
-    private DataManager mDataManager;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_one_key_alarm);
         initView();
-        mRequester.appCarLeasebackOnekey(mInstance, mDataManager.getUserId(), new ResultCallback<String>() {
+        mRequester.appCarLeasebackOneKey(mInstance, mDataManager.getUserId(), new ResultCallback<String>() {
             @Override
             public void onSuccess(String s) {
                 finish();

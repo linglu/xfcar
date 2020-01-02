@@ -30,7 +30,7 @@ public abstract class NetworkSubscriber<T> extends Subscriber<Response<T>> {
             HttpException he = (HttpException) e;
             if (he.code() == 401) {
 
-                DataManager dataManager = new DataManager(App.sInstance.mCurAct);
+                DataManager dataManager = App.sInstance.mDataManager;
                 dataManager.setUserId(0);
 
                 // 跳转到 登录界面

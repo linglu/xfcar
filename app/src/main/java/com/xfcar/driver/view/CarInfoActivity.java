@@ -30,8 +30,8 @@ public class CarInfoActivity extends BaseActivity implements View.OnClickListene
     private TextView mTvCreatedate;
     private TextView mTvUpdateby;
     private TextView mTvUpdatedate;
-    private DataManager mDataManager;
-    private Requester mRequester = new Requester();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class CarInfoActivity extends BaseActivity implements View.OnClickListene
         setContentView(R.layout.activity_car_info);
         initView();
 
-        mRequester.getCarInfoByUser(mInstance, mDataManager.getUserId(), new ResultCallback<CarInfoBean>() {
+        mRequester.appCarGetCarInfoByUser(mInstance, mDataManager.getUserId(), new ResultCallback<CarInfoBean>() {
             @Override
             public void onSuccess(CarInfoBean s) {
                 initData(s);

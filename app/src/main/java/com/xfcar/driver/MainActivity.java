@@ -22,7 +22,7 @@ import androidx.annotation.Nullable;
 
 public class MainActivity extends BaseActivity {
 
-    private DataManager mDataManager;
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {

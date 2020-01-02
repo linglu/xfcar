@@ -31,8 +31,8 @@ public class LoginActivity extends BaseActivity {
     private EditText mEtVerifyCode;
     private String mPhoneNumber;
     private Button mBtGetCaptcha;
-    private Requester mRequester = new Requester();
-    private DataManager mDataManager;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

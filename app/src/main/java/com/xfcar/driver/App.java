@@ -8,7 +8,5 @@ public class App extends LibApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-
-
     }
 }

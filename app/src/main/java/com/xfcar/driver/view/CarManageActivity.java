@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.xfcar.driver.R;
-import com.xfcar.driver.model.bean.Command;
+import com.xfcar.driver.model.mybean.Command;
 import com.xfcar.driver.model.viewbean.FunctionBean;
 import com.xfcar.driver.mvp.BaseActivity;
 import com.xfcar.driver.view.adapter.FunctionAdapter;

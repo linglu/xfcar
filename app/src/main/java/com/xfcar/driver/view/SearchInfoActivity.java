@@ -10,8 +10,8 @@ import com.xfcar.driver.utils.DataManager;
 
 public class SearchInfoActivity extends BaseActivity implements View.OnClickListener {
 
-    private Requester mRequester = new Requester();
-    private DataManager mDataManager;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

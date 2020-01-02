@@ -10,36 +10,32 @@ import android.widget.TextView;
 import com.xfcar.driver.R;
 import com.xfcar.driver.mvp.BaseActivity;
 import com.xfcar.driver.network.Requester;
+import com.xfcar.driver.network.ResultCallback;
 import com.xfcar.driver.utils.DataManager;
 import com.xfcar.driver.utils.Utils;
 
 public class InviteActivity extends BaseActivity implements View.OnClickListener {
 
-    private Requester mRequester = new Requester();
-    private DataManager mDataManager;
-    private EditText mEtReturnBack;
-    private TextView mTvTitle;
     private EditText mEtInviteName;
     private TextView mTvNumber;
     private EditText mEtInvitedName;
     private EditText mEtInvitedMobile;
-    private Button mBtnSubmit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invite);
         initView();
+        mTvNumber.setText(String.format("XF%s", mDataManager.getUserId()));
     }
 
     private void initView() {
         findViewById(R.id.rl_return_back).setOnClickListener(this);
-        mTvTitle = findViewById(R.id.tv_title);
         mEtInviteName = findViewById(R.id.et_invite_name);
         mTvNumber = findViewById(R.id.tv_work_code);
         mEtInvitedName = findViewById(R.id.et_invited_name);
         mEtInvitedMobile = findViewById(R.id.et_invited_mobile);
-        mBtnSubmit = findViewById(R.id.btn_submit);
+        findViewById(R.id.btn_submit).setOnClickListener(this);
     }
 
     @Override
@@ -52,7 +48,6 @@ public class InviteActivity extends BaseActivity implements View.OnClickListener
             String invitedName = mEtInvitedName.getText().toString();
 
             String mobile = mEtInvitedMobile.getText().toString();
-
 
             if (TextUtils.isEmpty(inviteName.trim())) {
                 toastMsg("请输入邀请人用户名");
@@ -67,7 +62,19 @@ public class InviteActivity extends BaseActivity implements View.OnClickListener
                 mEtInvitedMobile.setText("");
                 mEtInvitedMobile.requestFocus();
             } else {
+                mRequester.appUserInviteFriendAdd(this, mDataManager.getUserId(), inviteName,
+                        invitedName, mobile, new ResultCallback<String>() {
+                    @Override
+                    public void onSuccess(String s) {
+                        toastMsg("邀请成功");
+                        finish();
+                    }
 
+                    @Override
+                    public void onFail(String msg) {
+                        toastMsg(msg);
+                    }
+                });
             }
         }
     }

@@ -6,10 +6,13 @@ public class SysUserEntity {
 	public Integer userId; // 主键ID
 	public String username; // 用户登录名
 	public String password; // 密码
+	public String sex; // 姓别
 	public String idCardName; // 身份证名称
 	public String idCardNumber; // 身份证号码
 	public Float balance; // 余额
 	public Float deposit; // 押金
+	public Float Integeregral; // 用户积分
+	public Float user_goods_fee; // 消费总金额
 	public String mobile; // 手机号
 	public String email; // 邮箱
 	public Integer recommendUserId; // 推荐人ID

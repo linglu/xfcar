@@ -8,20 +8,24 @@ import com.xfcar.driver.model.adapterbean.RentCarInfoBean;
 import com.xfcar.driver.model.adapterbean.RepairBean;
 import com.xfcar.driver.model.bean.CarObjectId;
 import com.xfcar.driver.model.bean.CarSecurityBean;
-import com.xfcar.driver.model.bean.Command;
+import com.xfcar.driver.model.bean.ContactDTO;
+import com.xfcar.driver.model.bean.EnLogoGram;
+import com.xfcar.driver.model.bean.IntegralGoodsVo;
+import com.xfcar.driver.model.bean.InviteFriendEntity;
+import com.xfcar.driver.model.bean.MarkBean;
 import com.xfcar.driver.model.bean.QRCodeBean;
 import com.xfcar.driver.model.bean.ShortRentEntity;
 import com.xfcar.driver.model.bean.SysUserEntity;
 import com.xfcar.driver.model.bean.UserEntity;
+import com.xfcar.driver.model.bean.Command;
+import com.xfcar.driver.model.mybean.OursBean;
+import com.xfcar.driver.model.viewbean.ScoreTypeBean;
 import com.xfcar.driver.network.converter.FastjsonConverterFactory;
 import com.xfcar.driver.utils.DialogLoading;
 import com.xfcar.driver.utils.L;
-import com.xfcar.driver.utils.RxSchedulersHelper;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.List;
-import java.util.Map;
 
 import androidx.fragment.app.FragmentActivity;
 import okhttp3.Interceptor;
@@ -121,9 +125,9 @@ public class Requester {
         }
     }
 
-    public void appCarLeasebackOnekey(FragmentActivity act, int userId, final ResultCallback<String> callback) {
+    public void appCarLeasebackOneKey(FragmentActivity act, int userId, final ResultCallback<String> callback) {
         showLoadingDialog(act);
-        service.appCarLeasebackOnekey(new UserEntity(userId))
+        service.appCarLeasebackOneKey(new UserEntity(userId))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetworkSubscriber<String>() {
@@ -184,9 +188,9 @@ public class Requester {
                 });
     }
 
-    public void getPaymentSource(FragmentActivity act, final ResultCallback<QRCodeBean> callback) {
+    public void appGetPaymentSource(FragmentActivity act, final ResultCallback<QRCodeBean> callback) {
         showLoadingDialog(act);
-        service.getPaymentSource(2)
+        service.appGetPaymentSource(2)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetworkSubscriber<QRCodeBean>() {
@@ -205,13 +209,13 @@ public class Requester {
                 });
     }
 
-    public void appCarShortrentAdd(FragmentActivity act, int userId, String carNo, String date, final ResultCallback<String> callback) {
+    public void appCarShortRentAdd(FragmentActivity act, int userId, String carNo, String date, final ResultCallback<String> callback) {
         showLoadingDialog(act);
         ShortRentEntity entity = new ShortRentEntity();
         entity.userId = userId;
         entity.carNo = carNo;
         entity.subletDate = date;
-        service.appCarShortrentAdd(entity)
+        service.appCarShortRentAdd(entity)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetworkSubscriber<String>() {
@@ -230,9 +234,9 @@ public class Requester {
                 });
     }
 
-    public void appCarGetsecurityinfo(FragmentActivity act, int userId, final ResultCallback<CarSecurityBean> callback) {
+    public void appCarGetSecurityInfo(FragmentActivity act, int userId, final ResultCallback<CarSecurityBean> callback) {
         showLoadingDialog(act);
-        service.appCarGetsecurityinfo(new UserEntity(userId))
+        service.appCarGetSecurityInfo(new UserEntity(userId))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetworkSubscriber<CarSecurityBean>() {
@@ -274,9 +278,125 @@ public class Requester {
                 });
     }
 
-    public void getCarInfoByUser(FragmentActivity act, int userId, final ResultCallback<CarInfoBean> callback) {
+    public void appCompanyInfoFind(FragmentActivity act, final ResultCallback<OursBean> callback) {
         showLoadingDialog(act);
-        service.appCarGetcarinfobyuser(new UserEntity(userId))
+        EnLogoGram elg = new EnLogoGram();
+        service.appCompanyInfoFind(elg)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetworkSubscriber<OursBean>() {
+
+                    @Override
+                    public void onSuccess(OursBean o) {
+                        dismissLoadingDialog();
+                        callback.onSuccess(o);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        dismissLoadingDialog();
+                        callback.onFail(msg);
+                    }
+                });
+    }
+
+    public void appDocumentInfo(FragmentActivity act, final ResultCallback<String> callback) {
+        showLoadingDialog(act);
+        MarkBean markBean = new MarkBean("LawRegulations");
+        service.appDocumentInfo(markBean)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetworkSubscriber<String>() {
+
+                    @Override
+                    public void onSuccess(String o) {
+                        dismissLoadingDialog();
+                        callback.onSuccess(o);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        dismissLoadingDialog();
+                        callback.onFail(msg);
+                    }
+                });
+    }
+
+    public void appUserIntegralLogList(FragmentActivity act, int userId, final ResultCallback<List<ScoreTypeBean>> callback) {
+        showLoadingDialog(act);
+        service.appUserIntegralLogList(new UserEntity(userId))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetworkSubscriber<List<ScoreTypeBean>>() {
+
+                    @Override
+                    public void onSuccess(List<ScoreTypeBean> o) {
+                        dismissLoadingDialog();
+                        callback.onSuccess(o);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        dismissLoadingDialog();
+                        callback.onFail(msg);
+                    }
+                });
+    }
+
+    public void appUserInviteFriendAdd(FragmentActivity act, int userId, String userName,
+                                       String inviteFriendName, String invitePhone, final ResultCallback<String> callback) {
+        showLoadingDialog(act);
+        InviteFriendEntity ife = new InviteFriendEntity();
+        ife.userId = userId;
+        ife.username = userName;
+        ife.inviteFriendName = inviteFriendName;
+        ife.invitePhone = invitePhone;
+        service.appUserInviteFriendAdd(ife)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetworkSubscriber<String>() {
+
+                    @Override
+                    public void onSuccess(String o) {
+                        dismissLoadingDialog();
+                        callback.onSuccess(o);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        dismissLoadingDialog();
+                        callback.onFail(msg);
+                    }
+                });
+    }
+
+    public void appIntegralGoodsFindByGoodsTag(FragmentActivity act, int userId, final ResultCallback<String> callback) {
+        showLoadingDialog(act);
+        IntegralGoodsVo integralGoodsVo = new IntegralGoodsVo();
+        integralGoodsVo.userId = userId;
+        integralGoodsVo.goodsTag = "RentFree";
+        service.appIntegralGoodsFindByGoodsTag(integralGoodsVo)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetworkSubscriber<String>() {
+
+                    @Override
+                    public void onSuccess(String o) {
+                        dismissLoadingDialog();
+                        callback.onSuccess(o);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        dismissLoadingDialog();
+                        callback.onFail(msg);
+                    }
+                });
+    }
+
+    public void appCarGetCarInfoByUser(FragmentActivity act, int userId, final ResultCallback<CarInfoBean> callback) {
+        showLoadingDialog(act);
+        service.appCarGetCarInfoByUser(new UserEntity(userId))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetworkSubscriber<CarInfoBean>() {
@@ -297,7 +417,7 @@ public class Requester {
 
     public void getMaintainByUser(FragmentActivity act, int userId, final ResultCallback<List<RepairBean>> callback) {
         showLoadingDialog(act);
-        service.appCarMaintainGetmaintainbyuser(new UserEntity(userId))
+        service.appCarMaintainGetMaintainByUser(new UserEntity(userId))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetworkSubscriber<List<RepairBean>>() {
@@ -316,9 +436,9 @@ public class Requester {
                 });
     }
 
-    public void getInsuranceByUser(FragmentActivity act, int userId, final ResultCallback<List<ClaimPayBean>> callback) {
+    public void appCarInsuranceGetInsuranceByUser(FragmentActivity act, int userId, final ResultCallback<List<ClaimPayBean>> callback) {
         showLoadingDialog(act);
-        service.appCarInsuranceGetinsurancebyuser(new UserEntity(userId))
+        service.appCarInsuranceGetInsuranceByUser(new UserEntity(userId))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetworkSubscriber<List<ClaimPayBean>>() {
@@ -360,7 +480,7 @@ public class Requester {
 
     public void appUserUpdateContactByUser(FragmentActivity act, int userId, String name, String mobile, final ResultCallback<String> callback) {
         showLoadingDialog(act);
-        SysUserEntity entity = new SysUserEntity();
+        ContactDTO entity = new ContactDTO();
         entity.userId = userId;
         entity.contactMobile = mobile;
         entity.contactName = name;

@@ -20,8 +20,8 @@ import rx.functions.Action1;
 
 public class ClaimPayListActivity extends BaseActivity implements View.OnClickListener {
 
-    private Requester mRequester = new Requester();
-    private DataManager mDataManager;
+
+
     private RecyclerView mRvClaim;
     private ClaimAdapter mAdapter;
 
@@ -32,7 +32,7 @@ public class ClaimPayListActivity extends BaseActivity implements View.OnClickLi
         initView();
 
 
-        mRequester.getInsuranceByUser(mInstance, mDataManager.getUserId(), new ResultCallback<List<ClaimPayBean>>() {
+        mRequester.appCarInsuranceGetInsuranceByUser(mInstance, mDataManager.getUserId(), new ResultCallback<List<ClaimPayBean>>() {
             @Override
             public void onSuccess(List<ClaimPayBean> s) {
                 mAdapter.setData(s);

@@ -15,9 +15,9 @@
             android:id="@+id/iv_return_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_return_back"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/space20"
+            android:src="@mipmap/ic_return_back"
         />
 
         <TextView
@@ -31,20 +31,118 @@
         />
 
     </RelativeLayout>
-    
+
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/space1"
         android:background="@color/gray"
     />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_car_function"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.0"
-        android:layout_marginLeft="@dimen/space15"
-        android:layout_marginRight="@dimen/space15"
-    />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/space15"
+    >
+
+        <TextView
+            android:id="@+id/tv_company_id"
+            style="@style/common_text_view"
+            android:text="companyId"
+        />
+        <TextView
+            android:id="@+id/tv_en_logogram"
+            style="@style/common_text_view"
+            android:text="enLogogram"
+        />
+        <TextView
+            android:id="@+id/tv_company_name"
+            style="@style/common_text_view"
+            android:text="companyName"
+        />
+        <TextView
+            android:id="@+id/tv_company_fullname"
+            style="@style/common_text_view"
+            android:text="companyFullname"
+        />
+        <TextView
+            android:id="@+id/tv_company_introduction"
+            style="@style/common_text_view"
+            android:text="companyIntroduction"
+        />
+        <TextView
+            android:id="@+id/tv_company_website"
+            style="@style/common_text_view"
+            android:text="companyWebsite"
+        />
+        <TextView
+            android:id="@+id/tv_company_product"
+            style="@style/common_text_view"
+            android:text="companyProduct"
+        />
+        <TextView
+            android:id="@+id/tv_company_image"
+            style="@style/common_text_view"
+            android:text="companyImage"
+        />
+        <TextView
+            android:id="@+id/tv_company_address"
+            style="@style/common_text_view"
+            android:text="companyAddress"
+        />
+        <TextView
+            android:id="@+id/tv_company_corporate"
+            style="@style/common_text_view"
+            android:text="companyCorporate"
+        />
+        <TextView
+            android:id="@+id/tv_company_code"
+            style="@style/common_text_view"
+            android:text="companyCode"
+        />
+        <TextView
+            android:id="@+id/tv_company_scope"
+            style="@style/common_text_view"
+            android:text="companyScope"
+        />
+        <TextView
+            android:id="@+id/tv_company_email"
+            style="@style/common_text_view"
+            android:text="companyEmail"
+        />
+        <TextView
+            android:id="@+id/tv_company_telphone"
+            style="@style/common_text_view"
+            android:text="companyTelphone"
+        />
+        <TextView
+            android:id="@+id/tv_del_flag"
+            style="@style/common_text_view"
+            android:text="delFlag"
+        />
+        <TextView
+            android:id="@+id/tv_create_date"
+            style="@style/common_text_view"
+            android:text="createDate"
+        />
+        <TextView
+            android:id="@+id/tv_create_by"
+            style="@style/common_text_view"
+            android:text="createBy"
+        />
+        <TextView
+            android:id="@+id/tv_update_date"
+            style="@style/common_text_view"
+            android:text="updateDate"
+        />
+        <TextView
+            android:id="@+id/tv_update_by"
+            style="@style/common_text_view"
+            android:text="updateBy"
+        />
+
+    </LinearLayout>
+
+
 
 </LinearLayout>

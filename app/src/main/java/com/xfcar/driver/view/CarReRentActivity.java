@@ -8,12 +8,11 @@ import com.xfcar.driver.mvp.BaseActivity;
 import com.xfcar.driver.network.Requester;
 import com.xfcar.driver.network.ResultCallback;
 import com.xfcar.driver.utils.DataManager;
-import com.xfcar.driver.utils.DialogLoading;
 
 public class CarReRentActivity extends BaseActivity implements View.OnClickListener {
 
-    private Requester mRequester = new Requester();
-    private DataManager mDataManager;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +20,7 @@ public class CarReRentActivity extends BaseActivity implements View.OnClickListe
         setContentView(R.layout.activity_car_re_rent);
         initView();
 
-        mRequester.appCarLeasebackOnekey(mInstance, mDataManager.getUserId(), new ResultCallback<String>() {
+        mRequester.appCarLeasebackOneKey(mInstance, mDataManager.getUserId(), new ResultCallback<String>() {
             @Override
             public void onSuccess(String s) {
 

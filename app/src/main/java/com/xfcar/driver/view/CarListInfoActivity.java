@@ -4,16 +4,13 @@ import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
-import android.widget.TextView;
 
 import com.xfcar.driver.R;
-import com.xfcar.driver.model.adapterbean.CarInfoBean;
 import com.xfcar.driver.model.adapterbean.CarInfoBean;
 import com.xfcar.driver.mvp.BaseActivity;
 import com.xfcar.driver.network.Requester;
 import com.xfcar.driver.network.ResultCallback;
 import com.xfcar.driver.utils.DataManager;
-import com.xfcar.driver.utils.L;
 import com.xfcar.driver.view.adapter.CarInfoAdapter;
 
 import java.util.ArrayList;
@@ -23,8 +20,8 @@ import rx.functions.Action1;
 
 public class CarListInfoActivity extends BaseActivity implements View.OnClickListener {
 
-    private Requester mRequester = new Requester();
-    private DataManager mDataManager;
+
+
     private RecyclerView mRvCarInfo;
     private CarInfoAdapter mAdapter;
 
@@ -35,7 +32,7 @@ public class CarListInfoActivity extends BaseActivity implements View.OnClickLis
         initView();
 
 
-        mRequester.getCarInfoByUser(mInstance, mDataManager.getUserId(), new ResultCallback<CarInfoBean>() {
+        mRequester.appCarGetCarInfoByUser(mInstance, mDataManager.getUserId(), new ResultCallback<CarInfoBean>() {
             @Override
             public void onSuccess(CarInfoBean s) {
                 List<CarInfoBean> lc = new ArrayList<>();

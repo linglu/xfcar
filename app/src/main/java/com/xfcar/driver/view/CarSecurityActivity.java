@@ -14,8 +14,8 @@ import com.xfcar.driver.utils.DataManager;
 
 public class CarSecurityActivity extends BaseActivity implements View.OnClickListener {
 
-    private Requester mRequester = new Requester();
-    private DataManager mDataManager;
+
+
     private TextView mTvEngineNo;
     private TextView mTvMobile;
     private TextView mTvCarInfo;
@@ -26,7 +26,7 @@ public class CarSecurityActivity extends BaseActivity implements View.OnClickLis
         setContentView(R.layout.activity_car_security);
         initView();
 
-        mRequester.appCarGetsecurityinfo(mInstance, mDataManager.getUserId(), new ResultCallback<CarSecurityBean>() {
+        mRequester.appCarGetSecurityInfo(mInstance, mDataManager.getUserId(), new ResultCallback<CarSecurityBean>() {
             @Override
             public void onSuccess(CarSecurityBean bean) {
                 mTvEngineNo.setText(String.format("发动机号：%s", bean.engineNo));

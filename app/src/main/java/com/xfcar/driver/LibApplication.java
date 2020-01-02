@@ -31,7 +31,7 @@ public class LibApplication extends Application {
         L.init();
 
         sInstance = this;
-
+        mDataManager = new DataManager(this);
         registerActivity();
     }
 

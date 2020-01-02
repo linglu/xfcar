@@ -18,7 +18,6 @@ import java.util.TimerTask;
  */
 public class WelcomeActivity extends BaseActivity {
 
-    private DataManager mDataManager;
     private Timer mTimer;
 
     @Override

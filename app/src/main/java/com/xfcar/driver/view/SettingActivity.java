@@ -11,8 +11,8 @@ import com.xfcar.driver.utils.DataManager;
 
 public class SettingActivity extends BaseActivity implements View.OnClickListener {
 
-    private Requester mRequester = new Requester();
-    private DataManager mDataManager;
+
+
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +32,11 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
            @Override
            public void onClick(View v) {
 
-               final DataManager dataManager = new DataManager(SettingActivity.this);
                 mRequester.logout(mInstance, new ResultCallback<String>() {
                     @Override
                     public void onSuccess(String s) {
                         toastMsg("退出登录成功");
-                        dataManager.setUserId(0);
+                        mDataManager.setUserId(0);
                         startActivity(LoginActivity.class);
                         finish();
                     }

@@ -15,8 +15,8 @@ import com.xfcar.driver.utils.L;
 
 public class ReceiptActivity extends BaseActivity implements View.OnClickListener {
 
-    private Requester mRequester = new Requester();
-    private DataManager mDataManager;
+
+
     private ImageView mIvQrCode;
 
     @Override
@@ -24,7 +24,7 @@ public class ReceiptActivity extends BaseActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receipt);
         initView();
-        mRequester.getPaymentSource(mInstance, new ResultCallback<QRCodeBean>() {
+        mRequester.appGetPaymentSource(mInstance, new ResultCallback<QRCodeBean>() {
             @Override
             public void onSuccess(QRCodeBean qrCodeBean) {
                 L.i("QR code : " + qrCodeBean.qrCode);

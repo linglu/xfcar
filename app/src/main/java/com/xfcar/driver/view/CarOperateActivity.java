@@ -14,13 +14,11 @@ import com.xfcar.driver.network.ResultCallback;
 import com.xfcar.driver.utils.DataManager;
 import com.xfcar.driver.utils.Utils;
 
-import java.util.List;
-
 public class CarOperateActivity extends BaseActivity implements View.OnClickListener {
 
 
-    private DataManager mDataManager;
-    private Requester mRequester = new Requester();
+
+
     private String mCmd;
     private TextView mTvTitle;
 
@@ -38,7 +36,7 @@ public class CarOperateActivity extends BaseActivity implements View.OnClickList
 
         initView();
 
-        mRequester.getCarInfoByUser(mInstance, mDataManager.getUserId(), new ResultCallback<CarInfoBean>() {
+        mRequester.appCarGetCarInfoByUser(mInstance, mDataManager.getUserId(), new ResultCallback<CarInfoBean>() {
             @Override
             public void onSuccess(CarInfoBean carInfo) {
                 mRequester.carOperateCommand(mInstance,

@@ -23,8 +23,8 @@ import java.util.Locale;
 
 public class SbscrbShortActivity extends BaseActivity implements View.OnClickListener {
 
-    private Requester mRequester = new Requester();
-    private DataManager mDataManager;
+
+
     private ImageView mIvReturnBack;
     private TextView mTvTitle;
     private TextView mTvDatePick;
@@ -78,7 +78,7 @@ public class SbscrbShortActivity extends BaseActivity implements View.OnClickLis
             String carNo = mEtCarBrand.getText().toString();
             carNo = carNo.equals("") ? null : carNo;
             String date = String.format("%s-%s-%s", mYear, (mMonth + 1), mDay);
-            mRequester.appCarShortrentAdd(mInstance, mDataManager.getUserId(), carNo, date, new ResultCallback<String>() {
+            mRequester.appCarShortRentAdd(mInstance, mDataManager.getUserId(), carNo, date, new ResultCallback<String>() {
                 @Override
                 public void onSuccess(String s) {
                     toastMsg("提交成功，稍后会有工作人员联系");

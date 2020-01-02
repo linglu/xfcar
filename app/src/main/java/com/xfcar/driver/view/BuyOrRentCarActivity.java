@@ -19,8 +19,8 @@ import java.util.List;
 
 public class BuyOrRentCarActivity extends BaseActivity implements View.OnClickListener {
 
-    private Requester mRequester = new Requester();
-    private DataManager mDataManager;
+
+
     private Spinner mSpinner;
     private CarSpinnerAdapter mSAdapter;
     private TextView mTvBuy;
