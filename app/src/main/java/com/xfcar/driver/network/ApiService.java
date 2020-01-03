@@ -11,6 +11,7 @@ import com.xfcar.driver.model.bean.ContactDTO;
 import com.xfcar.driver.model.bean.ExchangeGoods;
 import com.xfcar.driver.model.bean.IntegralGoodsVo;
 import com.xfcar.driver.model.bean.InviteFriendEntity;
+import com.xfcar.driver.model.bean.InviteRewardBean;
 import com.xfcar.driver.model.bean.PasswordVO;
 import com.xfcar.driver.model.bean.QRCodeBean;
 import com.xfcar.driver.model.bean.ShortRentEntity;
@@ -18,6 +19,7 @@ import com.xfcar.driver.model.bean.SysUserEntity;
 import com.xfcar.driver.model.bean.UserEntity;
 import com.xfcar.driver.model.bean.Command;
 import com.xfcar.driver.model.mybean.OursBean;
+import com.xfcar.driver.model.viewbean.ScoreProductBean;
 import com.xfcar.driver.model.viewbean.ScoreTypeBean;
 
 import java.util.List;
@@ -98,7 +100,7 @@ public interface ApiService {
 
     //App积分商品
     @POST("ioc/app/integralGoods/findByGoodsTag")
-    Observable<Response<String>> appIntegralGoodsFindByGoodsTag(@Body IntegralGoodsVo integralgoodsvo);
+    Observable<Response<List<ScoreProductBean>>> appIntegralGoodsFindByGoodsTag(@Body IntegralGoodsVo integralgoodsvo);
 
     //App车况监控: 参数：objectid（车牌号和手机串号绑定后生成返回的ID，保存在车辆信息表中）
     @POST("ioc/app/monitor/position")
@@ -120,13 +122,13 @@ public interface ApiService {
     @POST("ioc/app/user/inviteFriend/add")
     Observable<Response<String>> appUserInviteFriendAdd(@Body InviteFriendEntity invitefriendentity);
 
-    //App邀请好友: Json传参：create_date:当月日期
+    //App邀请好友: Json传参：createDate:当月日期
     @POST("ioc/app/user/inviteFriend/byMonth")
     Observable<Response<String>> appUserInviteFriendByMonth(@Body Object object);
 
     //App邀请好友: Json传参：userId
     @POST("ioc/app/user/inviteFriend/inviteReward")
-    Observable<Response<String>> appUserInviteFriendInviteReward(@Body Object object);
+    Observable<Response<List<InviteRewardBean>>> appUserInviteFriendInviteReward(@Body Object object);
 
     //App用户: JSON格式传参userId, contactName, contactMobile
     @POST("ioc/app/user/updateContactByUser")

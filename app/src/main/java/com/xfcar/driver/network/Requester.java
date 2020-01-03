@@ -10,15 +10,19 @@ import com.xfcar.driver.model.bean.CarObjectId;
 import com.xfcar.driver.model.bean.CarSecurityBean;
 import com.xfcar.driver.model.bean.ContactDTO;
 import com.xfcar.driver.model.bean.EnLogoGram;
+import com.xfcar.driver.model.bean.ExchangeGoods;
 import com.xfcar.driver.model.bean.IntegralGoodsVo;
 import com.xfcar.driver.model.bean.InviteFriendEntity;
+import com.xfcar.driver.model.bean.InviteRewardBean;
 import com.xfcar.driver.model.bean.MarkBean;
 import com.xfcar.driver.model.bean.QRCodeBean;
 import com.xfcar.driver.model.bean.ShortRentEntity;
 import com.xfcar.driver.model.bean.SysUserEntity;
 import com.xfcar.driver.model.bean.UserEntity;
 import com.xfcar.driver.model.bean.Command;
+import com.xfcar.driver.model.mybean.InviteRecordQueryBean;
 import com.xfcar.driver.model.mybean.OursBean;
+import com.xfcar.driver.model.viewbean.ScoreProductBean;
 import com.xfcar.driver.model.viewbean.ScoreTypeBean;
 import com.xfcar.driver.network.converter.FastjsonConverterFactory;
 import com.xfcar.driver.utils.DialogLoading;
@@ -322,8 +326,7 @@ public class Requester {
                 });
     }
 
-    public void appUserIntegralLogList(FragmentActivity act, int userId, final ResultCallback<List<ScoreTypeBean>> callback) {
-        showLoadingDialog(act);
+    public void appUserIntegralLogList(int userId, final ResultCallback<List<ScoreTypeBean>> callback) {
         service.appUserIntegralLogList(new UserEntity(userId))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -331,13 +334,11 @@ public class Requester {
 
                     @Override
                     public void onSuccess(List<ScoreTypeBean> o) {
-                        dismissLoadingDialog();
                         callback.onSuccess(o);
                     }
 
                     @Override
                     public void onFail(String msg) {
-                        dismissLoadingDialog();
                         callback.onFail(msg);
                     }
                 });
@@ -370,18 +371,82 @@ public class Requester {
                 });
     }
 
-    public void appIntegralGoodsFindByGoodsTag(FragmentActivity act, int userId, final ResultCallback<String> callback) {
-        showLoadingDialog(act);
+    public void appIntegralGoodsFindByGoodsTag(int userId, final ResultCallback<List<ScoreProductBean>> callback) {
         IntegralGoodsVo integralGoodsVo = new IntegralGoodsVo();
         integralGoodsVo.userId = userId;
         integralGoodsVo.goodsTag = "RentFree";
         service.appIntegralGoodsFindByGoodsTag(integralGoodsVo)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetworkSubscriber<List<ScoreProductBean>>() {
+
+                    @Override
+                    public void onSuccess(List<ScoreProductBean> o) {
+                        callback.onSuccess(o);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        callback.onFail(msg);
+                    }
+                });
+    }
+
+    public void appUserIntegralGoodsOrderExchange(FragmentActivity act, int userId, String goodsName,
+                                                  final ResultCallback<String> callback) {
+        showLoadingDialog(act);
+        ExchangeGoods eg = new ExchangeGoods();
+        eg.goodsName = goodsName;
+        eg.userId = String.valueOf(userId);
+        service.appUserIntegralGoodsOrderExchange(eg)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetworkSubscriber<String>() {
 
                     @Override
                     public void onSuccess(String o) {
+                        dismissLoadingDialog();
+                        callback.onSuccess(o);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        dismissLoadingDialog();
+                        callback.onFail(msg);
+                    }
+                });
+    }
+
+    public void appUserInviteFriendByMonth(FragmentActivity act, int userId, final ResultCallback<String> callback) {
+        showLoadingDialog(act);
+        service.appUserInviteFriendByMonth(new InviteRecordQueryBean(String.valueOf(userId), "2020-01-01"))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetworkSubscriber<String>() {
+
+                    @Override
+                    public void onSuccess(String o) {
+                        dismissLoadingDialog();
+                        callback.onSuccess(o);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        dismissLoadingDialog();
+                        callback.onFail(msg);
+                    }
+                });
+    }
+
+    public void appUserInviteFriendInviteReward(FragmentActivity act, int userId, final ResultCallback<List<InviteRewardBean>> callback) {
+        showLoadingDialog(act);
+        service.appUserInviteFriendInviteReward(new UserEntity(userId))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetworkSubscriber<List<InviteRewardBean>>() {
+
+                    @Override
+                    public void onSuccess(List<InviteRewardBean> o) {
                         dismissLoadingDialog();
                         callback.onSuccess(o);
                     }

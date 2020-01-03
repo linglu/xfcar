@@ -2,12 +2,14 @@ package com.xfcar.driver.view;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.xfcar.driver.R;
 import com.xfcar.driver.mvp.BaseActivity;
 import com.xfcar.driver.network.Requester;
 import com.xfcar.driver.network.ResultCallback;
 import com.xfcar.driver.utils.DataManager;
+import com.xfcar.driver.utils.Utils;
 
 public class AboutActivity extends BaseActivity implements View.OnClickListener {
 
@@ -16,17 +18,14 @@ public class AboutActivity extends BaseActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
         initView();
-//        mRequester.appDocumentInfo(this, new ResultCallback<String>() {
-//            @Override
-//            public void onSuccess(String s) {
-//
-//            }
-//
-//            @Override
-//            public void onFail(String msg) {
-//
-//            }
-//        });
+        TextView tv = findViewById(R.id.tv_version);
+        tv.setText(Utils.getVersionName(this));
+        findViewById(R.id.tv_law_protocol).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     private void initView() {
