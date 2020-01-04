@@ -39,6 +39,7 @@
     <dimen name="refresh_font_small">12sp</dimen>
     <dimen name="space120">120dp</dimen>
     <dimen name="space1">1dp</dimen>
+    <dimen name="space0.5">0.5dp</dimen>
     <dimen name="space3">3dp</dimen>
     <dimen name="space4">4dp</dimen>
     <dimen name="space6">6dp</dimen>

@@ -1,0 +1,34 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="@dimen/space12"
+    >
+
+    <TextView
+        android:id="@+id/tv_send_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.3"
+        android:text="转单日期"
+        android:textColor="@color/gray_d"
+        android:textSize="@dimen/font12" />
+
+    <TextView
+        android:id="@+id/tv_send_total"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:text="总价"
+        android:textColor="@color/gray_d"
+        android:textSize="@dimen/font12" />
+
+    <TextView
+        android:id="@+id/tv_send_reward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="收益"
+        android:textColor="@color/gray_d"
+        android:textSize="@dimen/font12" />
+
+</LinearLayout>

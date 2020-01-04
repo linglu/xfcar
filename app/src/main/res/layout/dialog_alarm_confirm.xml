@@ -14,7 +14,7 @@
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/space44"
+            android:layout_height="@dimen/space44" android:background="@color/white"
             android:gravity="center"
             android:text="一键报警确认"
             android:textStyle="bold"

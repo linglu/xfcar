@@ -4,13 +4,12 @@
               android:layout_height="wrap_content"
               android:orientation="vertical"
               android:gravity="center"
-              android:layout_marginTop="@dimen/space20"
 >
 
     <ImageView
         android:id="@+id/iv_func"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/space28"
+        android:layout_height="@dimen/space28"
         android:src="@mipmap/ic_launcher"
     />
 
@@ -18,6 +17,9 @@
         android:id="@+id/tv_func"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space8"
+        android:textColor="@color/font_gray3"
+        android:textSize="@dimen/font12"
         android:text="车辆管理"
     />
 

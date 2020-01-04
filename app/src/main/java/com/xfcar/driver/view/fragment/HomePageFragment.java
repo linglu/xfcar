@@ -57,7 +57,7 @@ public class HomePageFragment extends BaseFragment implements Action1<String> {
 
     private void init() {
         mRvFunction = mRootView.findViewById(R.id.rv_function);
-        mRvFunction.setLayoutManager(new GridLayoutManager(mActivity, 3));
+        mRvFunction.setLayoutManager(new GridLayoutManager(mActivity, 5));
         mAdapter = new FunctionAdapter(mActivity);
         mAdapter.setCallback(new Action1<FunctionBean>() {
             @Override
