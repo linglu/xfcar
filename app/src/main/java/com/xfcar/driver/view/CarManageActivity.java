@@ -66,13 +66,13 @@ public class CarManageActivity extends BaseActivity {
                     case "蓝牙钥匙":
                         startActivity(BluetoothKeyActivity.class);
                         break;
-                    case "位置":
+                    case "位置信息":
                         startActivity(CarPositionActivity.class);
                         break;
-                    case "理赔":
+                    case "理赔财款":
                         startActivity(ClaimPayListActivity.class);
                         break;
-                    case "维修":
+                    case "维护维修":
                         startActivity(RepairListActivity.class);
                         break;
                     case "车辆安全":

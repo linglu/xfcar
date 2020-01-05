@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
->
+    android:background="@color/gray_f2"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/space44" android:background="@color/white"
-    >
+        android:layout_height="@dimen/space44"
+        android:background="@color/white">
 
         <ImageView
             android:id="@+id/iv_return_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_return_back"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/space20"
-        />
+            android:src="@mipmap/ic_return_back" />
 
         <TextView
             android:id="@+id/tv_title"
@@ -27,123 +25,152 @@
             android:layout_centerInParent="true"
             android:text="权限设置"
             android:textColor="@color/black"
-            android:textSize="@dimen/font16"
-        />
+            android:textSize="@dimen/font16" />
 
     </RelativeLayout>
-    
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/space1"
-        android:background="@color/gray"
-    />
 
-    <View
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/space1"
-        android:layout_marginTop="@dimen/space20"
-        android:background="@color/gray"
-    />
-
-    <TextView
-        android:id="@+id/tv_account"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/space40"
-        android:drawableRight="@drawable/ic_rightarrow"
-        android:gravity="center_vertical"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space10"
+        android:background="@color/white"
+        android:orientation="vertical"
         android:paddingLeft="@dimen/space15"
         android:paddingRight="@dimen/space15"
-        android:text="帐号与安全"
-    />
+        >
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/space1"
-        android:background="@color/gray"
-    />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space52"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/space1"
-        android:layout_marginTop="@dimen/space20"
-        android:background="@color/gray"
-    />
+            <ImageView
+                android:layout_width="@dimen/space18"
+                android:layout_height="@dimen/space22"
+                android:src="@mipmap/security"
+                />
+
+            <TextView
+                android:id="@+id/tv_account"
+                android:layout_marginLeft="@dimen/space15"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space40"
+                android:drawableRight="@drawable/ic_rightarrow"
+                android:gravity="center_vertical"
+                android:text="帐号与安全" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space0.5"
+            android:background="@color/gray_d"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space52"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:layout_width="@dimen/space18"
+                android:layout_height="@dimen/space22"
+                android:src="@mipmap/jinjilianxiren_1"
+                />
+
+            <TextView
+                android:id="@+id/tv_emergency"
+                android:layout_marginLeft="@dimen/space15"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space40"
+                android:drawableRight="@drawable/ic_rightarrow"
+                android:gravity="center_vertical"
+                android:text="紧急联系人" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space0.5"
+            android:background="@color/gray_d"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space52"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:layout_width="@dimen/space18"
+                android:layout_height="@dimen/space22"
+                android:src="@mipmap/lianxiwomen"
+                />
+
+            <TextView
+                android:id="@+id/tv_contact_us"
+                android:layout_marginLeft="@dimen/space15"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space40"
+                android:drawableRight="@drawable/ic_rightarrow"
+                android:gravity="center_vertical"
+                android:text="联系我们" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space0.5"
+            android:background="@color/gray_d"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space52"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:layout_width="@dimen/space18"
+                android:layout_height="@dimen/space22"
+                android:src="@mipmap/guanyu"
+                />
+
+            <TextView
+                android:id="@+id/tv_about"
+                android:layout_marginLeft="@dimen/space15"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space40"
+                android:drawableRight="@drawable/ic_rightarrow"
+                android:gravity="center_vertical"
+                android:text="关于旋风卫士" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space0.5"
+            android:background="@color/gray_d"
+            />
+
+    </LinearLayout>
+
     <TextView
-        android:id="@+id/tv_emergency"
+        android:id="@+id/tv_logout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/space40"
-        android:drawableRight="@drawable/ic_rightarrow"
-        android:gravity="center_vertical"
-        android:paddingLeft="@dimen/space15"
-        android:paddingRight="@dimen/space15"
-        android:text="紧急联系人"
-    />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/space1"
-        android:background="@color/gray"
-    />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/space1"
-        android:layout_marginTop="@dimen/space20"
-        android:background="@color/gray"
-    />
-    <TextView
-        android:id="@+id/tv_contact_us"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/space40"
-        android:drawableRight="@drawable/ic_rightarrow"
-        android:gravity="center_vertical"
-        android:paddingLeft="@dimen/space15"
-        android:paddingRight="@dimen/space15"
-        android:text="联系我们"
-    />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/space1"
-        android:background="@color/gray"
-    />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/space1"
-        android:layout_marginTop="@dimen/space20"
-        android:background="@color/gray"
-    />
-    <TextView
-        android:id="@+id/tv_about"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/space40"
-        android:drawableRight="@drawable/ic_rightarrow"
-        android:gravity="center_vertical"
-        android:paddingLeft="@dimen/space15"
-        android:paddingRight="@dimen/space15"
-        android:text="关于旋风卫士"
-    />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/space1"
-        android:background="@color/gray"
-    />
-
-    <Button
-        android:id="@+id/bt_logout"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/space40"
-        android:layout_marginLeft="@dimen/space20"
-        android:layout_marginRight="@dimen/space20"
-        android:background="@drawable/selector_green_btn_login"
         android:gravity="center"
-        android:layout_marginTop="@dimen/space20"
         android:text="退出登录"
-        android:layout_centerInParent="true"
-        android:textColor="@color/background_primary"
-        android:textSize="@dimen/font_large"
-    />
+        android:textSize="@dimen/font14"
+        android:textColor="@color/font_gray6"
+        android:layout_marginTop="@dimen/space6"
+        android:background="@color/white"
+        />
 
 </LinearLayout>

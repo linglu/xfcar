@@ -8,7 +8,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/space44" android:background="@color/white"
+        android:layout_height="@dimen/space44"
+        android:background="@color/white"
     >
 
         <ImageView
@@ -31,95 +32,95 @@
         />
 
     </RelativeLayout>
-    
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/space1"
-        android:background="@color/gray"
-    />
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/space25"
-        android:layout_marginRight="@dimen/space25"
-        android:layout_marginTop="@dimen/space15">
+        android:layout_height="@dimen/space40"
+        android:layout_marginTop="@dimen/space15"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/space20"
+        android:layout_marginRight="@dimen/space20"
+        android:paddingLeft="@dimen/space15"
+        android:paddingRight="@dimen/space15"
+        android:elevation="@dimen/space1"
+        android:background="@drawable/shape_round"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/xingming"
+            />
 
         <com.xfcar.driver.widget.ClearEditText
             android:id="@+id/et_emergency_name"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/space50"
-            android:layout_marginRight="@dimen/space5"
-            android:paddingLeft="@dimen/space20"
+            android:layout_height="match_parent"
             android:background="@null"
             android:gravity="center_vertical"
-            android:hint="请输入用户名"
+            android:hint="姓名"
+            android:inputType="text"
+            android:paddingLeft="@dimen/space9"
+            android:maxLength="11"
+            android:textColor="@color/font_primary"
+            android:textColorHint="@color/hint_text_color"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/font_normal"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space40"
+        android:layout_marginTop="@dimen/space15"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/space20"
+        android:layout_marginRight="@dimen/space20"
+        android:paddingLeft="@dimen/space15"
+        android:paddingRight="@dimen/space15"
+        android:elevation="@dimen/space1"
+        android:background="@drawable/shape_round"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/dianhuax"
+            />
+
+        <com.xfcar.driver.widget.ClearEditText
+            android:id="@+id/et_emergency_mobile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/space9"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="联系方式"
             android:inputType="text"
             android:maxLength="11"
             android:textColor="@color/font_primary"
             android:textColorHint="@color/hint_text_color"
             android:textCursorDrawable="@null"
             android:textSize="@dimen/font_normal"
-        />
-    </RelativeLayout>
+            />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/div_line_height"
-        android:layout_marginLeft="@dimen/space25"
-        android:layout_marginRight="@dimen/space25"
-        android:background="@color/divider_dark"/>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/space25"
-        android:layout_marginRight="@dimen/space25"
-    >
-
-        <com.xfcar.driver.widget.ClearEditText
-            android:id="@+id/et_emergency_mobile"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/space50"
-            android:paddingLeft="@dimen/space20"
-            android:layout_marginRight="@dimen/space5"
-            android:background="@null"
-            android:gravity="center_vertical"
-            android:hint="@string/account_hint_name"
-            android:inputType="number"
-            android:maxLength="11"
-            android:textColor="@color/font_primary"
-            android:textColorHint="@color/hint_text_color"
-            android:textCursorDrawable="@null"
-            android:textSize="@dimen/font_normal"
-        />
-    </RelativeLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/div_line_height"
-        android:layout_marginLeft="@dimen/space25"
-        android:layout_marginRight="@dimen/space25"
-        android:background="@color/divider_dark"/>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/space10"
-        android:layout_marginTop="@dimen/space20"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btn_submit"
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/space40"
-            android:layout_marginLeft="@dimen/space20"
-            android:layout_marginRight="@dimen/space20"
-            android:background="@drawable/selector_green_btn_login"
-            android:gravity="center"
-            android:text="@string/submit"
-            android:textColor="@color/background_primary"
-            android:textSize="@dimen/font_large" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/space40"
+        android:layout_marginLeft="@dimen/space20"
+        android:layout_marginRight="@dimen/space20"
+        android:background="@drawable/selector_green_btn_login"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/space20"
+        android:layout_marginBottom="@dimen/space25"
+        android:text="提交"
+        android:textColor="@color/background_primary"
+        android:textSize="@dimen/font14"/>
 
 </LinearLayout>

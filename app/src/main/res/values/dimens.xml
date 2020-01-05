@@ -27,7 +27,7 @@
     <dimen name="space85">85dp</dimen>
     <dimen name="font24">24sp</dimen>
     <dimen name="font_normal">16sp</dimen>
-    <dimen name="btn_radius_size">3dp</dimen>
+    <dimen name="btn_radius_size">20dp</dimen>
     <dimen name="preference_icon_minWidth">0dp</dimen>
     <dimen name="preference_widget_width">48dp</dimen>
     <dimen name="font_action_bar_title">18sp</dimen>

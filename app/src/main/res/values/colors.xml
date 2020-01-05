@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FFAF33</color>
-    <color name="colorPrimaryDark">#FD9930</color>
+    <color name="colorPrimary">#F2731F</color>
+    <color name="colorPrimaryDark">#F56624</color>
     <color name="colorAccent">#D81B60</color>
     <color name="color_yellow">#F2731F</color>
 
@@ -25,7 +25,7 @@
     <color name="app_primary">#20bf7a</color>
     <color name="color_hs000">#000000</color>
     <color name="btn_green">@color/colorPrimary</color>
-    <color name="btn_green_press">#8C6D1B</color>
+    <color name="btn_green_press">@color/colorPrimaryDark</color>
     <color name="btn_white">#ffffff</color>
     <color name="btn_white_press">#e5e5e5</color>
     <color name="btn_red">#ea3e25</color>

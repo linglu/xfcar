@@ -23,10 +23,6 @@ import java.util.Locale;
 
 public class SbscrbShortActivity extends BaseActivity implements View.OnClickListener {
 
-
-
-    private ImageView mIvReturnBack;
-    private TextView mTvTitle;
     private TextView mTvDatePick;
     private EditText mEtCarBrand;
     private int mYear;
