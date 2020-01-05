@@ -8,7 +8,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/space44" android:background="@color/white"
+        android:layout_height="@dimen/space44"
+        android:background="@color/white"
     >
 
         <ImageView
@@ -25,26 +26,77 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="余额"
+            android:text="账目总览"
             android:textColor="@color/black"
             android:textSize="@dimen/font16"
         />
 
     </RelativeLayout>
-    
-    <View
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/space1"
-        android:background="@color/gray"
-    />
+        android:layout_height="@dimen/space181"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/space20"
+        android:background="@drawable/shape_gradient"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="账目明细"
+            android:layout_marginLeft="@dimen/space10"
+            android:layout_marginTop="@dimen/space10"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font14"
+            />
+
+        <Spinner
+            android:id="@+id/sp_month"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space15"
+            android:spinnerMode="dropdown"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_balance_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <View
+            android:layout_width="@dimen/space2"
+            android:layout_height="match_parent"
+            android:background="@color/color_yellow"
+            android:layout_marginLeft="@dimen/space20"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space10"
+            android:text="订单收益"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font15"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_car_function"
+        android:id="@+id/rv_reward_records"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.0"
-        android:layout_marginLeft="@dimen/space15"
-        android:layout_marginRight="@dimen/space15"
-    />
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/space15"
+        />
+
 
 </LinearLayout>
