@@ -11,9 +11,6 @@ import com.xfcar.driver.utils.DataManager;
 
 public class SettingActivity extends BaseActivity implements View.OnClickListener {
 
-
-
-    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +25,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         findViewById(R.id.tv_contact_us).setOnClickListener(this);
         findViewById(R.id.tv_about).setOnClickListener(this);
 
-        findViewById(R.id.bt_logout).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.tv_logout).setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
 

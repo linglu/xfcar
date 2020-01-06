@@ -3,15 +3,12 @@ package com.xfcar.driver.view;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.xfcar.driver.R;
 import com.xfcar.driver.mvp.BaseActivity;
-import com.xfcar.driver.network.Requester;
 import com.xfcar.driver.network.ResultCallback;
-import com.xfcar.driver.utils.DataManager;
 import com.xfcar.driver.utils.Utils;
 
 public class InviteActivity extends BaseActivity implements View.OnClickListener {

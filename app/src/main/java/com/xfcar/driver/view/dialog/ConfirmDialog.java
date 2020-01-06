@@ -96,7 +96,7 @@ public class ConfirmDialog extends DialogFragment implements View.OnClickListene
             if (window != null) {
                 window.setWindowAnimations(R.style.dialog_style);
 //                window.setGravity(Gravity.BOTTOM);
-                window.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 //                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ScreenUtils.screenHeightPixel(mContext) * 3 / 4);
                 window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             }

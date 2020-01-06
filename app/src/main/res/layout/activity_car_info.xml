@@ -4,11 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/gray_fb"
 >
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/space44"
+        android:background="@color/white"
     >
 
         <ImageView
@@ -32,121 +34,158 @@
 
     </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/space1"
-        android:background="@color/gray"
-    />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/space20"
-    >
+        android:paddingLeft="@dimen/space15"
+        android:layout_marginTop="@dimen/space50"
+        android:background="@drawable/shape_round"
+        android:layout_marginLeft="@dimen/space20"
+        android:layout_marginRight="@dimen/space20"
+        android:elevation="1dp"
+        >
 
-        <TextView
-            android:id="@+id/tv_id"
-            style="@style/common_text_view"
-            android:text="id: "
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingBottom="@dimen/space20"
+            android:paddingTop="@dimen/space40"
+            >
 
-        <TextView
-            android:id="@+id/tv_car_no"
-            style="@style/common_text_view"
-            android:text="carNo: "
-        />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/chepaihao"
+                />
 
-        <TextView
-            android:id="@+id/tv_engine_no"
-            style="@style/common_text_view"
-            android:text="engineNo: "
-        />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="车牌号码:"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                android:layout_marginLeft="@dimen/space7"
+                />
 
-        <TextView
-            android:id="@+id/tv_brand"
-            style="@style/common_text_view"
-            android:text="brand: "
-        />
+            <TextView
+                android:id="@+id/tv_car_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="#ff333333"
+                android:textSize="14sp"
+                android:layout_marginLeft="@dimen/space7"
+                />
 
-        <TextView
-            android:id="@+id/tv_model_no"
-            style="@style/common_text_view"
-            android:text="modelNo: "
-        />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_status"
-            style="@style/common_text_view"
-            android:text="status: "
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingBottom="@dimen/space20"
+            android:paddingTop="@dimen/space20"
+            >
 
-        <TextView
-            android:id="@+id/tv_type"
-            style="@style/common_text_view"
-            android:text="type: "
-        />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/chexing_1"
+                />
 
-        <TextView
-            android:id="@+id/tv_username"
-            style="@style/common_text_view"
-            android:text="username: "
-        />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="车型"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                android:layout_marginLeft="@dimen/space7"
+                />
 
-        <TextView
-            android:id="@+id/tv_user_id"
-            style="@style/common_text_view"
-            android:text="userId: "
-        />
+            <TextView
+                android:id="@+id/tv_model_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ff333333"
+                android:textSize="14sp"
+                android:layout_marginLeft="@dimen/space7"
+                />
 
-        <TextView
-            android:id="@+id/tv_company"
-            style="@style/common_text_view"
-            android:text="company: "
-        />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_macid"
-            style="@style/common_text_view"
-            android:text="macid: "
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/space20"
+            android:paddingTop="@dimen/space20"
+            android:gravity="center_vertical"
+            >
 
-        <TextView
-            android:id="@+id/tv_objectid"
-            style="@style/common_text_view"
-            android:textSize="@dimen/font_small"
-            android:text="objectid: "
-        />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/fadongji"
+                />
 
-        <TextView
-            android:id="@+id/tv_del_flag"
-            style="@style/common_text_view"
-            android:text="delFlag: "
-        />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="发动机号:"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                android:layout_marginLeft="@dimen/space7"
+                />
 
-        <TextView
-            android:id="@+id/tv_create_by"
-            style="@style/common_text_view"
-            android:text="createBy: "
-        />
+            <TextView
+                android:id="@+id/tv_engine_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ff333333"
+                android:textSize="14sp"
+                android:layout_marginLeft="@dimen/space7"
+                />
 
-        <TextView
-            android:id="@+id/tv_create_date"
-            style="@style/common_text_view"
-            android:text="createDate: "
-        />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_update_by"
-            style="@style/common_text_view"
-            android:text="updateBy: "
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingBottom="@dimen/space40"
+            android:paddingTop="@dimen/space20"
+            >
 
-        <TextView
-            android:id="@+id/tv_update_date"
-            style="@style/common_text_view"
-            android:text="updateDate: "
-        />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ele"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="剩余电量:"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                android:layout_marginLeft="@dimen/space7"
+                />
+
+            <TextView
+                android:id="@+id/tv_electric_quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ff333333"
+                android:textSize="14sp"
+                android:layout_marginLeft="@dimen/space7"
+                />
+
+        </LinearLayout>
 
     </LinearLayout>
 

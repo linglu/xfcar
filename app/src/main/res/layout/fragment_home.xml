@@ -6,9 +6,32 @@
     android:orientation="vertical"
 >
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space44" android:background="@color/white"
+        >
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="首页"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font16"
+            />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space1"
+        android:background="@color/gray"
+        />
+
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/space160"
+        android:layout_height="@dimen/space180"
     >
         <com.wangpeiyuan.cycleviewpager2.CycleViewPager2
             android:id="@+id/cvp_pager"
@@ -19,27 +42,28 @@
         <ViewFlipper
             android:id="@+id/view_flipper"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/space27"
             android:inAnimation="@anim/anim_in"
             android:outAnimation="@anim/anim_out"
         />
     </FrameLayout>
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_function"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/space15"
         android:layout_marginRight="@dimen/space15"
-        android:layout_weight="1.0"
+        android:layout_marginTop="@dimen/space20"
+        android:layout_marginBottom="@dimen/space20"
     />
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/space160"
+        android:layout_height="@dimen/space165"
         android:gravity="center"
         android:text="欢迎加入"
+        android:background="@color/gray"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/font18"
     />

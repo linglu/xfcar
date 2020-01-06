@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#C4B454</color>
-    <color name="colorPrimaryDark">#8C6D1B</color>
+    <color name="colorPrimary">#F2731F</color>
+    <color name="colorPrimaryDark">#F56624</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="color_yellow">#F2731F</color>
 
     <color name="viewfinder_mask">#333333</color>
     <color name="viewfinder_laser">#ffcc0000</color>
@@ -24,7 +25,7 @@
     <color name="app_primary">#20bf7a</color>
     <color name="color_hs000">#000000</color>
     <color name="btn_green">@color/colorPrimary</color>
-    <color name="btn_green_press">#8C6D1B</color>
+    <color name="btn_green_press">@color/colorPrimaryDark</color>
     <color name="btn_white">#ffffff</color>
     <color name="btn_white_press">#e5e5e5</color>
     <color name="btn_red">#ea3e25</color>
@@ -62,6 +63,7 @@
     <color name="divider_light">#e5e5e5</color>
     <color name="divider_bar_gray">#E3E3E3</color>
     <color name="divider_dark">#dddddd</color>
+    <color name="gray_d">#dddddd</color>
     <color name="divider_gray_dark">#e6e6e6</color>
     <color name="divider_living_home">#F5F5F5</color>
     <color name="divider_gray">#cccccc</color>
@@ -112,6 +114,8 @@
     <color name="bg_me_title">#33000000</color>
     <color name="font_select_green">#71b21a</color>
     <color name="font_choose_gray">#ff666666</color>
+    <color name="gray_fb">#fbfbfb</color>
+    <color name="gray_f2">#f2f2f2</color>
     <color name="font_yellow">#ddbd85</color>
     <color name="font_yellow_light">#fcd7a9</color>
     <color name="font_midle_yellow">#ff7339</color>
@@ -172,7 +176,7 @@
     <color name="rent_filter_select">#DEEFE7</color>
     <color name="background">#282828</color>
     <color name="transparent_background">#30000000</color>
-    <color name="blue">#0000FF</color>
+    <color name="blue">#4B5DA2</color>
     <color name="pink">#FFE6E6</color>
     <color name="yellow">#F99503</color>
     <color name="coffee">#6C5C50</color>

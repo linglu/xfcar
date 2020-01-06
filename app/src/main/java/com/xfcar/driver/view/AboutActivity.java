@@ -18,18 +18,12 @@ public class AboutActivity extends BaseActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
         initView();
-        TextView tv = findViewById(R.id.tv_version);
-        tv.setText(Utils.getVersionName(this));
-        findViewById(R.id.tv_law_protocol).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
     }
 
     private void initView() {
         findViewById(R.id.iv_return_back).setOnClickListener(this);
+        TextView tvVersion = findViewById(R.id.tv_version);
+        tvVersion.setText(Utils.getVersionName(this));
     }
 
     @Override

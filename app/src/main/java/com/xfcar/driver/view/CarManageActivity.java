@@ -10,6 +10,7 @@ import com.xfcar.driver.R;
 import com.xfcar.driver.model.mybean.Command;
 import com.xfcar.driver.model.viewbean.FunctionBean;
 import com.xfcar.driver.mvp.BaseActivity;
+import com.xfcar.driver.view.adapter.CarManAdapter;
 import com.xfcar.driver.view.adapter.FunctionAdapter;
 
 import rx.functions.Action1;
@@ -20,7 +21,7 @@ import rx.functions.Action1;
 public class CarManageActivity extends BaseActivity {
 
     private RecyclerView mRvFunction;
-    private FunctionAdapter mAdapter;
+    private CarManAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +43,8 @@ public class CarManageActivity extends BaseActivity {
         });
 
         mRvFunction = findViewById(R.id.rv_car_function);
-        mRvFunction.setLayoutManager(new GridLayoutManager(this, 3));
-        mAdapter = new FunctionAdapter(this);
+        mRvFunction.setLayoutManager(new GridLayoutManager(this, 4));
+        mAdapter = new CarManAdapter(this);
         mAdapter.setCallback(new Action1<FunctionBean>() {
             @Override
             public void call(FunctionBean appBean) {
@@ -65,13 +66,13 @@ public class CarManageActivity extends BaseActivity {
                     case "蓝牙钥匙":
                         startActivity(BluetoothKeyActivity.class);
                         break;
-                    case "位置":
+                    case "位置信息":
                         startActivity(CarPositionActivity.class);
                         break;
-                    case "理赔":
+                    case "理赔财款":
                         startActivity(ClaimPayListActivity.class);
                         break;
-                    case "维修":
+                    case "维护维修":
                         startActivity(RepairListActivity.class);
                         break;
                     case "车辆安全":

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:gravity="center"
+                android:layout_marginTop="@dimen/space20"
+>
+
+    <ImageView
+        android:id="@+id/iv_car_func"
+        android:layout_width="@dimen/space49"
+        android:layout_height="@dimen/space49"
+        android:src="@mipmap/ic_launcher"
+    />
+
+    <TextView
+        android:id="@+id/tv_car_func"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space1"
+        android:textColor="@color/font_gray3"
+        android:textSize="@dimen/font12"
+        android:text="车辆管理"
+    />
+
+</LinearLayout>

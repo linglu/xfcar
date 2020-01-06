@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
->
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/space44"
+        android:background="@color/white"
+
     >
 
         <RelativeLayout
@@ -40,198 +40,166 @@
 
     </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/space1"
-        android:background="@color/gray"
-    />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/space40"
+        android:layout_marginTop="@dimen/space40"
         android:orientation="horizontal"
-        android:layout_marginLeft="@dimen/space25"
-        android:layout_marginRight="@dimen/space25"
-        android:layout_marginTop="@dimen/space15"
-    >
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/space20"
+        android:layout_marginRight="@dimen/space20"
+        android:paddingLeft="@dimen/space15"
+        android:paddingRight="@dimen/space15"
+        android:elevation="@dimen/space1"
+        android:background="@drawable/shape_round"
+        >
 
-        <TextView
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="邀请人姓名: "
-            android:textSize="@dimen/font_normal"
-        />
+            android:src="@mipmap/xingming"
+            />
 
         <com.xfcar.driver.widget.ClearEditText
             android:id="@+id/et_invite_name"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/space50"
-            android:layout_marginLeft="@dimen/space10"
-            android:layout_marginRight="@dimen/space5"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/space9"
             android:background="@null"
             android:gravity="center_vertical"
-            android:hint="请输入邀请人姓名"
+            android:hint="邀请人姓名"
             android:inputType="text"
             android:maxLength="11"
-            android:paddingLeft="@dimen/space20"
             android:textColor="@color/font_primary"
             android:textColorHint="@color/hint_text_color"
             android:textCursorDrawable="@null"
-            android:textSize="@dimen/font_normal"
-        />
+            android:textSize="@dimen/font14"
+            />
+
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/div_line_height"
-        android:layout_marginLeft="@dimen/space25"
-        android:layout_marginRight="@dimen/space25"
-        android:background="@color/divider_dark"/>
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="@dimen/space25"
-        android:layout_marginRight="@dimen/space25"
+        android:layout_height="@dimen/space40"
         android:layout_marginTop="@dimen/space15"
-    >
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/space20"
+        android:layout_marginRight="@dimen/space20"
+        android:paddingLeft="@dimen/space15"
+        android:paddingRight="@dimen/space15"
+        android:elevation="@dimen/space1"
+        android:background="@drawable/shape_round"
+        >
 
-        <TextView
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="邀请人工号: "
-            android:textSize="@dimen/font_normal"
-        />
+            android:src="@mipmap/shenqingrengonghao"
+            />
 
         <TextView
             android:id="@+id/tv_work_code"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/space50"
-            android:layout_marginLeft="@dimen/space10"
-            android:layout_marginRight="@dimen/space5"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/space9"
             android:background="@null"
             android:gravity="center_vertical"
-            tools:text="XF001"
-            android:inputType="text"
+            android:hint="邀请人工号"
             android:maxLength="11"
-            android:paddingLeft="@dimen/space20"
             android:textColor="@color/font_primary"
             android:textColorHint="@color/hint_text_color"
             android:textCursorDrawable="@null"
-            android:textSize="@dimen/font_normal"
-        />
+            android:textSize="@dimen/font14"
+            />
+
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/div_line_height"
-        android:layout_marginLeft="@dimen/space25"
-        android:layout_marginRight="@dimen/space25"
-        android:background="@color/divider_dark"/>
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="@dimen/space25"
-        android:layout_marginRight="@dimen/space25"
+        android:layout_height="@dimen/space40"
         android:layout_marginTop="@dimen/space15"
-    >
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/space20"
+        android:layout_marginRight="@dimen/space20"
+        android:paddingLeft="@dimen/space15"
+        android:paddingRight="@dimen/space15"
+        android:elevation="@dimen/space1"
+        android:background="@drawable/shape_round"
+        >
 
-        <TextView
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="被邀人姓名: "
-            android:textSize="@dimen/font_normal"
-        />
+            android:src="@mipmap/xingming"
+            />
 
         <com.xfcar.driver.widget.ClearEditText
             android:id="@+id/et_invited_name"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/space50"
-            android:layout_marginLeft="@dimen/space10"
-            android:layout_marginRight="@dimen/space5"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/space9"
             android:background="@null"
             android:gravity="center_vertical"
-            android:hint="请输入被邀人姓名"
+            android:hint="被邀人姓名"
             android:inputType="text"
             android:maxLength="11"
-            android:paddingLeft="@dimen/space20"
             android:textColor="@color/font_primary"
             android:textColorHint="@color/hint_text_color"
             android:textCursorDrawable="@null"
-            android:textSize="@dimen/font_normal"
-        />
+            android:textSize="@dimen/font14"
+            />
+
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/div_line_height"
-        android:layout_marginLeft="@dimen/space25"
-        android:layout_marginRight="@dimen/space25"
-        android:background="@color/divider_dark"/>
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="@dimen/space25"
-        android:layout_marginRight="@dimen/space25"
+        android:layout_height="@dimen/space40"
         android:layout_marginTop="@dimen/space15"
-    >
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/space20"
+        android:layout_marginRight="@dimen/space20"
+        android:paddingLeft="@dimen/space15"
+        android:paddingRight="@dimen/space15"
+        android:elevation="@dimen/space1"
+        android:background="@drawable/shape_round"
+        >
 
-        <TextView
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="被邀人电话: "
-            android:textSize="@dimen/font_normal"
-        />
+            android:src="@mipmap/dianhuax"
+            />
 
         <com.xfcar.driver.widget.ClearEditText
             android:id="@+id/et_invited_mobile"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/space50"
-            android:layout_marginLeft="@dimen/space10"
-            android:layout_marginRight="@dimen/space5"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/space9"
             android:background="@null"
             android:gravity="center_vertical"
-            android:hint="请输入被邀人手机号"
+            android:hint="被邀人电话"
             android:inputType="text"
             android:maxLength="11"
-            android:paddingLeft="@dimen/space20"
             android:textColor="@color/font_primary"
             android:textColorHint="@color/hint_text_color"
             android:textCursorDrawable="@null"
-            android:textSize="@dimen/font_normal"
-        />
+            android:textSize="@dimen/font14"
+            />
+
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/div_line_height"
-        android:layout_marginLeft="@dimen/space25"
-        android:layout_marginRight="@dimen/space25"
-        android:background="@color/divider_dark"/>
-
-    <LinearLayout
+    <Button
+        android:id="@+id/btn_submit"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/space10"
+        android:layout_height="@dimen/space40"
+        android:layout_marginLeft="@dimen/space20"
+        android:layout_marginRight="@dimen/space20"
+        android:background="@drawable/selector_green_btn_login"
+        android:gravity="center"
         android:layout_marginTop="@dimen/space20"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btn_submit"
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/space40"
-            android:layout_marginLeft="@dimen/space20"
-            android:layout_marginRight="@dimen/space20"
-            android:background="@drawable/selector_green_btn_login"
-            android:gravity="center"
-            android:text="@string/submit"
-            android:textColor="@color/background_primary"
-            android:textSize="@dimen/font_large"/>
-    </LinearLayout>
+        android:layout_marginBottom="@dimen/space25"
+        android:text="确      定"
+        android:textColor="@color/background_primary"
+        android:textSize="@dimen/font14"/>
 
 </LinearLayout>
