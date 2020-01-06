@@ -8,7 +8,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/space44" android:background="@color/white"
+        android:layout_height="@dimen/space44"
+        android:background="@color/white"
     >
 
         <ImageView
@@ -32,117 +33,123 @@
 
     </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/space1"
-        android:background="@color/gray"
-    />
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/space15"
-    >
+        android:paddingLeft="@dimen/space15"
+        android:layout_marginTop="@dimen/space50"
+        android:background="@drawable/shape_round"
+        android:layout_marginLeft="@dimen/space20"
+        android:layout_marginRight="@dimen/space20"
+        android:elevation="1dp"
+        >
 
-        <TextView
-            android:id="@+id/tv_id"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="id: %s"
-        />
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingBottom="@dimen/space20"
+            android:paddingTop="@dimen/space40"
+            >
 
-        <TextView
-            android:id="@+id/tv_user_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="userId: %s"
-        />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/weizhi"
+                />
 
-        <TextView
-            android:id="@+id/tv_user_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="userName: %s"
-        />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="维修位置:"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                android:layout_marginLeft="@dimen/space7"
+                />
 
-        <TextView
-            android:id="@+id/tv_car_no"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="carNo: %s"
-        />
+            <TextView
+                android:id="@+id/tv_repair_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="#ff333333"
+                android:textSize="14sp"
+                android:layout_marginLeft="@dimen/space7"
+                />
 
-        <TextView
-            android:id="@+id/tv_amount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="amount: %s"
-        />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_maintain_time"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="maintainTime: %s"
-        />
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingBottom="@dimen/space20"
+            android:paddingTop="@dimen/space20"
+            >
 
-        <TextView
-            android:id="@+id/tv_maintain_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="maintainName: %s"
-        />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/shijian"
+                />
 
-        <TextView
-            android:id="@+id/tv_maintain_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="maintainLocation: %s"
-        />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="维修时间:"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                android:layout_marginLeft="@dimen/space7"
+                />
 
-        <TextView
-            android:id="@+id/tv_repair_item"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="repairItem: %s"
-        />
+            <TextView
+                android:id="@+id/tv_repair_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ff333333"
+                android:textSize="14sp"
+                android:layout_marginLeft="@dimen/space7"
+                />
 
-        <TextView
-            android:id="@+id/tv_del_flag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="delFlag: %s"
-        />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_create_by"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="createBy: %s"
-        />
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingBottom="@dimen/space40"
+            android:paddingTop="@dimen/space20"
+            >
 
-        <TextView
-            android:id="@+id/tv_create_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="createDate: %s"
-        />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/jine"
+                />
 
-        <TextView
-            android:id="@+id/tv_update_by"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="updateBy: %s"
-        />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="维修费用:"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                android:layout_marginLeft="@dimen/space7"
+                />
 
-        <TextView
-            android:id="@+id/tv_update_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="updateDate: %s"
-        />
+            <TextView
+                android:id="@+id/tv_repair_fee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ff333333"
+                android:textSize="14sp"
+                android:layout_marginLeft="@dimen/space7"
+                />
+
+        </LinearLayout>
 
     </LinearLayout>
 

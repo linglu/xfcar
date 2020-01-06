@@ -41,7 +41,7 @@ public interface ApiService {
     Observable<Response<String>> appAlarmRecordOneKeyAlarm(@Body AlarmRecordEntity alarmrecordentity);
 
     //App车辆信息: JSON格式传参userId
-    @POST("ioc/app/car/appCarGetCarInfoByUser")
+    @POST("ioc/app/car/getCarInfoByUser")
     Observable<Response<CarInfoBean>> appCarGetCarInfoByUser(@Body UserEntity ue);
 
     //App车辆信息: JSON格式传参userId
