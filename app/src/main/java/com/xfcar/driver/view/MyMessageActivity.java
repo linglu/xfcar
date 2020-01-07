@@ -4,14 +4,19 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.xfcar.driver.R;
+import com.xfcar.driver.model.viewbean.MsgBean;
+import com.xfcar.driver.model.viewbean.RewardItemBean;
 import com.xfcar.driver.mvp.BaseActivity;
-import com.xfcar.driver.network.Requester;
-import com.xfcar.driver.utils.DataManager;
+import com.xfcar.driver.view.adapter.MsgAdapter;
+import com.xfcar.driver.view.adapter.RewardAdapter;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class MyMessageActivity extends BaseActivity implements View.OnClickListener {
 
-
-
+    private RecyclerView mRvMsg;
+    private MsgAdapter mMsgAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +27,14 @@ public class MyMessageActivity extends BaseActivity implements View.OnClickListe
 
     private void initView() {
         findViewById(R.id.iv_return_back).setOnClickListener(this);
+        findViewById(R.id.ll_leave_msg).setOnClickListener(this);
+        mRvMsg = findViewById(R.id.rv_message);
+
+        mMsgAdapter = new MsgAdapter(this);
+        mRvMsg.setLayoutManager(new LinearLayoutManager(this));
+        mRvMsg.setAdapter(mMsgAdapter);
+        mMsgAdapter.setData(MsgBean.mock());
+
     }
 
     @Override
@@ -29,6 +42,8 @@ public class MyMessageActivity extends BaseActivity implements View.OnClickListe
         int id = v.getId();
         if (id == R.id.iv_return_back) {
             finish();
+        } else if (id == R.id.ll_leave_msg) {
+            startActivity(AdviceMsgActivity.class);
         }
     }
 }

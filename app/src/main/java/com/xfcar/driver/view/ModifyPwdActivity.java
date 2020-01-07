@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 import com.xfcar.driver.R;
 import com.xfcar.driver.mvp.BaseActivity;
+import com.xfcar.driver.network.ResultCallback;
 import com.xfcar.driver.utils.SafeHandler;
 import com.xfcar.driver.utils.Utils;
 
@@ -20,10 +21,9 @@ import java.util.TimerTask;
  */
 public class ModifyPwdActivity extends BaseActivity implements View.OnClickListener {
 
+    private EditText mEtOldPwd;
+    private EditText mEtNewPwd;
     private EditText mEtMobile;
-    private EditText mEtCode;
-    private Button mBtGetCaptcha;
-    private String mPhoneNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +35,10 @@ public class ModifyPwdActivity extends BaseActivity implements View.OnClickListe
     private void initView() {
         findViewById(R.id.iv_return_back).setOnClickListener(this);
 
-        mEtMobile = findViewById(R.id.et_new_mobile);
-        mEtCode = findViewById(R.id.et_code);
-        mBtGetCaptcha = findViewById(R.id.btn_getCode);
-        findViewById(R.id.btn_getCode).setOnClickListener(this);
-        findViewById(R.id.btn_modify).setOnClickListener(this);
+        mEtOldPwd = findViewById(R.id.et_old_pwd);
+        mEtNewPwd = findViewById(R.id.et_new_pwd);
+        mEtMobile = findViewById(R.id.et_mobile);
+        findViewById(R.id.btn_submit).setOnClickListener(this);
     }
 
     @Override
@@ -47,93 +46,41 @@ public class ModifyPwdActivity extends BaseActivity implements View.OnClickListe
         int id = v.getId();
         if (id == R.id.iv_return_back) {
             finish();
-        } else if (id == R.id.btn_getCode) {
+        } else if (id == R.id.btn_submit) {
             //点击获取验证码
-            mPhoneNumber = mEtMobile.getText().toString();
-            if (TextUtils.isEmpty(mPhoneNumber)) {
+            String mobile = mEtMobile.getText().toString();
+            String newPwd = mEtNewPwd.getText().toString();
+            String oldPwd = mEtOldPwd.getText().toString();
+            if (TextUtils.isEmpty(mobile)) {
                 toastMsg(R.string.account_hint_name);
                 mEtMobile.requestFocus();
-            } else if (!Utils.isPhoneValid(mPhoneNumber)) {
+            } else if (!Utils.isPhoneValid(mobile)) {
                 toastMsg(R.string.account_tel_pattern_wrong);
                 mEtMobile.setText("");
                 mEtMobile.requestFocus();
+            } else if (newPwd.length() < 6) {
+                toastMsg("新密码太短");
+                mEtNewPwd.setText("");
+                mEtNewPwd.requestFocus();
+            } else if (oldPwd.length() < 6) {
+                toastMsg("旧密码太短");
+                mEtOldPwd.setText("");
+                mEtOldPwd.requestFocus();
             } else {
-//                mRequester.appUserUpdatebyuser(mInstance, mEtMobile.getText().toString(), mEtMobile.getText().toString(), 1,
-//                        new ResultCallback<String>() {
-//                            @Override
-//                            public void onSuccess(String o) {
-//                                toastMsg("修改成功");
-//                                mDataManager.setMobile(mPhoneNumber);
-//                            }
-//
-//                            @Override
-//                            public void onFail(String msg) {
-//                                toastMsg(msg);
-//                            }
-//                        });
+                mRequester.appUserUpdatePwByUser(this, mDataManager.getUserId(),
+                        oldPwd, newPwd, mobile, new ResultCallback<String>() {
+                    @Override
+                    public void onSuccess(String s) {
+                        toastMsg("修改成功");
+                        finish();
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        toastMsg(msg);
+                    }
+                });
             }
-        } else if (id == R.id.btn_modify) {
-        }
-    }
-
-    private final static class CustomHandler extends SafeHandler<ModifyPwdActivity> {
-
-        public CustomHandler(ModifyPwdActivity objs) {
-            super(objs);
-        }
-
-        @Override
-        public void handlerMessageAction(Message msg) {
-            ModifyPwdActivity helper = getObj();
-            if (helper.mCanGetCode) {
-                helper.mBtGetCaptcha.setText(helper.mGetCodeBtnTitle);
-                helper.mBtGetCaptcha.setBackgroundResource(R.drawable.shape_button_green);
-                helper.mBtGetCaptcha.setEnabled(true);
-                helper.mTimer.cancel();
-                helper.DurRetGetCode = 60;
-            } else {
-                helper.mBtGetCaptcha.setBackgroundResource(R.drawable.shape_button_green);
-                helper.mBtGetCaptcha.setEnabled(false);
-                String s = String.format(helper.getResources().getString(R.string.account_msg_send_again), helper.DurRetGetCode--);
-                helper.mBtGetCaptcha.setText(s);
-                if (helper.DurRetGetCode <= 0) {
-                    helper.mCanGetCode = true;
-                }
-            }
-        }
-    }
-
-
-    private int DurRetGetCode = 60;
-    private boolean mCanGetCode = true;
-    private Timer mTimer;
-    private CustomHandler mHandler = new CustomHandler(this);
-    private String mGetCodeBtnTitle;
-
-    private void changeGetCodeBtnContent() {
-        mGetCodeBtnTitle = mBtGetCaptcha.getText().toString();
-        if (mCanGetCode) {
-            mCanGetCode = false;
-            mTimer = new Timer();
-            mTimer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    Message msg = new Message();
-                    mHandler.sendMessage(msg);
-                }
-            }, 100, 1000);
-        }
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        if (mTimer != null) {
-            mBtGetCaptcha.setText(mGetCodeBtnTitle);
-            mBtGetCaptcha.setBackgroundResource(R.drawable.shape_button_green);
-            mBtGetCaptcha.setEnabled(true);
-            mTimer.cancel();
-            DurRetGetCode = 120;
         }
     }
 }

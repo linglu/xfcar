@@ -67,17 +67,23 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
         int id = v.getId();
 
         if (id == R.id.ll_my_wallet) {
-            // TODO: 2020/1/4 动画特效
+
         } else if (id == R.id.ll_balance_account) {
             startActivity(BalanceActivity.class);
         } else if (id == R.id.ll_receipt) {
             startActivity(ReceiptActivity.class);
         } else if (id == R.id.ll_search) {
-            startActivity(SearchInfoActivity.class);
+//            startActivity(SearchInfoActivity.class);
+            startActivity(BalanceActivity.class);
         } else if (id == R.id.ll_sent_reward) {
-            startActivity(DedutPercentActivity.class);
+            Bundle b = new Bundle();
+            b.putString("title", "转单提成");
+            startActivity(DedutPercentActivity.class, b);
         } else if (id == R.id.ll_share_reward) {
-            startActivity(ShareRewardActivity.class);
+//            startActivity(ShareRewardActivity.class);
+            Bundle b = new Bundle();
+            b.putString("title", "推荐奖励");
+            startActivity(DedutPercentActivity.class, b);
         } else if (id == R.id.ll_score) {
             startActivity(MyScoreActivity.class);
         } else if (id == R.id.ll_message) {

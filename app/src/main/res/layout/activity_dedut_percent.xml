@@ -8,17 +8,17 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/space44" android:background="@color/white"
-
+        android:layout_height="@dimen/space44"
+        android:background="@color/white"
     >
 
         <ImageView
             android:id="@+id/iv_return_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_return_back"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/space20"
+            android:src="@mipmap/ic_return_back"
         />
 
         <TextView
@@ -32,20 +32,178 @@
         />
 
     </RelativeLayout>
-    
-    <View
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/space1"
-        android:background="@color/gray"
-    />
+        android:layout_height="@dimen/space167"
+    >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space148"
+            android:background="@drawable/shape_gradient"
+            android:orientation="vertical"
+        >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space35"
+                android:layout_marginRight="@dimen/space35"
+                android:layout_marginTop="@dimen/space25"
+                android:background="@color/white"
+            >
+
+                <Spinner
+                    android:id="@+id/sp_month"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dropdown"
+                />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/space12"
+                android:text="提成总账"
+                android:textColor="#fff2f2f2"
+                android:textSize="14sp"
+            />
+
+            <TextView
+                android:id="@+id/tv_total_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/space2"
+                android:text="￥2000.00"
+                android:textColor="#fff2f2f2"
+                android:textSize="30sp"
+            />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+        >
+
+            <RelativeLayout
+                android:id="@+id/rl_tixian"
+                android:layout_width="@dimen/space130"
+                android:layout_height="@dimen/space33"
+                android:background="@drawable/selector_white_round_press"
+                android:elevation="@dimen/space2"
+                android:layout_marginBottom="@dimen/space2"
+            >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                >
+
+                    <ImageView
+                        android:layout_width="@dimen/space14"
+                        android:layout_height="@dimen/space14"
+                        android:src="@mipmap/tixian"
+                    />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/space6"
+                        android:gravity="center"
+                        android:text="账款提现"
+                        android:textColor="#fff56624"
+                        android:textSize="14sp"
+                    />
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_zonglan"
+                android:layout_width="@dimen/space130"
+                android:layout_height="@dimen/space33"
+                android:background="@drawable/selector_white_round_press"
+                android:elevation="@dimen/space2"
+                android:layout_marginBottom="@dimen/space2"
+                android:layout_marginLeft="@dimen/space55"
+            >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                >
+
+                    <ImageView
+                        android:layout_width="@dimen/space14"
+                        android:layout_height="@dimen/space14"
+                        android:src="@mipmap/zhangmujiesuan"
+                    />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/space6"
+                        android:gravity="center"
+                        android:text="账目总览"
+                        android:textColor="#fff56624"
+                        android:textSize="14sp"
+                    />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space20"
+        android:orientation="horizontal"
+    >
+
+        <View
+            android:layout_width="@dimen/space2"
+            android:layout_height="@dimen/space12"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/space20"
+            android:background="@color/color_yellow"
+        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space10"
+            android:text="奖励记录"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font15"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_car_function"
+        android:id="@+id/rv_reward_records"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.0"
-        android:layout_marginLeft="@dimen/space15"
-        android:layout_marginRight="@dimen/space15"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/space15"
     />
 
 </LinearLayout>

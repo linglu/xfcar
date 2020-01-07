@@ -24,26 +24,26 @@ public class CarSecurityActivity extends BaseActivity implements View.OnClickLis
         setContentView(R.layout.activity_car_security);
         initView();
 
-//        mRequester.appCarGetSecurityInfo(mInstance, mDataManager.getUserId(), new ResultCallback<CarSecurityBean>() {
-//            @Override
-//            public void onSuccess(CarSecurityBean bean) {
-//                mTvEngineNo.setText(String.format("发动机号：%s", bean.engineNo));
-//                mTvMobile.setText(String.format("手机号：%s", bean.mobile));
-//                mTvCarInfo.setText(String.format("车牌号：%s", bean.carInfo));
-//            }
-//
-//            @Override
-//            public void onFail(String msg) {
-//                toastMsg(msg);
-//            }
-//        });
+        mRequester.appCarGetSecurityInfo(mInstance, mDataManager.getUserId(), new ResultCallback<CarSecurityBean>() {
+            @Override
+            public void onSuccess(CarSecurityBean bean) {
+                mTvEngineNo.setText(String.format("%s", bean.engineNo));
+                mTvMobile.setText(String.format("%s", bean.mobile));
+                mTvCarInfo.setText(String.format("%s", bean.carInfo));
+            }
+
+            @Override
+            public void onFail(String msg) {
+                toastMsg(msg);
+            }
+        });
     }
 
     private void initView() {
         findViewById(R.id.iv_return_back).setOnClickListener(this);;
-//        mTvEngineNo = findViewById(R.id.tv_engine_no);
-//        mTvMobile = findViewById(R.id.tv_mobile);
-//        mTvCarInfo = findViewById(R.id.tv_car_info);
+        mTvEngineNo = findViewById(R.id.tv_engine_no);
+        mTvMobile = findViewById(R.id.tv_mobile);
+        mTvCarInfo = findViewById(R.id.tv_car_info);
     }
 
     @Override

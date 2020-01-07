@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/space44"
         android:background="@color/white"
-
     >
 
         <TextView
@@ -29,12 +28,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/space100"
-        android:background="@color/white"
+        android:background="@drawable/shape_gradient"
         android:gravity="center_vertical"
         android:orientation="horizontal"
     >
 
-        <ImageView
+        <com.xfcar.driver.widget.MaskedImage
             android:id="@+id/iv_avatar"
             android:layout_width="@dimen/space36"
             android:layout_height="@dimen/space36"
@@ -48,8 +47,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/space10"
             android:text="小明"
-            android:textColor="@color/text_color_gray"
-            android:textSize="@dimen/font14"
+            android:textColor="#fffbfbfb"
+            android:textSize="14sp"
         />
 
     </LinearLayout>
@@ -89,11 +88,12 @@
                 android:textSize="@dimen/font14"
             />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/space15"
-            android:layout_marginTop="@dimen/space20"
+            android:layout_marginTop="@dimen/space5"
             android:orientation="vertical"
         >
 
@@ -103,9 +103,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/space48"
                 android:layout_marginRight="@dimen/space22"
+                android:background="@drawable/selector_white_press"
                 android:gravity="center_vertical"
-                android:paddingBottom="@dimen/space5"
-                android:paddingTop="@dimen/space5"
+                android:paddingBottom="@dimen/space2"
+                android:paddingTop="@dimen/space2"
             >
 
                 <ImageView
@@ -143,8 +144,8 @@
                 android:layout_marginTop="@dimen/space13"
                 android:background="@drawable/selector_white_press"
                 android:gravity="center_vertical"
-                android:paddingBottom="@dimen/space5"
-                android:paddingTop="@dimen/space5"
+                android:paddingBottom="@dimen/space2"
+                android:paddingTop="@dimen/space2"
             >
 
                 <ImageView
@@ -174,8 +175,8 @@
                 android:layout_marginTop="@dimen/space13"
                 android:background="@drawable/selector_white_press"
                 android:gravity="center_vertical"
-                android:paddingBottom="@dimen/space5"
-                android:paddingTop="@dimen/space5"
+                android:paddingBottom="@dimen/space2"
+                android:paddingTop="@dimen/space2"
             >
 
                 <ImageView
@@ -205,8 +206,8 @@
                 android:layout_marginTop="@dimen/space13"
                 android:background="@drawable/selector_white_press"
                 android:gravity="center_vertical"
-                android:paddingBottom="@dimen/space5"
-                android:paddingTop="@dimen/space5"
+                android:paddingBottom="@dimen/space2"
+                android:paddingTop="@dimen/space2"
             >
 
                 <ImageView
@@ -236,8 +237,8 @@
                 android:layout_marginTop="@dimen/space13"
                 android:background="@drawable/selector_white_press"
                 android:gravity="center_vertical"
-                android:paddingBottom="@dimen/space5"
-                android:paddingTop="@dimen/space5"
+                android:paddingBottom="@dimen/space2"
+                android:paddingTop="@dimen/space2"
             >
 
                 <ImageView

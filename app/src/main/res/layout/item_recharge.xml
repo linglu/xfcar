@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/space112"
+    android:layout_height="@dimen/space118"
+    android:layout_marginTop="@dimen/space10"
+    android:background="@drawable/shape_round_red"
+>
+
+    <TextView
+        android:id="@+id/tv_recharge_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/space10"
+        android:text="100.00"
+        android:textColor="#ffffddb0"
+        android:textSize="20sp"
+    />
+
+    <TextView
+        android:id="@+id/tv_recharge_item1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_recharge_amount"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/space5"
+        android:text="包月9折"
+        android:textColor="#ffffddb0"
+        android:textSize="13sp"
+    />
+
+    <TextView
+        android:id="@+id/tv_recharge_item2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_recharge_item1"
+        android:layout_centerHorizontal="true"
+        android:text="续费1天"
+        android:textColor="#ffffddb0"
+        android:textSize="13sp"
+    />
+
+    <TextView
+        android:id="@+id/tv_recharge"
+        android:layout_width="@dimen/space73"
+        android:layout_height="@dimen/space24"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/space8"
+        android:background="@drawable/shape_button_buy"
+        android:gravity="center"
+        android:text="充值"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffa84337"
+        android:textSize="14sp"/>
+
+</RelativeLayout>

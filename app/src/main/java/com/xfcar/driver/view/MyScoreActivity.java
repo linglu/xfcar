@@ -19,6 +19,7 @@ import com.xfcar.driver.view.adapter.ScoreProductAdapter;
 import java.util.List;
 
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import rx.functions.Action1;
 
@@ -70,11 +71,11 @@ public class MyScoreActivity extends BaseActivity implements View.OnClickListene
         mRvScore = findViewById(R.id.rv_score);
         mRvProduct = findViewById(R.id.rv_score_exchange);
 
-        mRvScore.setLayoutManager(new GridLayoutManager(this, 3));
+        mRvScore.setLayoutManager(new GridLayoutManager(this, 4));
         mScoreTypeAdapter = new ScoreAdapter(this);
         mRvScore.setAdapter(mScoreTypeAdapter);
 
-        mRvProduct.setLayoutManager(new GridLayoutManager(this, 3));
+        mRvProduct.setLayoutManager(new LinearLayoutManager(this));
         mScoreProductAdapter = new ScoreProductAdapter(this);
         mRvProduct.setAdapter(mScoreProductAdapter);
         mScoreProductAdapter.setCallback(new Action1<ScoreProductBean>() {
@@ -84,7 +85,7 @@ public class MyScoreActivity extends BaseActivity implements View.OnClickListene
                         mDataManager.getUserId(), scoreProductBean.goodsName, new ResultCallback<String>() {
                     @Override
                     public void onSuccess(String s) {
-                        toastMsg(s);
+                        toastMsg("兑换成功");
                     }
 
                     @Override

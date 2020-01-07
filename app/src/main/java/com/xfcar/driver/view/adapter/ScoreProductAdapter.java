@@ -54,7 +54,7 @@ public class ScoreProductAdapter extends RecyclerView.Adapter<ScoreProductAdapte
     public void onBindViewHolder(@NonNull ScoreProHolder holder, int position) {
         if (ScorePros != null) {
             final ScoreProductBean stb = ScorePros.get(position);
-            holder.tvScore.setText(String.format("%s积分", stb.goodsIntegral));
+            holder.tvScore.setText(String.format("%s", stb.goodsIntegral));
             holder.tvProdType.setText(stb.content);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -74,12 +74,10 @@ public class ScoreProductAdapter extends RecyclerView.Adapter<ScoreProductAdapte
 
         TextView tvScore;
         TextView tvProdType;
-        ImageView ivProdType;
 
         public ScoreProHolder(@NonNull View itemView) {
             super(itemView);
             tvScore = itemView.findViewById(R.id.tv_score);
-            ivProdType = itemView.findViewById(R.id.iv_prod_type);
             tvProdType = itemView.findViewById(R.id.tv_prod_type);
         }
     }

@@ -202,5 +202,10 @@
             android:name=".view.OneKeyAlarmActivity"
             android:screenOrientation="portrait"
         />
+
+        <activity
+            android:name=".view.AdviceMsgActivity"
+            android:screenOrientation="portrait"
+        />
     </application>
 </manifest>

@@ -43,7 +43,7 @@ public interface ApiService {
     Observable<Response<String>> appAlarmRecordOneKeyAlarm(@Body AlarmRecordEntity alarmrecordentity);
 
     //App车辆信息: JSON格式传参userId
-    @POST("ioc/app/car/appCarGetCarInfoByUser")
+    @POST("ioc/app/car/getCarInfoByUser")
     Observable<Response<CarInfoBean>> appCarGetCarInfoByUser(@Body UserEntity ue);
 
     //App车辆信息: JSON格式传参userId
@@ -108,7 +108,7 @@ public interface ApiService {
 
     //App充值: JSON格式传参userId
     @POST("ioc/app/recharge/getRechargeByUser")
-    Observable<Response<String>> appRechargeGetRechargeByUser(@Body AmountRechargeEntity amountrechargeentity);
+    Observable<Response<String>> appRechargeGetRechargeByUser(@Body UserEntity ue);
 
     //App用户积分消费订单表
     @POST("ioc/app/user/integralGoodsOrder/exchange")

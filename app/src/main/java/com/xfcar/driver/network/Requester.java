@@ -15,6 +15,7 @@ import com.xfcar.driver.model.bean.IntegralGoodsVo;
 import com.xfcar.driver.model.bean.InviteFriendEntity;
 import com.xfcar.driver.model.bean.InviteRewardBean;
 import com.xfcar.driver.model.bean.MarkBean;
+import com.xfcar.driver.model.bean.PasswordVO;
 import com.xfcar.driver.model.bean.QRCodeBean;
 import com.xfcar.driver.model.bean.ShortRentEntity;
 import com.xfcar.driver.model.bean.SysUserEntity;
@@ -127,6 +128,35 @@ public class Requester {
         if (service == null) {
             service = retrofit.create(ApiService.class);
         }
+    }
+
+    public void appUserUpdatePwByUser(FragmentActivity act,
+                                      int userId, String oldPassword, String newPassword, String mobile,
+                                      final ResultCallback<String> callback) {
+        showLoadingDialog(act);
+        PasswordVO pvo = new PasswordVO();
+        pvo.userId = userId;
+        pvo.oldPassword = oldPassword;
+        pvo.newPassword = newPassword;
+        pvo.mobile = mobile;
+
+        service.appUserUpdatePwByUser(pvo)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetworkSubscriber<String>() {
+
+                    @Override
+                    public void onSuccess(String o) {
+                        dismissLoadingDialog();
+                        callback.onSuccess(o);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        dismissLoadingDialog();
+                        callback.onFail(msg);
+                    }
+                });
     }
 
     public void appCarLeasebackOneKey(FragmentActivity act, int userId, final ResultCallback<String> callback) {
@@ -447,6 +477,27 @@ public class Requester {
 
                     @Override
                     public void onSuccess(List<InviteRewardBean> o) {
+                        dismissLoadingDialog();
+                        callback.onSuccess(o);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        dismissLoadingDialog();
+                        callback.onFail(msg);
+                    }
+                });
+    }
+
+    public void appRechargeGetRechargeByUser(FragmentActivity act, int userId, final ResultCallback<String> callback) {
+        showLoadingDialog(act);
+        service.appRechargeGetRechargeByUser(new UserEntity(userId))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetworkSubscriber<String>() {
+
+                    @Override
+                    public void onSuccess(String o) {
                         dismissLoadingDialog();
                         callback.onSuccess(o);
                     }

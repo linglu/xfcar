@@ -33,132 +33,124 @@
         />
 
     </RelativeLayout>
-    
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/space40"
-        android:layout_marginTop="@dimen/space40"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_marginLeft="@dimen/space20"
-        android:layout_marginRight="@dimen/space20"
-        android:paddingLeft="@dimen/space15"
-        android:paddingRight="@dimen/space15"
-        android:elevation="@dimen/space1"
-        android:background="@drawable/shape_round"
-        >
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/fuwuqi"
-            />
-
-        <com.xfcar.driver.widget.ClearEditText
-            android:id="@+id/et_bind_car"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingLeft="@dimen/space9"
-            android:background="@null"
-            android:gravity="center_vertical"
-            android:hint="绑定车架码"
-            android:inputType="text"
-            android:maxLength="11"
-            android:textColor="@color/font_primary"
-            android:textColorHint="@color/hint_text_color"
-            android:textCursorDrawable="@null"
-            android:textSize="@dimen/font_normal"
-            />
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/space40"
-        android:layout_marginTop="@dimen/space15"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/space15"
+        android:layout_marginTop="@dimen/space50"
+        android:background="@drawable/shape_round"
         android:layout_marginLeft="@dimen/space20"
         android:layout_marginRight="@dimen/space20"
-        android:paddingLeft="@dimen/space15"
-        android:paddingRight="@dimen/space15"
-        android:elevation="@dimen/space1"
-        android:background="@drawable/shape_round"
+        android:elevation="1dp"
         >
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/dianhuax"
-            />
-
-        <com.xfcar.driver.widget.ClearEditText
-            android:id="@+id/et_bind_mobile"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@null"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:hint="绑定手机"
-            android:inputType="text"
-            android:paddingLeft="@dimen/space9"
-            android:maxLength="11"
-            android:textColor="@color/font_primary"
-            android:textColorHint="@color/hint_text_color"
-            android:textCursorDrawable="@null"
-            android:textSize="@dimen/font_normal"
-            />
+            android:paddingBottom="@dimen/space20"
+            android:paddingTop="@dimen/space40"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/fuwuqi"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="车架号:"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                android:layout_marginLeft="@dimen/space7"
+                />
+
+            <TextView
+                android:id="@+id/tv_engine_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="#ff333333"
+                android:textSize="14sp"
+                android:layout_marginLeft="@dimen/space7"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingBottom="@dimen/space20"
+            android:paddingTop="@dimen/space20"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/dianhuax"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="绑定手机:"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                android:layout_marginLeft="@dimen/space7"
+                />
+
+            <TextView
+                android:id="@+id/tv_mobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ff333333"
+                android:textSize="14sp"
+                android:layout_marginLeft="@dimen/space7"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/space20"
+            android:paddingTop="@dimen/space20"
+            android:gravity="center_vertical"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/chexing_1"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="车辆信息:"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                android:layout_marginLeft="@dimen/space7"
+                />
+
+            <TextView
+                android:id="@+id/tv_car_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ff333333"
+                android:textSize="14sp"
+                android:layout_marginLeft="@dimen/space7"
+                />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/space40"
-        android:layout_marginTop="@dimen/space15"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_marginLeft="@dimen/space20"
-        android:layout_marginRight="@dimen/space20"
-        android:paddingLeft="@dimen/space15"
-        android:paddingRight="@dimen/space15"
-        android:elevation="@dimen/space1"
-        android:background="@drawable/shape_round"
-        >
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/chexing_1"
-            />
-
-        <com.xfcar.driver.widget.ClearEditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingLeft="@dimen/space9"
-            android:background="@null"
-            android:gravity="center_vertical"
-            android:hint="车牌号码"
-            android:inputType="text"
-            android:maxLength="11"
-            android:textColor="@color/font_primary"
-            android:textColorHint="@color/hint_text_color"
-            android:textCursorDrawable="@null"
-            android:textSize="@dimen/font_normal"
-            />
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/btn_bind"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/space40"
-        android:layout_marginLeft="@dimen/space20"
-        android:layout_marginRight="@dimen/space20"
-        android:background="@drawable/selector_green_btn_login"
-        android:gravity="center"
-        android:layout_marginTop="@dimen/space20"
-        android:layout_marginBottom="@dimen/space25"
-        android:text="确定绑定"
-        android:textColor="@color/background_primary"
-        android:textSize="@dimen/font14"/>
-
 </LinearLayout>

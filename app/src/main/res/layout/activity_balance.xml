@@ -16,9 +16,9 @@
             android:id="@+id/iv_return_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_return_back"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/space20"
+            android:src="@mipmap/ic_return_back"
         />
 
         <TextView
@@ -36,34 +36,45 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/space181"
-        android:orientation="vertical"
         android:layout_margin="@dimen/space20"
-        android:background="@drawable/shape_gradient"
-        >
+        android:background="@drawable/shape_gradient_round"
+        android:orientation="vertical"
+    >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="账目明细"
             android:layout_marginLeft="@dimen/space10"
             android:layout_marginTop="@dimen/space10"
+            android:text="账目明细"
             android:textColor="@color/white"
             android:textSize="@dimen/font14"
-            />
+        />
 
-        <Spinner
-            android:id="@+id/sp_month"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/space15"
-            android:spinnerMode="dropdown"
+            android:layout_marginLeft="@dimen/space15"
+            android:layout_marginRight="@dimen/space15"
+            android:layout_marginTop="@dimen/space10"
+            android:background="@color/white"
+        >
+
+            <Spinner
+                android:id="@+id/sp_month"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown"
             />
 
+        </RelativeLayout>
+
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="@dimen/space10"
             android:id="@+id/rv_balance_item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
+        />
 
     </LinearLayout>
 
@@ -71,23 +82,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        >
+    >
 
         <View
             android:layout_width="@dimen/space2"
-            android:layout_height="match_parent"
-            android:background="@color/color_yellow"
+            android:layout_height="@dimen/space12"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/space20"
-            />
+            android:background="@color/color_yellow"
+        />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/space10"
-            android:text="订单收益"
+            android:text="奖励记录"
             android:textColor="@color/black"
             android:textSize="@dimen/font15"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
     </LinearLayout>
 
@@ -96,7 +108,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/space15"
-        />
+    />
 
 
 </LinearLayout>

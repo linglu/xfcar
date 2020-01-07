@@ -14,7 +14,7 @@ import com.xfcar.driver.model.adapterbean.RentCarInfoBean;
 import com.xfcar.driver.mvp.BaseActivity;
 import com.xfcar.driver.network.ResultCallback;
 import com.xfcar.driver.utils.L;
-import com.xfcar.driver.view.adapter.CarSpinnerAdapter;
+import com.xfcar.driver.view.adapter.CarInfoSpinnerAdapter;
 import com.xfcar.driver.view.fragment.BuyCarFragment;
 import com.xfcar.driver.view.fragment.ShowCarInfoFragment;
 
@@ -23,7 +23,7 @@ import java.util.List;
 public class BuyOrRentCarActivity extends BaseActivity implements View.OnClickListener {
 
     private Spinner mSpinner;
-    private CarSpinnerAdapter mSAdapter;
+    private CarInfoSpinnerAdapter mSAdapter;
     private TextView mTvBuyPlan;
     private View mVBuyPlan;
     private TextView mTvCarIntro;
@@ -68,7 +68,7 @@ public class BuyOrRentCarActivity extends BaseActivity implements View.OnClickLi
         mTvCarIntro = findViewById(R.id.tv_car_intro);
         mVCarIntro = findViewById(R.id.v_car_intro);
 
-        mSAdapter = new CarSpinnerAdapter(this);
+        mSAdapter = new CarInfoSpinnerAdapter(this);
         mSpinner.setAdapter(mSAdapter);
         mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

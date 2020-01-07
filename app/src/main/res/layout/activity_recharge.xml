@@ -8,7 +8,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/space44" android:background="@color/white"
+        android:layout_height="@dimen/space44"
+        android:background="@color/white"
     >
 
         <RelativeLayout
@@ -33,26 +34,107 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="租金充值"
+            android:text="充值管理"
             android:textColor="@color/black"
             android:textSize="@dimen/font16"
         />
 
     </RelativeLayout>
-    
-    <View
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/space1"
-        android:background="@color/gray"
-    />
+        android:layout_height="@dimen/space100"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/selector_white_press"
+        android:elevation="@dimen/space2"
+    >
+
+        <com.xfcar.driver.widget.MaskedImage
+            android:id="@+id/iv_header"
+            android:layout_width="@dimen/space36"
+            android:layout_height="@dimen/space36"
+            android:layout_marginLeft="@dimen/space15"
+            android:background="@drawable/shape_round_red"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher"
+        />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/space15"
+        >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="旋卫士"
+                android:textColor="#ff666666"
+                android:textSize="14sp"
+            />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2019-12-30 到期"
+                android:layout_marginTop="@dimen/space5"
+                android:textColor="#ff999999"
+                android:textSize="12sp"
+            />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space18"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/space10"
+        android:paddingRight="@dimen/space10">
+
+        <View
+            android:layout_width="@dimen/space2"
+            android:layout_height="match_parent"
+            android:background="@color/color_yellow" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space10"
+            android:text="充值推荐"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font15"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_car_function"
+        android:id="@+id/rv_recharge_item"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/space10"
+        android:layout_marginRight="@dimen/space10"
+        android:layout_marginTop="@dimen/space5"
         android:layout_weight="1.0"
-        android:layout_marginLeft="@dimen/space15"
-        android:layout_marginRight="@dimen/space15"
     />
+
+    <Button
+        android:id="@+id/btn_recharge"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/space40"
+        android:layout_marginLeft="@dimen/space20"
+        android:layout_marginRight="@dimen/space20"
+        android:background="@drawable/selector_green_btn_login"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/space20"
+        android:layout_marginBottom="@dimen/space25"
+        android:text="立即以2000元续费"
+        android:textColor="@color/background_primary"
+        android:textSize="@dimen/font14"/>
+
 
 </LinearLayout>

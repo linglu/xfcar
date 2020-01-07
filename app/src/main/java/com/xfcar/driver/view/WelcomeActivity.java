@@ -37,7 +37,7 @@ public class WelcomeActivity extends BaseActivity {
                     startActivityForResult(LoginActivity.class, 1000);
                 }
             }
-        }, 2000);
+        }, 500);
     }
 
     @Override

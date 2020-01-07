@@ -12,7 +12,7 @@ public class BalanceTypeBean {
     public String name;
 
     public static List<BalanceTypeBean> mock() {
-        String[] items = new String[]{"押金", "收入", "提现", "余额", "转单提成", "转单提成"};
+        String[] items = new String[]{"押金", "收入", "提现", "余额", "转单提成", "月租充值"};
         List<BalanceTypeBean> list = new ArrayList<>();
         for (String item : items) {
             BalanceTypeBean btb = new BalanceTypeBean();

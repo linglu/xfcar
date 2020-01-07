@@ -54,6 +54,23 @@ public class ScoreAdapter extends RecyclerView.Adapter<ScoreAdapter.FuncHolder> 
     public void onBindViewHolder(@NonNull FuncHolder holder, int position) {
         if (ScoreTps != null) {
             final ScoreTypeBean stb = ScoreTps.get(position);
+            switch (stb.content) {
+                case "订单积分":
+                    holder.ivScoreType.setImageResource(R.mipmap.dingdanjifen);
+                    break;
+                case "充电积分":
+                    holder.ivScoreType.setImageResource(R.mipmap.chongdian);
+                    break;
+                case "保修积分":
+                    holder.ivScoreType.setImageResource(R.mipmap.baoxiujifen);
+                    break;
+                case "保养积分":
+                    holder.ivScoreType.setImageResource(R.mipmap.baoyangjifen);
+                    break;
+                default:
+                    holder.ivScoreType.setImageResource(R.mipmap.baoyangjifen);
+                    break;
+            }
             holder.tvScore.setText(String.format("%s积分", stb.integral));
             holder.tvScoreType.setText(stb.content);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -74,11 +91,13 @@ public class ScoreAdapter extends RecyclerView.Adapter<ScoreAdapter.FuncHolder> 
 
         TextView tvScore;
         TextView tvScoreType;
+        ImageView ivScoreType;
 
         public FuncHolder(@NonNull View itemView) {
             super(itemView);
             tvScore = itemView.findViewById(R.id.tv_score);
             tvScoreType = itemView.findViewById(R.id.tv_score_type);
+            ivScoreType = itemView.findViewById(R.id.iv_score_type);
         }
     }
 }

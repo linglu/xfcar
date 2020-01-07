@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/gray_fb"
+>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space44"
+        android:background="@color/white"
+    >
+
+        <RelativeLayout
+            android:id="@+id/rl_return_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingRight="@dimen/space20"
+        >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/space20"
+                android:src="@mipmap/ic_return_back"
+            />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="建议留言"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font16"
+        />
+
+    </RelativeLayout>
+
+
+    <EditText
+        android:id="@+id/ed_feedback_content"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space188"
+        android:layout_marginLeft="@dimen/space10"
+        android:layout_marginRight="@dimen/space10"
+        android:layout_marginTop="@dimen/space38"
+        android:background="@drawable/shape_white_bg"
+        android:elevation="@dimen/space2"
+        android:gravity="start"
+        android:hint="请提供您宝贵的意见"
+        android:maxLength="150"
+        android:padding="@dimen/space10"
+        android:text=""
+        android:textColor="@color/font_gray9"
+        android:textSize="@dimen/font14"
+    />
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="@dimen/space70"
+        android:layout_height="@dimen/space30"
+        android:layout_gravity="end"
+        android:layout_marginRight="@dimen/space10"
+        android:layout_marginTop="@dimen/space15"
+        android:background="@drawable/selector_green_btn_login"
+        android:gravity="center"
+        android:text="提交"
+        android:textColor="#ffffffff"
+        android:textSize="14sp"
+    />
+
+
+</LinearLayout>
