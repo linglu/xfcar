@@ -32,21 +32,16 @@ public class LoginActivity extends BaseActivity {
     private String mPhoneNumber;
     private Button mBtGetCaptcha;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
-
         mEtUserName = findViewById(R.id.et_username_login);
         mEtVerifyCode = findViewById(R.id.et_code_login);
         mBtGetCaptcha = findViewById(R.id.btn_getCode);
 
-//        mEtUserName.setText(mDataManager.getMobile());
-        mEtUserName.setText("18924238534");
+        mEtUserName.setText(mDataManager.getMobile());
 
         findViewById(R.id.btn_getCode).setOnClickListener(new View.OnClickListener() {
 

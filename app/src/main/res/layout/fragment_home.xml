@@ -5,30 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
 >
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/space44" android:background="@color/white"
-        >
-
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="首页"
-            android:textColor="@color/black"
-            android:textSize="@dimen/font16"
-            />
-
-    </RelativeLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/space1"
-        android:background="@color/gray"
-        />
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/space180"
@@ -37,7 +13,7 @@
             android:id="@+id/cvp_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-         />
+        />
 
         <ViewFlipper
             android:id="@+id/view_flipper"
@@ -52,18 +28,18 @@
         android:id="@+id/rv_function"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/space20"
         android:layout_marginLeft="@dimen/space15"
         android:layout_marginRight="@dimen/space15"
         android:layout_marginTop="@dimen/space20"
-        android:layout_marginBottom="@dimen/space20"
     />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="@dimen/space165"
+        android:background="@color/gray"
         android:gravity="center"
         android:text="欢迎加入"
-        android:background="@color/gray"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/font18"
     />
