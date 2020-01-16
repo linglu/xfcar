@@ -2,19 +2,12 @@ package com.xfcar.driver.view;
 
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.xfcar.driver.R;
-import com.xfcar.driver.model.viewbean.FunctionBean;
 import com.xfcar.driver.model.viewbean.RechargeItemBean;
 import com.xfcar.driver.mvp.BaseActivity;
-import com.xfcar.driver.network.Requester;
 import com.xfcar.driver.network.ResultCallback;
-import com.xfcar.driver.utils.DataManager;
-import com.xfcar.driver.utils.Utils;
-import com.xfcar.driver.view.adapter.CarManAdapter;
 import com.xfcar.driver.view.adapter.RechargeAdapter;
-import com.xfcar.driver.widget.MaskedImage;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
