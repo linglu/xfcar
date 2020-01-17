@@ -21,6 +21,7 @@ import com.xfcar.driver.model.bean.SignInOutBean;
 import com.xfcar.driver.model.bean.SysUserEntity;
 import com.xfcar.driver.model.bean.UserEntity;
 import com.xfcar.driver.model.bean.Command;
+import com.xfcar.driver.model.bean.UserId;
 import com.xfcar.driver.model.mybean.OursBean;
 import com.xfcar.driver.model.viewbean.RechargeItemBean;
 import com.xfcar.driver.model.viewbean.ScoreProductBean;
@@ -46,23 +47,23 @@ public interface ApiService {
 
     //App车辆信息: JSON格式传参userId
     @POST("ioc/app/car/getCarInfoByUser")
-    Observable<Response<CarInfoBean>> appCarGetCarInfoByUser(@Body UserEntity ue);
+    Observable<Response<CarInfoBean>> appCarGetCarInfoByUser(@Body UserId ui);
 
     //App车辆信息: JSON格式传参userId
     @POST("ioc/app/car/getSecurityInfo")
-    Observable<Response<CarSecurityBean>> appCarGetSecurityInfo(@Body UserEntity ue);
+    Observable<Response<CarSecurityBean>> appCarGetSecurityInfo(@Body UserId ui);
 
     //App车辆理赔: JSON格式传参userId
     @POST("ioc/app/car/insurance/getInsuranceByUser")
-    Observable<Response<List<ClaimPayBean>>> appCarInsuranceGetInsuranceByUser(@Body UserEntity ue);
+    Observable<Response<List<ClaimPayBean>>> appCarInsuranceGetInsuranceByUser(@Body UserId ui);
 
     //App预约返租: JSON格式传参userId
     @POST("ioc/app/car/leaseback/oneKey")
-    Observable<Response<String>> appCarLeasebackOneKey(@Body UserEntity UserEntity);
+    Observable<Response<String>> appCarLeasebackOneKey(@Body UserId ui);
 
     //App车辆维护: JSON格式传参userId
     @POST("ioc/app/car/maintain/getMaintainByUser")
-    Observable<Response<List<RepairBean>>> appCarMaintainGetMaintainByUser(@Body UserEntity ue);
+    Observable<Response<List<RepairBean>>> appCarMaintainGetMaintainByUser(@Body UserId ui);
 
     //App车辆操作: 传参：carNo, command
     @POST("ioc/app/car/operate/command")
@@ -110,7 +111,7 @@ public interface ApiService {
 
     //App充值: JSON格式传参userId
     @POST("ioc/app/recharge/getRechargeByUser")
-    Observable<Response<List<RechargeItemBean>>> appRechargeGetRechargeByUser(@Body UserEntity ue);
+    Observable<Response<List<RechargeItemBean>>> appRechargeGetRechargeByUser(@Body UserId ui);
 
     //App用户积分消费订单表
     @POST("ioc/app/user/integralGoodsOrder/exchange")
@@ -162,7 +163,7 @@ public interface ApiService {
 
     //App车辆信息: JSON格式传参userId
     @POST("ioc/app/car/getSecurityInfo")
-    Observable<Response<CarSecurityBean>> appCarGetsecurityinfo(@Body UserEntity ue);
+    Observable<Response<CarSecurityBean>> appCarGetsecurityinfo(@Body UserId ui);
 
 
     //App车辆信息: JSON格式传参userId

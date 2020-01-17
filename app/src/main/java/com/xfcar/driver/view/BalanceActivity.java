@@ -47,7 +47,7 @@ public class BalanceActivity extends BaseActivity implements View.OnClickListene
         mBalanceAdapter = new BalanceAdapter(this);
         mRvBalanceItem.setLayoutManager(new GridLayoutManager(this, 3));
         mRvBalanceItem.setAdapter(mBalanceAdapter);
-        mBalanceAdapter.setData(BalanceTypeBean.mock());
+        mBalanceAdapter.setData(BalanceTypeBean.mock(mDataManager.getUser()));
 
         mRewardAdapter = new RewardAdapter(this);
         mRvRewardRecords.setLayoutManager(new LinearLayoutManager(this));

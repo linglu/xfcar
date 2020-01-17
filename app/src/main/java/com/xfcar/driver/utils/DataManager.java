@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 
 import com.alibaba.fastjson.JSON;
 import com.xfcar.driver.model.adapterbean.CarInfoBean;
+import com.xfcar.driver.model.bean.UserEntity;
 
 /**
  * 轻量的存储项
@@ -48,6 +49,15 @@ public class DataManager {
 
     public void setUser(String userStr) {
         mPref.edit().putString("user", userStr).apply();
+    }
+
+    public UserEntity getUser() {
+        String usrStr = mPref.getString("user", "");
+        if (!usrStr.equals("")) {
+            return JSON.parseObject(usrStr, UserEntity.class);
+        } else {
+            return null;
+        }
     }
 
     public void setCarInfo(String carStr) {

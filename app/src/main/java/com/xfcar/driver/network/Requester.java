@@ -23,6 +23,7 @@ import com.xfcar.driver.model.bean.SignInOutBean;
 import com.xfcar.driver.model.bean.SysUserEntity;
 import com.xfcar.driver.model.bean.UserEntity;
 import com.xfcar.driver.model.bean.Command;
+import com.xfcar.driver.model.bean.UserId;
 import com.xfcar.driver.model.mybean.InviteRecordQueryBean;
 import com.xfcar.driver.model.mybean.OursBean;
 import com.xfcar.driver.model.viewbean.RechargeItemBean;
@@ -141,7 +142,7 @@ public class Requester {
 
     public void appCarLeasebackOneKey(FragmentActivity act, int userId, final ResultCallback<String> callback) {
         showLoadingDialog(act);
-        service.appCarLeasebackOneKey(new UserEntity(userId))
+        service.appCarLeasebackOneKey(new UserId(userId))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetworkSubscriber<String>() {
@@ -250,7 +251,7 @@ public class Requester {
 
     public void appCarGetSecurityInfo(FragmentActivity act, int userId, final ResultCallback<CarSecurityBean> callback) {
         showLoadingDialog(act);
-        service.appCarGetSecurityInfo(new UserEntity(userId))
+        service.appCarGetSecurityInfo(new UserId(userId))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetworkSubscriber<CarSecurityBean>() {
@@ -337,7 +338,7 @@ public class Requester {
     }
 
     public void appUserIntegralLogList(int userId, final ResultCallback<List<ScoreTypeBean>> callback) {
-        service.appUserIntegralLogList(new UserEntity(userId))
+        service.appUserIntegralLogList(new UserId(userId))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetworkSubscriber<List<ScoreTypeBean>>() {
@@ -450,7 +451,7 @@ public class Requester {
 
     public void appUserInviteFriendInviteReward(FragmentActivity act, int userId, final ResultCallback<List<InviteRewardBean>> callback) {
         showLoadingDialog(act);
-        service.appUserInviteFriendInviteReward(new UserEntity(userId))
+        service.appUserInviteFriendInviteReward(new UserId(userId))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetworkSubscriber<List<InviteRewardBean>>() {
@@ -471,7 +472,7 @@ public class Requester {
 
     public void appRechargeGetRechargeByUser(FragmentActivity act, int userId, final ResultCallback<List<RechargeItemBean>> callback) {
         showLoadingDialog(act);
-        service.appRechargeGetRechargeByUser(new UserEntity(userId))
+        service.appRechargeGetRechargeByUser(new UserId(userId))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetworkSubscriber<List<RechargeItemBean>>() {
@@ -492,7 +493,7 @@ public class Requester {
 
     public void appCarGetCarInfoByUser(FragmentActivity act, int userId, final ResultCallback<CarInfoBean> callback) {
         showLoadingDialog(act);
-        service.appCarGetCarInfoByUser(new UserEntity(userId))
+        service.appCarGetCarInfoByUser(new UserId(userId))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetworkSubscriber<CarInfoBean>() {
@@ -513,7 +514,7 @@ public class Requester {
 
     public void getMaintainByUser(FragmentActivity act, int userId, final ResultCallback<List<RepairBean>> callback) {
         showLoadingDialog(act);
-        service.appCarMaintainGetMaintainByUser(new UserEntity(userId))
+        service.appCarMaintainGetMaintainByUser(new UserId(userId))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetworkSubscriber<List<RepairBean>>() {
@@ -534,7 +535,7 @@ public class Requester {
 
     public void appCarInsuranceGetInsuranceByUser(FragmentActivity act, int userId, final ResultCallback<List<ClaimPayBean>> callback) {
         showLoadingDialog(act);
-        service.appCarInsuranceGetInsuranceByUser(new UserEntity(userId))
+        service.appCarInsuranceGetInsuranceByUser(new UserId(userId))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetworkSubscriber<List<ClaimPayBean>>() {

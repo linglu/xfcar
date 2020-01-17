@@ -10,5 +10,5 @@ public class LoginResponse {
     public String XF_TOKEN;
     public String lock;
     public CarInfoBean carInfo;
-    public UserBean user;
+    public UserEntity user;
 }

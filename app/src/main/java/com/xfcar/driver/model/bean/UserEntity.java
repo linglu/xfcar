@@ -31,8 +31,4 @@ public class UserEntity {
 	public String createDate; // 创建时间
 	public Integer updateBy; // 更新时间
 	public String updateDate; // 修改时间
-
-    public UserEntity(Integer userId) {
-        this.userId = userId;
-    }
 }
