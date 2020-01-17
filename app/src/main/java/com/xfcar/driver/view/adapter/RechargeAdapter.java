@@ -54,8 +54,8 @@ public class RechargeAdapter extends RecyclerView.Adapter<RechargeAdapter.Rechar
         if (mRechargeApps != null) {
             final RechargeItemBean fb = mRechargeApps.get(position);
             holder.tvRechargeAmount.setText(String.format("%s", fb.amount));
-            holder.tvRechargeItem1.setText(fb.item1);
-            holder.tvRechargeItem2.setText(fb.item2);
+            holder.tvRechargeItem1.setText(fb.business);
+            holder.tvRechargeItem2.setText("");
             holder.tvRecharge.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

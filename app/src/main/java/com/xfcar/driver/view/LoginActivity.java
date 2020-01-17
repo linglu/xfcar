@@ -9,7 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.alibaba.fastjson.JSON;
 import com.xfcar.driver.R;
+import com.xfcar.driver.model.bean.LoginResponse;
 import com.xfcar.driver.model.bean.SysUserEntity;
 import com.xfcar.driver.mvp.BaseActivity;
 import com.xfcar.driver.network.Requester;
@@ -135,12 +137,16 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void executeLogin(String username, String code) {
-        mRequester.login(mInstance, username, code, new ResultCallback<SysUserEntity>() {
+        mRequester.login(mInstance, username, code, new ResultCallback<LoginResponse>() {
             @Override
-            public void onSuccess(SysUserEntity s) {
+            public void onSuccess(LoginResponse s) {
                 toastMsg("登录成功");
-                mDataManager.setUserId(s.userId);
-                mDataManager.setMobile(s.mobile);
+                mDataManager.setUserId(s.user.userId);
+                mDataManager.setMobile(s.user.mobile);
+                mDataManager.setUser(JSON.toJSONString(s.user));
+                mDataManager.setCarInfo(JSON.toJSONString(s.carInfo));
+                mDataManager.setToken(s.XF_TOKEN);
+                mDataManager.setLock(s.lock);
                 setResult(RESULT_OK);
                 finish();
             }

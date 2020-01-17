@@ -7,9 +7,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.xfcar.driver.R;
+import com.xfcar.driver.model.adapterbean.CarInfoBean;
 import com.xfcar.driver.model.mybean.Command;
 import com.xfcar.driver.model.viewbean.FunctionBean;
 import com.xfcar.driver.mvp.BaseActivity;
+import com.xfcar.driver.network.ResultCallback;
+import com.xfcar.driver.utils.Utils;
 import com.xfcar.driver.view.adapter.CarManAdapter;
 import com.xfcar.driver.view.adapter.FunctionAdapter;
 
@@ -54,14 +57,43 @@ public class CarManageActivity extends BaseActivity {
                         startActivity(CarInfoActivity.class);
                         break;
                     case "一键开门":
-                        Bundle bundle = new Bundle();
-                        bundle.putString("CMD_OPERATE", Command.SN_SAFEOFF);
-                        startActivity(CarOperateActivity.class, bundle);
+                        CarInfoBean carInfo = mDataManager.getCarInfo();
+                        mRequester.carOperateCommand(mInstance,
+                                carInfo.company, carInfo.carNo,
+                                Utils.getIMEI(mInstance), Command.SN_SAFEOFF,
+                                new ResultCallback<String>() {
+
+                                    @Override
+                                    public void onSuccess(String s) {
+                                        toastMsg(s);
+                                    }
+
+                                    @Override
+                                    public void onFail(String msg) {
+                                        toastMsg(msg);
+                                    }
+                                });
+
                         break;
                     case "一键上锁":
-                        bundle = new Bundle();
-                        bundle.putString("CMD_OPERATE", Command.SN_SAFEON);
-                        startActivity(CarOperateActivity.class, bundle);
+                        carInfo = mDataManager.getCarInfo();
+                        mRequester.carOperateCommand(mInstance,
+                                carInfo.company, carInfo.carNo,
+                                Utils.getIMEI(mInstance),
+                                Command.SN_SAFEON,
+                                new ResultCallback<String>() {
+
+                                    @Override
+                                    public void onSuccess(String s) {
+                                        toastMsg(s);
+                                    }
+
+                                    @Override
+                                    public void onFail(String msg) {
+                                        toastMsg(msg);
+                                    }
+                                });
+
                         break;
                     case "蓝牙钥匙":
                         startActivity(BluetoothKeyActivity.class);

@@ -70,10 +70,9 @@ public class SbscrbShortActivity extends BaseActivity implements View.OnClickLis
             datePickerDialog.show();
         } else if (id == R.id.btn_submit) {
 
-            L.i("submit");
             String carNo = mEtCarBrand.getText().toString();
             carNo = carNo.equals("") ? null : carNo;
-            String date = String.format("%s-%s-%s", mYear, (mMonth + 1), mDay);
+            String date = String.format(Locale.getDefault(), "%s-%02d-%02d", mYear, (mMonth + 1), mDay);
             mRequester.appCarShortRentAdd(mInstance, mDataManager.getUserId(), carNo, date, new ResultCallback<String>() {
                 @Override
                 public void onSuccess(String s) {

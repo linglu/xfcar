@@ -23,18 +23,7 @@ public class CarInfoActivity extends BaseActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_info);
         initView();
-
-        mRequester.appCarGetCarInfoByUser(mInstance, mDataManager.getUserId(), new ResultCallback<CarInfoBean>() {
-            @Override
-            public void onSuccess(CarInfoBean s) {
-                initData(s);
-            }
-
-            @Override
-            public void onFail(String msg) {
-                toastMsg(msg);
-            }
-        });
+        initData(mDataManager.getCarInfo());
     }
 
     private void initData(CarInfoBean carInfoBean) {

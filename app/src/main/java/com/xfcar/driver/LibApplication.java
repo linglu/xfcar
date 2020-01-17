@@ -35,12 +35,8 @@ public class LibApplication extends Application {
         registerActivity();
     }
 
-    public void updateCookie(String cookie) {
-        mDataManager.setCookie(cookie);
-    }
-
-    public String getCookie() {
-        return mDataManager.getCookie();
+    public String getToken() {
+        return mDataManager.getToken();
     }
 
     @Override

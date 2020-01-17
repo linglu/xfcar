@@ -14,15 +14,18 @@ import com.xfcar.driver.model.bean.ExchangeGoods;
 import com.xfcar.driver.model.bean.IntegralGoodsVo;
 import com.xfcar.driver.model.bean.InviteFriendEntity;
 import com.xfcar.driver.model.bean.InviteRewardBean;
+import com.xfcar.driver.model.bean.LoginResponse;
 import com.xfcar.driver.model.bean.MarkBean;
 import com.xfcar.driver.model.bean.PasswordVO;
 import com.xfcar.driver.model.bean.QRCodeBean;
 import com.xfcar.driver.model.bean.ShortRentEntity;
+import com.xfcar.driver.model.bean.SignInOutBean;
 import com.xfcar.driver.model.bean.SysUserEntity;
 import com.xfcar.driver.model.bean.UserEntity;
 import com.xfcar.driver.model.bean.Command;
 import com.xfcar.driver.model.mybean.InviteRecordQueryBean;
 import com.xfcar.driver.model.mybean.OursBean;
+import com.xfcar.driver.model.viewbean.RechargeItemBean;
 import com.xfcar.driver.model.viewbean.ScoreProductBean;
 import com.xfcar.driver.model.viewbean.ScoreTypeBean;
 import com.xfcar.driver.network.converter.FastjsonConverterFactory;
@@ -69,35 +72,12 @@ public class Requester {
                     Request request = chain.request();
                     Request.Builder builder = request.newBuilder();
 
-                    String cookie = App.sInstance.getCookie();
-                    if (cookie != null) {
-                        builder.addHeader("Cookie", cookie);
+                    String token = App.sInstance.getToken();
+                    if (token != null) {
+                        builder.addHeader("XF_TOKEN", token);
                     }
 
-//                    Request.Builder builder = request.newBuilder();
-//                    if
-//                    if(cookie!=null) {
-//                        builder.addHeader("Cookie", cookie);
-//                        if (Build.VERSION.SDK != null && Build.VERSION.SDK_INT > 13) {
-//                            builder.addHeader("Connection", "close");
-//                        }
-//                    }
-
-                    // 获取到 response
-                    Response response = chain.proceed(builder.build());
-                    L.i("headers : " + response.headers().toString());
-
-                    String setCookie = response.header("Set-Cookie");
-                    if (setCookie != null) {
-                        String newCookie = setCookie.split(";")[0];
-                        if (newCookie.contains("JSESSIONID")) {
-                            App.sInstance.updateCookie(newCookie);
-                        } else {
-                            App.sInstance.updateCookie(null);
-                        }
-                    }
-
-                    return response;
+                    return chain.proceed(builder.build());
                 }
             });
 
@@ -489,15 +469,15 @@ public class Requester {
                 });
     }
 
-    public void appRechargeGetRechargeByUser(FragmentActivity act, int userId, final ResultCallback<String> callback) {
+    public void appRechargeGetRechargeByUser(FragmentActivity act, int userId, final ResultCallback<List<RechargeItemBean>> callback) {
         showLoadingDialog(act);
         service.appRechargeGetRechargeByUser(new UserEntity(userId))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new NetworkSubscriber<String>() {
+                .subscribe(new NetworkSubscriber<List<RechargeItemBean>>() {
 
                     @Override
-                    public void onSuccess(String o) {
+                    public void onSuccess(List<RechargeItemBean> o) {
                         dismissLoadingDialog();
                         callback.onSuccess(o);
                     }
@@ -648,15 +628,15 @@ public class Requester {
                 });
     }
 
-    public void login(FragmentActivity act, String mobile, String code, final ResultCallback<SysUserEntity> callback) {
+    public void login(FragmentActivity act, String mobile, String code, final ResultCallback<LoginResponse> callback) {
         showLoadingDialog(act);
-        service.login(mobile, code)
+        service.login(new SignInOutBean(mobile, code))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new NetworkSubscriber<SysUserEntity>() {
+                .subscribe(new NetworkSubscriber<LoginResponse>() {
 
                     @Override
-                    public void onSuccess(SysUserEntity res) {
+                    public void onSuccess(LoginResponse res) {
                         dismissLoadingDialog();
                         callback.onSuccess(res);
                     }

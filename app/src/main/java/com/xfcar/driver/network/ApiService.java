@@ -1,32 +1,34 @@
 package com.xfcar.driver.network;
 
+import android.content.pm.SigningInfo;
+
 import com.xfcar.driver.model.adapterbean.CarInfoBean;
 import com.xfcar.driver.model.adapterbean.ClaimPayBean;
 import com.xfcar.driver.model.adapterbean.RentCarInfoBean;
 import com.xfcar.driver.model.adapterbean.RepairBean;
 import com.xfcar.driver.model.bean.AlarmRecordEntity;
-import com.xfcar.driver.model.bean.AmountRechargeEntity;
 import com.xfcar.driver.model.bean.CarSecurityBean;
 import com.xfcar.driver.model.bean.ContactDTO;
 import com.xfcar.driver.model.bean.ExchangeGoods;
 import com.xfcar.driver.model.bean.IntegralGoodsVo;
 import com.xfcar.driver.model.bean.InviteFriendEntity;
 import com.xfcar.driver.model.bean.InviteRewardBean;
+import com.xfcar.driver.model.bean.LoginResponse;
 import com.xfcar.driver.model.bean.PasswordVO;
 import com.xfcar.driver.model.bean.QRCodeBean;
 import com.xfcar.driver.model.bean.ShortRentEntity;
+import com.xfcar.driver.model.bean.SignInOutBean;
 import com.xfcar.driver.model.bean.SysUserEntity;
 import com.xfcar.driver.model.bean.UserEntity;
 import com.xfcar.driver.model.bean.Command;
 import com.xfcar.driver.model.mybean.OursBean;
+import com.xfcar.driver.model.viewbean.RechargeItemBean;
 import com.xfcar.driver.model.viewbean.ScoreProductBean;
 import com.xfcar.driver.model.viewbean.ScoreTypeBean;
 
 import java.util.List;
 
 import retrofit2.http.Body;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -108,7 +110,7 @@ public interface ApiService {
 
     //App充值: JSON格式传参userId
     @POST("ioc/app/recharge/getRechargeByUser")
-    Observable<Response<String>> appRechargeGetRechargeByUser(@Body UserEntity ue);
+    Observable<Response<List<RechargeItemBean>>> appRechargeGetRechargeByUser(@Body UserEntity ue);
 
     //App用户积分消费订单表
     @POST("ioc/app/user/integralGoodsOrder/exchange")
@@ -140,19 +142,18 @@ public interface ApiService {
 
 
     // 获取验证码
-    @GET("/ioc/code/sms")
+    @GET("/ioc/app/code/sms")
     Observable<Response<String>> verifyCode(@Query("mobile") String mobile);
 
     // 登录接口
-    @FormUrlEncoded
-    @POST("ioc/login/mobile")
-    Observable<Response<SysUserEntity>> login(@Field("mobile") String mobile, @Field("smsCode") String smsCode);
+    @POST("ioc/app/login/mobile")
+    Observable<Response<LoginResponse>> login(@Body SignInOutBean ue);
 
     // 退出接口
-    @POST("ioc/logout")
+    @POST("ioc/app/logout")
     Observable<Response<String>> logout();
 
-    @POST("/ioc/user/add")
+    @POST("/ioc/app/user/register")
     Observable<Response<Object>> userAdd(@Body SysUserEntity sysuserentity);
 
     //['App公司账户信息配置表']

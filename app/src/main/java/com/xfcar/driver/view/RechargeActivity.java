@@ -9,6 +9,8 @@ import com.xfcar.driver.mvp.BaseActivity;
 import com.xfcar.driver.network.ResultCallback;
 import com.xfcar.driver.view.adapter.RechargeAdapter;
 
+import java.util.List;
+
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import rx.functions.Action1;
@@ -23,10 +25,10 @@ public class RechargeActivity extends BaseActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recharge);
         initView();
-        mRequester.appRechargeGetRechargeByUser(this, mDataManager.getUserId(), new ResultCallback<String>() {
+        mRequester.appRechargeGetRechargeByUser(this, mDataManager.getUserId(), new ResultCallback<List<RechargeItemBean>>() {
             @Override
-            public void onSuccess(String s) {
-
+            public void onSuccess(List<RechargeItemBean> s) {
+                mAdapter.setData(s);
             }
 
             @Override
@@ -50,7 +52,7 @@ public class RechargeActivity extends BaseActivity implements View.OnClickListen
             }
         });
         mRvRecharge.setAdapter(mAdapter);
-        mAdapter.setData(RechargeItemBean.mock());
+
     }
 
     @Override

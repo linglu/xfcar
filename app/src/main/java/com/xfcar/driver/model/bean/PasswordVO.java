@@ -1,7 +1,7 @@
 package com.xfcar.driver.model.bean;
 
 public class PasswordVO {
-	public int userId; // 用户ID
+	public Integer userId; // 用户ID
 	public String mobile; // 手机号
 	public String type; // 类型
 	public String messageCode; // 短信验证码
