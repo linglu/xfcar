@@ -18,10 +18,10 @@ public class BalanceTypeBean {
     public static List<BalanceTypeBean> mock(UserEntity user) {
         String[] items = new String[]{"押金", "收入", "提现", "余额", "转单提成", "月租充值"};
         Float[] f = new Float[] {
-                user.balance,
-                -1.0f,
-                -1.0f,
                 user.deposit,
+                -1.0f,
+                -1.0f,
+                user.balance,
                 -1.0f,
                 -1.0f
         };

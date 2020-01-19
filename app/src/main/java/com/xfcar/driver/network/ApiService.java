@@ -1,13 +1,12 @@
 package com.xfcar.driver.network;
 
-import android.content.pm.SigningInfo;
-
 import com.xfcar.driver.model.adapterbean.CarInfoBean;
 import com.xfcar.driver.model.adapterbean.ClaimPayBean;
 import com.xfcar.driver.model.adapterbean.RentCarInfoBean;
 import com.xfcar.driver.model.adapterbean.RepairBean;
 import com.xfcar.driver.model.bean.AlarmRecordEntity;
 import com.xfcar.driver.model.bean.CarSecurityBean;
+import com.xfcar.driver.model.bean.Command;
 import com.xfcar.driver.model.bean.ContactDTO;
 import com.xfcar.driver.model.bean.ExchangeGoods;
 import com.xfcar.driver.model.bean.IntegralGoodsVo;
@@ -20,7 +19,6 @@ import com.xfcar.driver.model.bean.ShortRentEntity;
 import com.xfcar.driver.model.bean.SignInOutBean;
 import com.xfcar.driver.model.bean.SysUserEntity;
 import com.xfcar.driver.model.bean.UserEntity;
-import com.xfcar.driver.model.bean.Command;
 import com.xfcar.driver.model.bean.UserId;
 import com.xfcar.driver.model.mybean.OursBean;
 import com.xfcar.driver.model.viewbean.RechargeItemBean;

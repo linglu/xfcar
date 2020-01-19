@@ -1,5 +1,6 @@
 package com.xfcar.driver.view.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +16,7 @@ import com.xfcar.driver.R;
 import com.xfcar.driver.mvp.BaseFragment;
 import com.xfcar.driver.view.BalanceActivity;
 import com.xfcar.driver.view.DedutPercentActivity;
+import com.xfcar.driver.view.LoginActivity;
 import com.xfcar.driver.view.MyMessageActivity;
 import com.xfcar.driver.view.MyScoreActivity;
 import com.xfcar.driver.view.ReceiptActivity;
@@ -49,8 +51,10 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
     private void init() {
         mIvAvatar = mRootView.findViewById(R.id.iv_avatar);
         mTvUserName = mRootView.findViewById(R.id.tv_username);
-//        mTvUserName.setText(App.sInstance.mDataManager.getUserId());
+        mTvUserName.setText(getMobile());
 
+        TextView tvBalance = mRootView.findViewById(R.id.tv_balance);
+        tvBalance.setText(String.valueOf(App.sInstance.mDataManager.getUser().balance));
         mRootView.findViewById(R.id.ll_my_wallet).setOnClickListener(this);
         mRootView.findViewById(R.id.ll_balance_account).setOnClickListener(this);
         mRootView.findViewById(R.id.ll_receipt).setOnClickListener(this);
@@ -60,6 +64,11 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
         mRootView.findViewById(R.id.ll_score).setOnClickListener(this);
         mRootView.findViewById(R.id.ll_message).setOnClickListener(this);
         mRootView.findViewById(R.id.ll_permission).setOnClickListener(this);
+    }
+
+    public String getMobile() {
+        String mobile = App.sInstance.mDataManager.getMobile();
+        return mobile.substring(0,3) + "****" + mobile.substring(7);
     }
 
     @Override

@@ -603,13 +603,13 @@ public class Requester {
         }
 
     // 注册
-    public void register(FragmentActivity act, String name, String mobile, String pwd, int userType, final ResultCallback<Object> callback) {
+    public void register(FragmentActivity act, String name, String mobile, String pwd, final ResultCallback<Object> callback) {
         showLoadingDialog(act);
         SysUserEntity sue = new SysUserEntity();
         sue.username = name;
         sue.mobile = mobile;
         sue.password = pwd;
-        sue.userType = String.valueOf(userType);
+        sue.userType = "10";
         service.userAdd(sue)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

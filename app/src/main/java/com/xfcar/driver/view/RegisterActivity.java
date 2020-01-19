@@ -24,12 +24,10 @@ import com.xfcar.driver.utils.Utils;
  */
 public class RegisterActivity extends BaseActivity {
 
-    private Spinner mSpinner;
     private EditText mEtName;
     private EditText mEtPwd;
     private EditText mEtMobile;
     private ImageView mIvEyes;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,23 +37,6 @@ public class RegisterActivity extends BaseActivity {
         mEtName = findViewById(R.id.et_name_register);
         mEtMobile = findViewById(R.id.et_phone_number);
         mEtPwd = findViewById(R.id.et_setPwd_register);
-
-        mSpinner = findViewById(R.id.sp_user_type);
-        String[] arr = getResources().getStringArray(R.array.user_type);
-        ArrayAdapter<String> aa = new ArrayAdapter<>(this, R.layout.tv_spinner_item, arr);
-        mSpinner.setAdapter(aa);
-
-        mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                L.i(String.format("id : %s, position : %s", id, position));
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
 
         mIvEyes = findViewById(R.id.iv_eyes_register);
 
@@ -92,16 +73,10 @@ public class RegisterActivity extends BaseActivity {
                     toastMsg(R.string.me_hint_pwd_format_error);
                     mEtPwd.requestFocus();
                 } else {
-                    // 开始注册
-                    int userType = 10;
-                    if (mSpinner.getSelectedItemPosition() == 20) {
-                        userType = 20;
-                    } else if (mSpinner.getSelectedItemPosition() == 30) {
-                        userType = 30;
-                    }
 
+                    // 开始注册
                     mRequester.register(mInstance, mEtName.getText().toString(), mEtMobile.getText().toString(),
-                            mEtPwd.getText().toString(), userType, new ResultCallback<Object>() {
+                            mEtPwd.getText().toString(), new ResultCallback<Object>() {
                                 @Override
                                 public void onSuccess(Object o) {
                                     toastMsg("注册成功");

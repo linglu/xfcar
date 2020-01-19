@@ -158,22 +158,12 @@
 
         </RelativeLayout>
 
-        <Spinner
-            android:id="@+id/sp_user_type"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/space50"
-            android:layout_below="@+id/rl_pwdLayout_register"
-            android:spinnerMode="dialog"
-            android:entries="@array/user_type"
-            android:background="@color/white"
-        />
-
         <LinearLayout
             android:id="@+id/ll_btn_register"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/space10"
-            android:layout_below="@+id/sp_user_type"
+            android:layout_below="@+id/rl_pwdLayout_register"
             android:layout_marginTop="@dimen/space20"
             android:orientation="horizontal">
 
