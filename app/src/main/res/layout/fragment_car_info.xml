@@ -1,13 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical"
+>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space32"
+        android:layout_marginTop="@dimen/space24"
+        android:orientation="horizontal"
     >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="car info"
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+        >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:orientation="vertical"
+            >
+
+                <TextView
+                    android:id="@+id/tv_car_config"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.0"
+                    android:gravity="center_vertical"
+                    android:text="详细配置"
+                    android:textSize="@dimen/font14"
+                />
+
+                <View
+                    android:id="@+id/v_car_config"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space1"
+                    android:background="@drawable/shape_under_line_gray"
+                />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+        >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:orientation="vertical"
+            >
+
+                <TextView
+                    android:id="@+id/tv_car_pic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.0"
+                    android:gravity="center_vertical"
+                    android:text="车辆实拍"
+                    android:textColor="@color/font_gray3"
+                    android:textSize="@dimen/font14"
+                />
+
+                <View
+                    android:id="@+id/v_car_pic"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space1"
+                    android:background="@drawable/shape_under_line_gray"
+                    android:visibility="invisible"
+                />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/ll_config_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+            >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space33"
+                    android:gravity="center"
+                    android:text="基本参数"
+                    android:textColor="#ff666666"
+                    android:textSize="14sp"
+                />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space33"
+                    android:background="#fffafafa"
+                    android:gravity="center"
+                    android:text="长x宽x高(mm) : 4430x1626x1965"
+                    android:textColor="#ff666666"
+                    android:textSize="13sp"
+                />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space33"
+                    android:gravity="center"
+                    android:text="轴距(mm) : 2800"
+                    android:textColor="#ff666666"
+                    android:textSize="13sp"
+                />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space33"
+                    android:background="#fffafafa"
+                    android:gravity="center"
+                    android:text="最高车速(km/h) : 120"
+                    android:textColor="#ff666666"
+                    android:textSize="13sp"
+                />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space33"
+                    android:gravity="center"
+                    android:text="整备质量(kg) : 2000"
+                    android:textColor="#ff666666"
+                    android:textSize="13sp"
+                />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space33"
+                    android:background="#fffafafa"
+                    android:gravity="center"
+                    android:text="工况法续驶里程(km) : 258"
+                    android:textColor="#ff666666"
+                    android:textSize="13sp"
+                />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space33"
+                    android:gravity="center"
+                    android:text="最高爬坡(%) : 30"
+                    android:textColor="#ff666666"
+                    android:textSize="13sp"
+                />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_car_pics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         />
+
+    </RelativeLayout>
+
 </LinearLayout>

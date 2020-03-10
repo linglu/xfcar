@@ -5,6 +5,8 @@ import com.xfcar.driver.model.adapterbean.ClaimPayBean;
 import com.xfcar.driver.model.adapterbean.RentCarInfoBean;
 import com.xfcar.driver.model.adapterbean.RepairBean;
 import com.xfcar.driver.model.bean.AlarmRecordEntity;
+import com.xfcar.driver.model.bean.BusinessResp;
+import com.xfcar.driver.model.bean.BusinessType;
 import com.xfcar.driver.model.bean.CarSecurityBean;
 import com.xfcar.driver.model.bean.Command;
 import com.xfcar.driver.model.bean.ContactDTO;
@@ -13,6 +15,7 @@ import com.xfcar.driver.model.bean.IntegralGoodsVo;
 import com.xfcar.driver.model.bean.InviteFriendEntity;
 import com.xfcar.driver.model.bean.InviteRewardBean;
 import com.xfcar.driver.model.bean.LoginResponse;
+import com.xfcar.driver.model.bean.MessageResp;
 import com.xfcar.driver.model.bean.PasswordVO;
 import com.xfcar.driver.model.bean.QRCodeBean;
 import com.xfcar.driver.model.bean.ShortRentEntity;
@@ -23,6 +26,7 @@ import com.xfcar.driver.model.bean.UserId;
 import com.xfcar.driver.model.mybean.OursBean;
 import com.xfcar.driver.model.viewbean.RechargeItemBean;
 import com.xfcar.driver.model.viewbean.ScoreProductBean;
+import com.xfcar.driver.model.viewbean.ScoreRespBean;
 import com.xfcar.driver.model.viewbean.ScoreTypeBean;
 
 import java.util.List;
@@ -38,6 +42,43 @@ import rx.Observable;
  * @author Linky
  */
 public interface ApiService {
+
+
+    // 头部 消息 和 banner 图片
+    //消息中心 -> 我的消息
+    @POST("ioc/app/user/message/get")
+    Observable<Response<MessageResp>> userMessageGet(@Body UserId ui);
+
+    @POST("ioc/app/business/config/find")
+    Observable<Response<BusinessResp>> businessConfigFind(@Body BusinessType ui);
+
+    //转单与订单收益
+
+    //购车租车图片、车型介绍、购买
+    @POST("ioc/app/car/config/get")
+    Observable<Response<String>> carConfigGet(@Body UserId ui);
+
+    @POST("ioc/app/car/shortRent/add")
+    Observable<Response<String>> carShortrentAdd(@Body UserId ui);
+
+    //充值管理到期、充值接口
+    @POST("ioc/app/car/customer/business/find")
+    Observable<Response<String>> carCustomerBusinessFind(@Body UserId ui);
+
+    @POST("ioc/app/recharge/add")
+    Observable<Response<String>> rechargeAdd(@Body UserId ui);
+
+    //用户名与用户头像
+    @POST("ioc/app/user/get")
+    Observable<Response<String>> userGet(@Body UserId ui);
+
+    //账目总览、奖励记录
+    @POST("ioc/app/user/integralLog/find")
+    Observable<Response<ScoreRespBean>> userIntegrallogFind(@Body UserId ui);
+
+    @POST("ioc/app/user/integralLog/counts")
+    Observable<Response<String>> userIntegrallogCounts(@Body UserId ui);
+
 
     //App报警记录: JSON格式传参userId
     @POST("ioc/app/alarmRecord/oneKeyAlarm")

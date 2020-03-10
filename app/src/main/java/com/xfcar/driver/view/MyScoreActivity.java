@@ -6,6 +6,7 @@ import android.widget.AbsListView;
 
 import com.xfcar.driver.R;
 import com.xfcar.driver.model.viewbean.ScoreProductBean;
+import com.xfcar.driver.model.viewbean.ScoreRespBean;
 import com.xfcar.driver.model.viewbean.ScoreTypeBean;
 import com.xfcar.driver.mvp.BaseActivity;
 import com.xfcar.driver.network.Requester;
@@ -36,23 +37,20 @@ public class MyScoreActivity extends BaseActivity implements View.OnClickListene
         setContentView(R.layout.activity_my_score);
         initView();
 
-        DialogLoading.show(getSupportFragmentManager());
-        mRequester.appUserIntegralLogList(mDataManager.getUserId(), new ResultCallback<List<ScoreTypeBean>>() {
+        mRequester.userIntegrallogFind(this, mDataManager.getUserId(), new ResultCallback<ScoreRespBean>() {
             @Override
-            public void onSuccess(List<ScoreTypeBean> s) {
-                mScoreTypeAdapter.setData(s);
+            public void onSuccess(ScoreRespBean s) {
+                mScoreTypeAdapter.setData(s.list);
 
-                mRequester.appIntegralGoodsFindByGoodsTag(
+                mRequester.appIntegralGoodsFindByGoodsTag(MyScoreActivity.this,
                         mDataManager.getUserId(), new ResultCallback<List<ScoreProductBean>>() {
                     @Override
                     public void onSuccess(List<ScoreProductBean> s) {
-                        DialogLoading.dismiss();
                         mScoreProductAdapter.setData(s);
                     }
 
                     @Override
                     public void onFail(String msg) {
-                        DialogLoading.dismiss();
                         toastMsg(msg);
                     }
                 });

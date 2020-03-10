@@ -4,23 +4,25 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/space5"
     android:layout_marginBottom="@dimen/space5"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+>
 
     <TextView
         android:id="@+id/tv_item_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="￥2000.00"
+        android:text="¥2000.00"
         android:textColor="@color/white"
-        android:textSize="@dimen/font15" />
+        android:textSize="@dimen/font14" />
 
     <TextView
         android:id="@+id/tv_item_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="押金"
+        android:layout_marginTop="@dimen/space5"
         android:textColor="#fff2f2f2"
-        android:textSize="@dimen/font14" />
+        android:textSize="@dimen/font12" />
 
 </LinearLayout>

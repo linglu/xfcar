@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.xfcar.driver.R;
-import com.xfcar.driver.model.viewbean.MsgBean;
+import com.xfcar.driver.model.bean.Message;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,11 +24,11 @@ public class MsgAdapter extends RecyclerView.Adapter<MsgAdapter.RewardHolder> {
     /**
      * 智能家电
      */
-    public List<MsgBean> MsgTps = new ArrayList<>();
+    public List<Message> MsgTps = new ArrayList<>();
     private Context mContext;
-    private Action1<MsgBean> mCallback;
+    private Action1<Message> mCallback;
 
-    public void setCallback(Action1<MsgBean> callback) {
+    public void setCallback(Action1<Message> callback) {
         this.mCallback = callback;
     }
 
@@ -36,7 +36,7 @@ public class MsgAdapter extends RecyclerView.Adapter<MsgAdapter.RewardHolder> {
         mContext = context;
     }
 
-    public void setData(List<MsgBean> beans) {
+    public void setData(List<Message> beans) {
         this.MsgTps.clear();
         this.MsgTps.addAll(beans);
         notifyDataSetChanged();
@@ -52,9 +52,9 @@ public class MsgAdapter extends RecyclerView.Adapter<MsgAdapter.RewardHolder> {
     @Override
     public void onBindViewHolder(@NonNull RewardHolder holder, int position) {
         if (MsgTps != null) {
-            final MsgBean stb = MsgTps.get(position);
-            holder.tvMsg.setText(stb.msg);
-            holder.tvTime.setText(stb.time);
+            final Message stb = MsgTps.get(position);
+            holder.tvMsg.setText(stb.msgContent);
+            holder.tvTime.setText(stb.createDate);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -1,6 +1,5 @@
 package com.xfcar.driver.mvp;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;

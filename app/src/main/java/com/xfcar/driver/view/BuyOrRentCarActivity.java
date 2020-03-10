@@ -6,9 +6,6 @@ import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-
 import com.xfcar.driver.R;
 import com.xfcar.driver.model.adapterbean.RentCarInfoBean;
 import com.xfcar.driver.mvp.BaseActivity;
@@ -16,9 +13,12 @@ import com.xfcar.driver.network.ResultCallback;
 import com.xfcar.driver.utils.L;
 import com.xfcar.driver.view.adapter.CarInfoSpinnerAdapter;
 import com.xfcar.driver.view.fragment.BuyCarFragment;
+import com.xfcar.driver.view.fragment.RentCarFragment;
 import com.xfcar.driver.view.fragment.ShowCarInfoFragment;
 
 import java.util.List;
+
+import androidx.core.content.ContextCompat;
 
 public class BuyOrRentCarActivity extends BaseActivity implements View.OnClickListener {
 
@@ -29,12 +29,16 @@ public class BuyOrRentCarActivity extends BaseActivity implements View.OnClickLi
     private TextView mTvCarIntro;
     private View mVCarIntro;
     private RentCarInfoBean mRentCarInfoBean;
-    private boolean mIsBuyPlanShow = true;
+    private boolean mIsBuyPlan = true;
+    private TextView mTvPrice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_or_rent_car);
+
+        mIsBuyPlan = getIntent().getExtras().getBoolean("is_buy_car", false);
+
         initView();
         mRequester.appCarSellModelGetList(mInstance, new ResultCallback<List<RentCarInfoBean>>() {
             @Override
@@ -57,6 +61,21 @@ public class BuyOrRentCarActivity extends BaseActivity implements View.OnClickLi
     private void initView() {
         findViewById(R.id.rl_return_back).setOnClickListener(this);
         mSpinner = findViewById(R.id.sp_rent_car);
+        mTvPrice = findViewById(R.id.tv_total_price);
+        TextView tvTitle = findViewById(R.id.tv_title);
+        if (mIsBuyPlan) {
+            tvTitle.setText("购车");
+        } else {
+            tvTitle.setText("租车");
+        }
+
+        findViewById(R.id.tv_pre_order).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
 
         findViewById(R.id.tv_buy_plan).setOnClickListener(this);
         findViewById(R.id.v_buy_plan).setOnClickListener(this);
@@ -64,6 +83,8 @@ public class BuyOrRentCarActivity extends BaseActivity implements View.OnClickLi
         findViewById(R.id.v_car_intro).setOnClickListener(this);
 
         mTvBuyPlan = findViewById(R.id.tv_buy_plan);
+        mTvBuyPlan.setText(getPlanName());
+
         mVBuyPlan = findViewById(R.id.v_buy_plan);
         mTvCarIntro = findViewById(R.id.tv_car_intro);
         mVCarIntro = findViewById(R.id.v_car_intro);
@@ -75,18 +96,7 @@ public class BuyOrRentCarActivity extends BaseActivity implements View.OnClickLi
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 L.i("on item selected");
                 mRentCarInfoBean = (RentCarInfoBean) view.getTag();
-//                mTvBuy.setText(String.format("全额购买: ￥%s", bean.price));
-                if (mIsBuyPlanShow) {
-                        Fragment fragment = getSupportFragmentManager().findFragmentByTag("buy_or_rent");
-                    if (fragment != null) {
-                        ((BuyCarFragment) fragment).update(mRentCarInfoBean);
-                    }
-                } else {
-                    Fragment fragment = getSupportFragmentManager().findFragmentByTag("car_info");
-                    if (fragment != null) {
-//                        ((ShowCarInfoFragment) fragment).update(mRentCarInfoBean);
-                    }
-                }
+                mTvPrice.setText(String.format("¥%s", mRentCarInfoBean.price));
             }
 
             @Override
@@ -94,6 +104,15 @@ public class BuyOrRentCarActivity extends BaseActivity implements View.OnClickLi
 
             }
         });
+    }
+
+    private String getPlanName() {
+        if (mIsBuyPlan) {
+            return "购车方案";
+        } else {
+            return "租车方案";
+        }
+
     }
 
     @Override
@@ -106,19 +125,23 @@ public class BuyOrRentCarActivity extends BaseActivity implements View.OnClickLi
             mVBuyPlan.setVisibility(View.VISIBLE);
             mTvCarIntro.setTextColor(ContextCompat.getColor(this, R.color.font_gray3));
             mVCarIntro.setVisibility(View.INVISIBLE);
-            mIsBuyPlanShow = true;
 
-            Bundle args = new Bundle();
-            args.putParcelable("car_info_bean", mRentCarInfoBean);
-            getSupportFragmentManager().beginTransaction().replace(R.id.fl_container,
-                    BuyCarFragment.newInstance(args), "buy_or_rent").commit();
+            Bundle bundle = new Bundle();
+            bundle.putParcelable("bean", mRentCarInfoBean);
+
+            if (mIsBuyPlan) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fl_container,
+                        BuyCarFragment.newInstance(bundle), "buy_plan").commit();
+            } else {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fl_container,
+                        RentCarFragment.newInstance(bundle), "rent_plan").commit();
+            }
 
         } else if (id == R.id.tv_car_intro) {
             mTvCarIntro.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary));
             mVCarIntro.setVisibility(View.VISIBLE);
             mTvBuyPlan.setTextColor(ContextCompat.getColor(this, R.color.font_gray3));
             mVBuyPlan.setVisibility(View.INVISIBLE);
-            mIsBuyPlanShow = false;
 
             getSupportFragmentManager().beginTransaction().replace(R.id.fl_container,
                     ShowCarInfoFragment.newInstance(null), "car_info").commit();
@@ -126,9 +149,16 @@ public class BuyOrRentCarActivity extends BaseActivity implements View.OnClickLi
     }
 
     private void showBuyAndRent() {
-        Bundle args = new Bundle();
-        args.putParcelable("car_info_bean", mRentCarInfoBean);
-        getSupportFragmentManager().beginTransaction().add(R.id.fl_container,
-                BuyCarFragment.newInstance(args), "buy_or_rent").commit();
+
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("bean", mRentCarInfoBean);
+        if (mIsBuyPlan) {
+            getSupportFragmentManager().beginTransaction().add(R.id.fl_container,
+                    BuyCarFragment.newInstance(bundle), "buy").commit();
+        } else {
+            getSupportFragmentManager().beginTransaction().add(R.id.fl_container,
+                    RentCarFragment.newInstance(bundle), "rent").commit();
+        }
+
     }
 }

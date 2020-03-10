@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/space2"
-                android:text="￥2000.00"
+                android:text="¥2000.00"
                 android:textColor="#fff2f2f2"
                 android:textSize="30sp"
             />

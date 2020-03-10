@@ -14,4 +14,6 @@ public class ScoreTypeBean {
     public String delFlag;
     public String updateBy;
     public String updateDate;
+    public Integer scoreStatus;
+
 }

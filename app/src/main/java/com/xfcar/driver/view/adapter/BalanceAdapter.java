@@ -54,7 +54,7 @@ public class BalanceAdapter extends RecyclerView.Adapter<BalanceAdapter.BalanceH
     public void onBindViewHolder(@NonNull BalanceHolder holder, int position) {
         if (ScoreTps != null) {
             final BalanceTypeBean stb = ScoreTps.get(position);
-            holder.tvItemNumber.setText(String.format("￥%s", stb.price));
+            holder.tvItemNumber.setText(String.format("¥%s", stb.price));
             holder.tvItemName.setText(stb.name);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

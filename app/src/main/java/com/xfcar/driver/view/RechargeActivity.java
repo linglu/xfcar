@@ -2,11 +2,16 @@ package com.xfcar.driver.view;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.xfcar.driver.App;
 import com.xfcar.driver.R;
+import com.xfcar.driver.model.bean.UserEntity;
 import com.xfcar.driver.model.viewbean.RechargeItemBean;
 import com.xfcar.driver.mvp.BaseActivity;
 import com.xfcar.driver.network.ResultCallback;
+import com.xfcar.driver.utils.ImageLoadHelper;
 import com.xfcar.driver.view.adapter.RechargeAdapter;
 
 import java.util.List;
@@ -39,6 +44,13 @@ public class RechargeActivity extends BaseActivity implements View.OnClickListen
     }
 
     private void initView() {
+
+        ImageView iv = findViewById(R.id.iv_header);
+        ImageLoadHelper.loadImage(this, getUser().avatar, iv);
+
+        TextView tv = findViewById(R.id.tv_username);
+        tv.setText(getUser().username);
+
         findViewById(R.id.rl_return_back).setOnClickListener(this);
         findViewById(R.id.btn_recharge).setOnClickListener(this);
         mRvRecharge = findViewById(R.id.rv_recharge_item);
@@ -53,6 +65,11 @@ public class RechargeActivity extends BaseActivity implements View.OnClickListen
         });
         mRvRecharge.setAdapter(mAdapter);
 
+    }
+
+
+    private UserEntity getUser() {
+        return App.sInstance.mDataManager.getUser();
     }
 
     @Override

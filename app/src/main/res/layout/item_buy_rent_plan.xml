@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:orientation="vertical"
+              android:layout_marginTop="@dimen/space5"
+>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space78"
+        android:layout_marginLeft="@dimen/space10"
+        android:layout_marginRight="@dimen/space10"
+        android:background="@drawable/shape_round_gray"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="vertical"
+        >
+
+            <TextView
+                android:id="@+id/tv_item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="首付"
+                android:textColor="#ff666666"
+                android:textSize="14sp"
+            />
+
+            <TextView
+                android:id="@+id/tv_item_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space10"
+                android:text="1万"
+                android:textColor="#ff9f553a"
+                android:textSize="20sp"
+            />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="@dimen/space1"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/space16"
+            android:layout_marginTop="@dimen/space16"
+            android:background="#ffe5e5e5"
+        />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="vertical"
+        >
+
+            <TextView
+                android:id="@+id/tv_item_name_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="月供"
+                android:textColor="#ff666666"
+                android:textSize="14sp"
+            />
+
+            <TextView
+                android:id="@+id/tv_item_value_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space10"
+                android:text="2000元"
+                android:textColor="#ff9f553a"
+                android:textSize="20sp"
+            />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="@dimen/space1"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/space16"
+            android:layout_marginTop="@dimen/space16"
+            android:background="#ffe5e5e5"
+        />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="vertical"
+        >
+
+            <TextView
+                android:id="@+id/tv_item_name_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="期数"
+                android:textColor="#ff666666"
+                android:textSize="14sp"
+            />
+
+            <TextView
+                android:id="@+id/tv_item_value_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space10"
+                android:text="36期"
+                android:textColor="#ff9f553a"
+                android:textSize="20sp"
+            />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

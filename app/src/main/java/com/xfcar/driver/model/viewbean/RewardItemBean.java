@@ -17,9 +17,9 @@ public class RewardItemBean {
         List<RewardItemBean> list = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             RewardItemBean rib = new RewardItemBean();
-            rib.type = "收款";
+            rib.type = "转单收入";
             rib.amount = "100";
-            rib.receipt = "收款方";
+            rib.receipt = "收款方: xxx";
             rib.date = "2020-1-1";
             list.add(rib);
         }

@@ -4,11 +4,16 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.xfcar.driver.R;
+import com.xfcar.driver.model.bean.Message;
 import com.xfcar.driver.model.viewbean.MsgBean;
 import com.xfcar.driver.model.viewbean.RewardItemBean;
 import com.xfcar.driver.mvp.BaseActivity;
+import com.xfcar.driver.network.ResultCallback;
+import com.xfcar.driver.utils.L;
 import com.xfcar.driver.view.adapter.MsgAdapter;
 import com.xfcar.driver.view.adapter.RewardAdapter;
+
+import java.util.List;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,6 +28,18 @@ public class MyMessageActivity extends BaseActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_message);
         initView();
+
+        mRequester.userMessageGet(this, true, mDataManager.getUserId(), new ResultCallback<List<Message>>() {
+            @Override
+            public void onSuccess(List<Message> messages) {
+                mMsgAdapter.setData(messages);
+            }
+
+            @Override
+            public void onFail(String msg) {
+                L.i("MyMessageActivity onFail " + msg);
+            }
+        });
     }
 
     private void initView() {
@@ -33,8 +50,6 @@ public class MyMessageActivity extends BaseActivity implements View.OnClickListe
         mMsgAdapter = new MsgAdapter(this);
         mRvMsg.setLayoutManager(new LinearLayoutManager(this));
         mRvMsg.setAdapter(mMsgAdapter);
-        mMsgAdapter.setData(MsgBean.mock());
-
     }
 
     @Override

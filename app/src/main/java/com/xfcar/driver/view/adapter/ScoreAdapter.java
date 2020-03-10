@@ -76,7 +76,9 @@ public class ScoreAdapter extends RecyclerView.Adapter<ScoreAdapter.FuncHolder> 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mCallback.call(stb);
+                    if (mCallback != null) {
+                        mCallback.call(stb);
+                    }
                 }
             });
         }

@@ -51,10 +51,10 @@ public class FunctionBean {
     }
 
     public static List<FunctionBean> mockFuncBeans() {
-        int[] imgs = new int[]{R.mipmap.rent_car, R.mipmap.yaoqinghaoyou_2, R.mipmap.cheliangguanli_1,
-                R.mipmap.chongzhi_6, R.mipmap.yijianbaojing_1};
+        int[] imgs = new int[]{R.mipmap.gouche, R.mipmap.ic_rent_car, R.mipmap.cheliangguanli_1, R.mipmap.yijianbaojing_1,
+                R.mipmap.yaoqinghaoyou_2, R.mipmap.chongzhi_6};
 
-        String[] names = new String[]{"购车租车", "邀请好友", "车辆管理", "租金充值", "一键报警"};
+        String[] names = new String[]{"购车", "租车",  "车辆管理", "一键报警", "邀请好友", "租金充值"};
 
         List<FunctionBean> beans = new ArrayList<>();
         for (int i = 0; i < imgs.length; i++) {

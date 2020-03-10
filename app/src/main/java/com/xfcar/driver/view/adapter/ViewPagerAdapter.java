@@ -6,11 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.wangpeiyuan.cycleviewpager2.adapter.CyclePagerAdapter;
 import com.xfcar.driver.R;
-import com.xfcar.driver.model.adapterbean.PagerBean;
+import com.xfcar.driver.model.bean.BusinessBean;
 import com.xfcar.driver.utils.ImageLoadHelper;
 
 import java.util.ArrayList;
@@ -28,11 +26,11 @@ public class ViewPagerAdapter extends CyclePagerAdapter<ViewPagerAdapter.ViewPag
     /**
      * 智能家电
      */
-    public List<PagerBean> mViewPageApps = new ArrayList<>();
+    public List<BusinessBean> mViewPageApps = new ArrayList<>();
     private Context mContext;
-    private Action1<PagerBean> mCallback;
+    private Action1<BusinessBean> mCallback;
 
-    public void setCallback(Action1<PagerBean> callback) {
+    public void setCallback(Action1<BusinessBean> callback) {
         this.mCallback = callback;
     }
 
@@ -40,7 +38,7 @@ public class ViewPagerAdapter extends CyclePagerAdapter<ViewPagerAdapter.ViewPag
         mContext = context;
     }
 
-    public void setData(List<PagerBean> beans) {
+    public void setData(List<BusinessBean> beans) {
         this.mViewPageApps.clear();
         this.mViewPageApps.addAll(beans);
         notifyDataSetChanged();
@@ -61,8 +59,8 @@ public class ViewPagerAdapter extends CyclePagerAdapter<ViewPagerAdapter.ViewPag
     @Override
     public void onBindRealViewHolder(@NonNull ViewPageHolder holder, int position) {
         if (mViewPageApps != null) {
-            final PagerBean pb = mViewPageApps.get(position);
-            ImageLoadHelper.loadImage(mContext, pb.imgUrl, holder.ivPager);
+            final BusinessBean pb = mViewPageApps.get(position);
+            ImageLoadHelper.loadImage(mContext, pb.picUrl, holder.ivPager);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -1,10 +1,6 @@
 package com.xfcar.driver.view.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,17 +9,17 @@ import android.widget.TextView;
 
 import com.xfcar.driver.App;
 import com.xfcar.driver.R;
+import com.xfcar.driver.model.bean.UserEntity;
 import com.xfcar.driver.mvp.BaseFragment;
+import com.xfcar.driver.utils.ImageLoadHelper;
 import com.xfcar.driver.view.BalanceActivity;
-import com.xfcar.driver.view.DedutPercentActivity;
-import com.xfcar.driver.view.LoginActivity;
 import com.xfcar.driver.view.MyMessageActivity;
 import com.xfcar.driver.view.MyScoreActivity;
 import com.xfcar.driver.view.ReceiptActivity;
-import com.xfcar.driver.view.SearchInfoActivity;
 import com.xfcar.driver.view.SettingActivity;
-import com.xfcar.driver.view.ShareRewardActivity;
 import com.xfcar.driver.view.adapter.FunctionAdapter;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * @author linky
@@ -50,49 +46,32 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
 
     private void init() {
         mIvAvatar = mRootView.findViewById(R.id.iv_avatar);
+        ImageLoadHelper.loadImage(mActivity, getUser().avatar, mIvAvatar);
+
         mTvUserName = mRootView.findViewById(R.id.tv_username);
-        mTvUserName.setText(getMobile());
+        mTvUserName.setText(getUser().username);
 
         TextView tvBalance = mRootView.findViewById(R.id.tv_balance);
         tvBalance.setText(String.valueOf(App.sInstance.mDataManager.getUser().balance));
-        mRootView.findViewById(R.id.ll_my_wallet).setOnClickListener(this);
-        mRootView.findViewById(R.id.ll_balance_account).setOnClickListener(this);
         mRootView.findViewById(R.id.ll_receipt).setOnClickListener(this);
         mRootView.findViewById(R.id.ll_search).setOnClickListener(this);
-        mRootView.findViewById(R.id.ll_sent_reward).setOnClickListener(this);
-        mRootView.findViewById(R.id.ll_share_reward).setOnClickListener(this);
         mRootView.findViewById(R.id.ll_score).setOnClickListener(this);
         mRootView.findViewById(R.id.ll_message).setOnClickListener(this);
         mRootView.findViewById(R.id.ll_permission).setOnClickListener(this);
     }
 
-    public String getMobile() {
-        String mobile = App.sInstance.mDataManager.getMobile();
-        return mobile.substring(0,3) + "****" + mobile.substring(7);
+    private UserEntity getUser() {
+        return App.sInstance.mDataManager.getUser();
     }
 
     @Override
     public void onClick(View v) {
         int id = v.getId();
 
-        if (id == R.id.ll_my_wallet) {
-
-        } else if (id == R.id.ll_balance_account) {
-            startActivity(BalanceActivity.class);
-        } else if (id == R.id.ll_receipt) {
+        if (id == R.id.ll_receipt) {
             startActivity(ReceiptActivity.class);
         } else if (id == R.id.ll_search) {
-//            startActivity(SearchInfoActivity.class);
             startActivity(BalanceActivity.class);
-        } else if (id == R.id.ll_sent_reward) {
-            Bundle b = new Bundle();
-            b.putString("title", "转单提成");
-            startActivity(DedutPercentActivity.class, b);
-        } else if (id == R.id.ll_share_reward) {
-//            startActivity(ShareRewardActivity.class);
-            Bundle b = new Bundle();
-            b.putString("title", "推荐奖励");
-            startActivity(DedutPercentActivity.class, b);
         } else if (id == R.id.ll_score) {
             startActivity(MyScoreActivity.class);
         } else if (id == R.id.ll_message) {

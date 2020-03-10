@@ -6,6 +6,9 @@ import com.xfcar.driver.model.adapterbean.CarInfoBean;
 import com.xfcar.driver.model.adapterbean.ClaimPayBean;
 import com.xfcar.driver.model.adapterbean.RentCarInfoBean;
 import com.xfcar.driver.model.adapterbean.RepairBean;
+import com.xfcar.driver.model.bean.BusinessBean;
+import com.xfcar.driver.model.bean.BusinessResp;
+import com.xfcar.driver.model.bean.BusinessType;
 import com.xfcar.driver.model.bean.CarObjectId;
 import com.xfcar.driver.model.bean.CarSecurityBean;
 import com.xfcar.driver.model.bean.ContactDTO;
@@ -16,6 +19,8 @@ import com.xfcar.driver.model.bean.InviteFriendEntity;
 import com.xfcar.driver.model.bean.InviteRewardBean;
 import com.xfcar.driver.model.bean.LoginResponse;
 import com.xfcar.driver.model.bean.MarkBean;
+import com.xfcar.driver.model.bean.Message;
+import com.xfcar.driver.model.bean.MessageResp;
 import com.xfcar.driver.model.bean.PasswordVO;
 import com.xfcar.driver.model.bean.QRCodeBean;
 import com.xfcar.driver.model.bean.ShortRentEntity;
@@ -28,6 +33,7 @@ import com.xfcar.driver.model.mybean.InviteRecordQueryBean;
 import com.xfcar.driver.model.mybean.OursBean;
 import com.xfcar.driver.model.viewbean.RechargeItemBean;
 import com.xfcar.driver.model.viewbean.ScoreProductBean;
+import com.xfcar.driver.model.viewbean.ScoreRespBean;
 import com.xfcar.driver.model.viewbean.ScoreTypeBean;
 import com.xfcar.driver.network.converter.FastjsonConverterFactory;
 import com.xfcar.driver.utils.DialogLoading;
@@ -224,6 +230,95 @@ public class Requester {
                 });
     }
 
+    public void userMessageGet(FragmentActivity act, final boolean showDialog, int userId, final ResultCallback<List<Message>> callback) {
+        if (showDialog) {
+            showLoadingDialog(act);
+        }
+        service.userMessageGet(new UserId(userId))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetworkSubscriber<MessageResp>() {
+
+                    @Override
+                    public void onSuccess(MessageResp o) {
+                        if (showDialog) {
+                            dismissLoadingDialog();
+                        }
+                        callback.onSuccess(o.list);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        if (showDialog) {
+                            dismissLoadingDialog();
+                        }
+                        callback.onFail(msg);
+                    }
+                });
+    }
+
+    public void businessConfigFind(FragmentActivity act, int userId, final ResultCallback<List<BusinessBean>> callback) {
+        BusinessType bt = new BusinessType(userId, "10");
+        service.businessConfigFind(bt)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetworkSubscriber<BusinessResp>() {
+
+                    @Override
+                    public void onSuccess(BusinessResp o) {
+                        callback.onSuccess(o.list);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        callback.onFail(msg);
+                    }
+                });
+
+    }
+
+    public void userIntegrallogCounts(FragmentActivity act, int userId, final ResultCallback<String> callback) {
+        showLoadingDialog(act);
+        service.userIntegrallogCounts(new UserId(userId))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetworkSubscriber<String>() {
+
+                    @Override
+                    public void onSuccess(String o) {
+                        dismissLoadingDialog();
+                        callback.onSuccess(o);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        dismissLoadingDialog();
+                        callback.onFail(msg);
+                    }
+                });
+    }
+
+    public void userIntegrallogFind(FragmentActivity act, int userId, final ResultCallback<ScoreRespBean> callback) {
+        showLoadingDialog(act);
+        service.userIntegrallogFind(new UserId(userId))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetworkSubscriber<ScoreRespBean>() {
+
+                    @Override
+                    public void onSuccess(ScoreRespBean o) {
+                        dismissLoadingDialog();
+                        callback.onSuccess(o);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        dismissLoadingDialog();
+                        callback.onFail(msg);
+                    }
+                });
+    }
+
     public void appCarShortRentAdd(FragmentActivity act, int userId, String carNo, String date, final ResultCallback<String> callback) {
         showLoadingDialog(act);
         ShortRentEntity entity = new ShortRentEntity();
@@ -382,7 +477,8 @@ public class Requester {
                 });
     }
 
-    public void appIntegralGoodsFindByGoodsTag(int userId, final ResultCallback<List<ScoreProductBean>> callback) {
+    public void appIntegralGoodsFindByGoodsTag(FragmentActivity act, int userId, final ResultCallback<List<ScoreProductBean>> callback) {
+        showLoadingDialog(act);
         IntegralGoodsVo integralGoodsVo = new IntegralGoodsVo();
         integralGoodsVo.userId = userId;
         integralGoodsVo.goodsTag = "RentFree";
@@ -393,11 +489,13 @@ public class Requester {
 
                     @Override
                     public void onSuccess(List<ScoreProductBean> o) {
+                        dismissLoadingDialog();
                         callback.onSuccess(o);
                     }
 
                     @Override
                     public void onFail(String msg) {
+                        dismissLoadingDialog();
                         callback.onFail(msg);
                     }
                 });

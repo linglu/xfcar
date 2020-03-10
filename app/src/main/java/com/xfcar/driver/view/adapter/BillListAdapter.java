@@ -55,8 +55,8 @@ public class BillListAdapter extends RecyclerView.Adapter<BillListAdapter.BillHo
         if (mListBean != null) {
             final SentBillListBean sblb = mListBean.get(position);
             holder.tvSendDate.setText(String.format("%s", sblb.date));
-            holder.tvSendTotal.setText(String.format("￥%s", sblb.total));
-            holder.tvSendReward.setText(String.format("￥%s", sblb.reward));
+            holder.tvSendTotal.setText(String.format("¥%s", sblb.total));
+            holder.tvSendReward.setText(String.format("¥%s", sblb.reward));
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

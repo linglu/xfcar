@@ -53,7 +53,7 @@ public class RewardAdapter extends RecyclerView.Adapter<RewardAdapter.RewardHold
     public void onBindViewHolder(@NonNull RewardHolder holder, int position) {
         if (RewardTps != null) {
             final RewardItemBean stb = RewardTps.get(position);
-            holder.tvType.setText(stb.type);
+            holder.tvType.setText(String.format("类型: %s", stb.type));
             holder.tvAmount.setText(stb.amount);
             holder.tvReceipt.setText(stb.receipt);
             holder.tvDate.setText(stb.date);

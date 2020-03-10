@@ -16,21 +16,20 @@ public class BalanceTypeBean {
     public String name;
 
     public static List<BalanceTypeBean> mock(UserEntity user) {
-        String[] items = new String[]{"押金", "收入", "提现", "余额", "转单提成", "月租充值"};
-        Float[] f = new Float[] {
-                user.deposit,
-                -1.0f,
-                -1.0f,
-                user.balance,
-                -1.0f,
-                -1.0f
+        String[] items = new String[]{"租车押金", "待交月租", "转单收入", "积分收入", "推荐收入"};
+        String[] f = new String[] {
+                "888",
+                "888",
+                "888",
+                "888",
+                "888"
         };
 
         List<BalanceTypeBean> list = new ArrayList<>();
         for (int i = 0; i < items.length; i++) {
             BalanceTypeBean btb = new BalanceTypeBean();
             btb.name = items[i];
-            btb.price = String.valueOf(f[i]);
+            btb.price = f[i];
             list.add(btb);
         }
         return list;

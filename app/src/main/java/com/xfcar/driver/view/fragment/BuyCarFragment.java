@@ -8,14 +8,17 @@ import android.widget.TextView;
 
 import com.xfcar.driver.R;
 import com.xfcar.driver.model.adapterbean.RentCarInfoBean;
+import com.xfcar.driver.model.bean.BuyRentItemBean;
 import com.xfcar.driver.mvp.BaseFragment;
+import com.xfcar.driver.view.adapter.BuyRentItemAdapter;
 
+import androidx.recyclerview.widget.RecyclerView;
 import rx.functions.Action1;
 
 public class BuyCarFragment extends BaseFragment implements Action1<String> {
 
-    private TextView mTvPrice;
-    private TextView mTvBuy;
+    private RecyclerView mRvList;
+    private BuyRentItemAdapter mAdapter;
 
     public static BuyCarFragment newInstance(Bundle args) {
         BuyCarFragment fragment = new BuyCarFragment();
@@ -36,17 +39,16 @@ public class BuyCarFragment extends BaseFragment implements Action1<String> {
     }
 
     public void init() {
-        mTvPrice = mRootView.findViewById(R.id.tv_price);
-        mTvBuy = mRootView.findViewById(R.id.tv_buy);
+        mRvList = mRootView.findViewById(R.id.rv_list);
+        mAdapter = new BuyRentItemAdapter(mActivity, true);
+        mAdapter.setCallback(new Action1<BuyRentItemBean>() {
+            @Override
+            public void call(BuyRentItemBean b) {
 
-        if (getArguments() != null) {
-            RentCarInfoBean bean = getArguments().getParcelable("car_info_bean");
-            update(bean);
-        }
-    }
-
-    public void update(RentCarInfoBean bean) {
-        mTvPrice.setText(String.format("￥%s", bean.price));
+            }
+        });
+        mRvList.setAdapter(mAdapter);
+        mAdapter.setData(BuyRentItemBean.mockBuy());
     }
 
     @Override
