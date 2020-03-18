@@ -11,6 +11,7 @@ import com.xfcar.driver.model.bean.BusinessResp;
 import com.xfcar.driver.model.bean.BusinessType;
 import com.xfcar.driver.model.bean.CarObjectId;
 import com.xfcar.driver.model.bean.CarSecurityBean;
+import com.xfcar.driver.model.bean.Command;
 import com.xfcar.driver.model.bean.ContactDTO;
 import com.xfcar.driver.model.bean.EnLogoGram;
 import com.xfcar.driver.model.bean.ExchangeGoods;
@@ -20,14 +21,14 @@ import com.xfcar.driver.model.bean.InviteRewardBean;
 import com.xfcar.driver.model.bean.LoginResponse;
 import com.xfcar.driver.model.bean.MarkBean;
 import com.xfcar.driver.model.bean.Message;
+import com.xfcar.driver.model.bean.MessageBean;
 import com.xfcar.driver.model.bean.MessageResp;
 import com.xfcar.driver.model.bean.PasswordVO;
 import com.xfcar.driver.model.bean.QRCodeBean;
+import com.xfcar.driver.model.bean.ShortRentBean;
 import com.xfcar.driver.model.bean.ShortRentEntity;
 import com.xfcar.driver.model.bean.SignInOutBean;
 import com.xfcar.driver.model.bean.SysUserEntity;
-import com.xfcar.driver.model.bean.UserEntity;
-import com.xfcar.driver.model.bean.Command;
 import com.xfcar.driver.model.bean.UserId;
 import com.xfcar.driver.model.mybean.InviteRecordQueryBean;
 import com.xfcar.driver.model.mybean.OursBean;
@@ -37,7 +38,6 @@ import com.xfcar.driver.model.viewbean.ScoreRespBean;
 import com.xfcar.driver.model.viewbean.ScoreTypeBean;
 import com.xfcar.driver.network.converter.FastjsonConverterFactory;
 import com.xfcar.driver.utils.DialogLoading;
-import com.xfcar.driver.utils.L;
 
 import java.io.IOException;
 import java.util.List;
@@ -188,6 +188,27 @@ public class Requester {
                 });
     }
 
+    public void carInfoConfigGetList(FragmentActivity act, Integer userId,  final ResultCallback<List<RentCarInfoBean>> callback) {
+        showLoadingDialog(act);
+        service.carInfoConfigGetList(new UserId(userId))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetworkSubscriber<List<RentCarInfoBean>>() {
+
+                    @Override
+                    public void onSuccess(List<RentCarInfoBean> o) {
+                        dismissLoadingDialog();
+                        callback.onSuccess(o);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        dismissLoadingDialog();
+                        callback.onFail(msg);
+                    }
+                });
+    }
+
     public void appCarSellModelGetList(FragmentActivity act, final ResultCallback<List<RentCarInfoBean>> callback) {
         showLoadingDialog(act);
         service.appCarSellModelGetList()
@@ -257,9 +278,9 @@ public class Requester {
                 });
     }
 
-    public void businessConfigFind(FragmentActivity act, int userId, final ResultCallback<List<BusinessBean>> callback) {
+    public void businessConfigList(FragmentActivity act, int userId, final ResultCallback<List<BusinessBean>> callback) {
         BusinessType bt = new BusinessType(userId, "10");
-        service.businessConfigFind(bt)
+        service.businessConfigList(bt)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetworkSubscriber<BusinessResp>() {
@@ -267,6 +288,26 @@ public class Requester {
                     @Override
                     public void onSuccess(BusinessResp o) {
                         callback.onSuccess(o.list);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        callback.onFail(msg);
+                    }
+                });
+
+    }
+
+    public void businessConfigFind(int id, final ResultCallback<String> callback) {
+        BusinessType bt = new BusinessType(id, null);
+        service.businessConfigFind(bt)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetworkSubscriber<String>() {
+
+                    @Override
+                    public void onSuccess(String o) {
+                        callback.onSuccess(o);
                     }
 
                     @Override
@@ -307,6 +348,48 @@ public class Requester {
 
                     @Override
                     public void onSuccess(ScoreRespBean o) {
+                        dismissLoadingDialog();
+                        callback.onSuccess(o);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        dismissLoadingDialog();
+                        callback.onFail(msg);
+                    }
+                });
+    }
+
+    public void alarmRecordFeedback(FragmentActivity act, String message, final ResultCallback<String> callback) {
+        showLoadingDialog(act);
+        service.alarmRecordFeedback(new MessageBean(message))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetworkSubscriber<String>() {
+
+                    @Override
+                    public void onSuccess(String o) {
+                        dismissLoadingDialog();
+                        callback.onSuccess(o);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        dismissLoadingDialog();
+                        callback.onFail(msg);
+                    }
+                });
+    }
+
+    public void carShortRentAdd(FragmentActivity act, int userId, String type, String date, final ResultCallback<String> callback) {
+        showLoadingDialog(act);
+        service.carShortRentAdd(new ShortRentBean(userId, type, date))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetworkSubscriber<String>() {
+
+                    @Override
+                    public void onSuccess(String o) {
                         dismissLoadingDialog();
                         callback.onSuccess(o);
                     }

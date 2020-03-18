@@ -109,6 +109,7 @@
                 />
 
                 <TextView
+                    android:id="@+id/tv_param_1"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/space33"
                     android:background="#fffafafa"
@@ -119,6 +120,7 @@
                 />
 
                 <TextView
+                    android:id="@+id/tv_param_2"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/space33"
                     android:gravity="center"
@@ -128,6 +130,7 @@
                 />
 
                 <TextView
+                    android:id="@+id/tv_param_3"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/space33"
                     android:background="#fffafafa"
@@ -138,6 +141,7 @@
                 />
 
                 <TextView
+                    android:id="@+id/tv_param_4"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/space33"
                     android:gravity="center"
@@ -147,6 +151,7 @@
                 />
 
                 <TextView
+                    android:id="@+id/tv_param_5"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/space33"
                     android:background="#fffafafa"
@@ -157,6 +162,7 @@
                 />
 
                 <TextView
+                    android:id="@+id/tv_param_6"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/space33"
                     android:gravity="center"

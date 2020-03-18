@@ -10,14 +10,17 @@ import com.xfcar.driver.model.bean.BusinessType;
 import com.xfcar.driver.model.bean.CarSecurityBean;
 import com.xfcar.driver.model.bean.Command;
 import com.xfcar.driver.model.bean.ContactDTO;
+import com.xfcar.driver.model.bean.EnLogoGram;
 import com.xfcar.driver.model.bean.ExchangeGoods;
 import com.xfcar.driver.model.bean.IntegralGoodsVo;
 import com.xfcar.driver.model.bean.InviteFriendEntity;
 import com.xfcar.driver.model.bean.InviteRewardBean;
 import com.xfcar.driver.model.bean.LoginResponse;
+import com.xfcar.driver.model.bean.MessageBean;
 import com.xfcar.driver.model.bean.MessageResp;
 import com.xfcar.driver.model.bean.PasswordVO;
 import com.xfcar.driver.model.bean.QRCodeBean;
+import com.xfcar.driver.model.bean.ShortRentBean;
 import com.xfcar.driver.model.bean.ShortRentEntity;
 import com.xfcar.driver.model.bean.SignInOutBean;
 import com.xfcar.driver.model.bean.SysUserEntity;
@@ -50,7 +53,11 @@ public interface ApiService {
     Observable<Response<MessageResp>> userMessageGet(@Body UserId ui);
 
     @POST("ioc/app/business/config/find")
-    Observable<Response<BusinessResp>> businessConfigFind(@Body BusinessType ui);
+    Observable<Response<String>> businessConfigFind(@Body BusinessType ui);
+
+    @POST("ioc/app/business/config/list")
+    Observable<Response<BusinessResp>> businessConfigList(@Body BusinessType ui);
+
 
     //转单与订单收益
 
@@ -59,7 +66,7 @@ public interface ApiService {
     Observable<Response<String>> carConfigGet(@Body UserId ui);
 
     @POST("ioc/app/car/shortRent/add")
-    Observable<Response<String>> carShortrentAdd(@Body UserId ui);
+    Observable<Response<String>> carShortRentAdd(@Body ShortRentBean bean);
 
     //充值管理到期、充值接口
     @POST("ioc/app/car/customer/business/find")
@@ -79,6 +86,9 @@ public interface ApiService {
     @POST("ioc/app/user/integralLog/counts")
     Observable<Response<String>> userIntegrallogCounts(@Body UserId ui);
 
+    // 用户反馈意见
+    @POST("ioc/app/alarmRecord/feedback")
+    Observable<Response<String>> alarmRecordFeedback(@Body MessageBean msg);
 
     //App报警记录: JSON格式传参userId
     @POST("ioc/app/alarmRecord/oneKeyAlarm")
@@ -112,6 +122,9 @@ public interface ApiService {
     @GET("ioc/app/car/sellModel/getList")
     Observable<Response<List<RentCarInfoBean>>> appCarSellModelGetList();
 
+    @POST("/ioc/app/car/carInfoConfig/getList")
+    Observable<Response<List<RentCarInfoBean>>> carInfoConfigGetList(@Body UserId ui);
+
     //App平台销卖出租车型表
     @POST("ioc/app/car/sellModel/info/{id}")
     Observable<Response<String>> appCarSellModelInfo(@Path("id") int id);
@@ -130,7 +143,7 @@ public interface ApiService {
 
     //公司信息表: Json格式，传参：enLogogram 公司字母缩写
     @POST("ioc/app/companyInfo/find")
-    Observable<Response<OursBean>> appCompanyInfoFind(@Body Object object);
+    Observable<Response<OursBean>> appCompanyInfoFind(@Body EnLogoGram object);
 
     //App系统文章类，管理系统文章，包括注册协议等等: Json格式，传参 mark
     @POST("ioc/app/document/info")

@@ -35,10 +35,11 @@
 
     </RelativeLayout>
 
-    <ImageView
+    <com.wangpeiyuan.cycleviewpager2.CycleViewPager2
+        android:id="@+id/cvp_pager"
         android:layout_width="match_parent"
         android:layout_height="@dimen/space165"
-        android:background="@color/gray"/>
+    />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -88,7 +89,7 @@
             android:layout_height="wrap_content"
             android:textColor="#9F553A"
             android:textSize="@dimen/font16"
-            android:text="¥2.6万"
+            android:text="¥"
             android:layout_marginLeft="@dimen/space20"
         />
 

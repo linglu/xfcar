@@ -106,7 +106,7 @@ public class HomePageFragment extends BaseFragment implements Action1<String> {
     public void onActivityCreated(Bundle bundle) {
         super.onActivityCreated(bundle);
 
-        Requester requester = new Requester();
+        final Requester requester = new Requester();
         DataManager dataManager = App.sInstance.mDataManager;
 
         requester.userMessageGet(mActivity, false, dataManager.getUserId(), new ResultCallback<List<Message>>() {
@@ -140,7 +140,7 @@ public class HomePageFragment extends BaseFragment implements Action1<String> {
             }
         });
 
-        requester.businessConfigFind(mActivity, dataManager.getUserId(), new ResultCallback<List<BusinessBean>>() {
+        requester.businessConfigList(mActivity, dataManager.getUserId(), new ResultCallback<List<BusinessBean>>() {
             @Override
             public void onSuccess(List<BusinessBean> s) {
 
@@ -155,6 +155,17 @@ public class HomePageFragment extends BaseFragment implements Action1<String> {
                     public void call(BusinessBean bean) {
                         if (bean.id != -1) {
                             // TODO: 点击 banner 图片后的跳转
+                            requester.businessConfigFind(bean.id, new ResultCallback<String>() {
+                                @Override
+                                public void onSuccess(String businessBeans) {
+
+                                }
+
+                                @Override
+                                public void onFail(String msg) {
+
+                                }
+                            });
                         }
                     }
                 });

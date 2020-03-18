@@ -7,7 +7,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.xfcar.driver.R;
+import com.xfcar.driver.model.adapterbean.RentCarInfoBean;
 import com.xfcar.driver.mvp.BaseFragment;
+import com.xfcar.driver.view.adapter.ViewPagerAdapterStr;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,6 +26,17 @@ public class ShowCarInfoFragment extends BaseFragment implements Action1<String>
     private View mVCarPic;
     private View mVConfigDetail;
     private RecyclerView mRvPics;
+    private int[] ps = {
+            R.id.tv_param_1,
+            R.id.tv_param_2,
+            R.id.tv_param_3,
+            R.id.tv_param_4,
+            R.id.tv_param_5,
+            R.id.tv_param_6
+    };
+
+    private TextView[] tvs = new TextView[6];
+    private ViewPagerAdapterStr adapter;
 
     public static ShowCarInfoFragment newInstance(Bundle args) {
         ShowCarInfoFragment fragment = new ShowCarInfoFragment();
@@ -41,10 +57,22 @@ public class ShowCarInfoFragment extends BaseFragment implements Action1<String>
     }
 
     public void init() {
+
+
+        RentCarInfoBean rcib = getArguments().getParcelable("bean");
+
         mTvCarConfig = mRootView.findViewById(R.id.tv_car_config);
         mVCarConfig = mRootView.findViewById(R.id.v_car_config);
         mTvCarPic = mRootView.findViewById(R.id.tv_car_pic);
         mVCarPic = mRootView.findViewById(R.id.v_car_pic);
+
+        String[] is = rcib.introduction.split("  ");
+        for (int i = 0; i < is.length; i++) {
+            tvs[i] = mRootView.findViewById(ps[i]);
+            String label = is[i].split("：")[0];
+            String value = is[i].split("：")[1];
+            tvs[i].setText(String.format("%s : %s", label, value));
+        }
 
         mRootView.findViewById(R.id.tv_car_config).setOnClickListener(this);
         mRootView.findViewById(R.id.v_car_config).setOnClickListener(this);
@@ -53,7 +81,14 @@ public class ShowCarInfoFragment extends BaseFragment implements Action1<String>
 
         mVConfigDetail = mRootView.findViewById(R.id.ll_config_detail);
         mRvPics = mRootView.findViewById(R.id.rv_car_pics);
+        adapter = new ViewPagerAdapterStr(mActivity);
+        mRvPics.setAdapter(adapter);
 
+        List<String> pics = new ArrayList<>();
+        pics.add(rcib.picture1);
+        pics.add(rcib.picture2);
+        pics.add(rcib.picture3);
+        adapter.setData(pics);
     }
 
     @Override
@@ -82,5 +117,23 @@ public class ShowCarInfoFragment extends BaseFragment implements Action1<String>
             mVConfigDetail.setVisibility(View.INVISIBLE);
             mRvPics.setVisibility(View.VISIBLE);
         }
+    }
+
+    public void update(Bundle bundle) {
+
+        RentCarInfoBean rcib = bundle.getParcelable("bean");
+
+        String[] is = rcib.introduction.split("  ");
+        for (int i = 0; i < is.length; i++) {
+            String label = is[i].split("：")[0];
+            String value = is[i].split("：")[1];
+            tvs[i].setText(String.format("%s : %s", label, value));
+        }
+
+        List<String> pics = new ArrayList<>();
+        pics.add(rcib.picture1);
+        pics.add(rcib.picture2);
+        pics.add(rcib.picture3);
+        adapter.setData(pics);
     }
 }

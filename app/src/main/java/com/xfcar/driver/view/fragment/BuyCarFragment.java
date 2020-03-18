@@ -55,4 +55,8 @@ public class BuyCarFragment extends BaseFragment implements Action1<String> {
     public void call(String s) {
 
     }
+
+    public void update(Bundle bundle) {
+
+    }
 }

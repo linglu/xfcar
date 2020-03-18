@@ -5,14 +5,9 @@ import android.view.View;
 
 import com.xfcar.driver.R;
 import com.xfcar.driver.mvp.BaseActivity;
-import com.xfcar.driver.network.Requester;
 import com.xfcar.driver.network.ResultCallback;
-import com.xfcar.driver.utils.DataManager;
 
 public class CarReRentActivity extends BaseActivity implements View.OnClickListener {
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
