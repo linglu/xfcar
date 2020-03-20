@@ -188,9 +188,9 @@ public class Requester {
                 });
     }
 
-    public void carInfoConfigGetList(FragmentActivity act, Integer userId,  final ResultCallback<List<RentCarInfoBean>> callback) {
+    public void carInfoConfigGetList(FragmentActivity act, Integer userId, String type, final ResultCallback<List<RentCarInfoBean>> callback) {
         showLoadingDialog(act);
-        service.carInfoConfigGetList(new UserId(userId))
+        service.carInfoConfigGetList(new BusinessType(String.valueOf(userId), type))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new NetworkSubscriber<List<RentCarInfoBean>>() {

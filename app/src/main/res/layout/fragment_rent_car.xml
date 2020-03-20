@@ -23,6 +23,7 @@
         >
 
             <ImageView
+                android:id="@+id/iv_up_plate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/ic_buy_select"
@@ -42,6 +43,7 @@
             />
 
             <ImageView
+                android:id="@+id/iv_insurance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/space20"
@@ -62,6 +64,7 @@
             />
 
             <ImageView
+                android:id="@+id/iv_maintain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/space20"

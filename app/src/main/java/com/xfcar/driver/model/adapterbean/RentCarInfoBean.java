@@ -3,28 +3,26 @@ package com.xfcar.driver.model.adapterbean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RentCarInfoBean implements Parcelable {
+
     public String id;
-    public String price;
+    public String carCode;
+    public String carName;
     public String brand;
     public String modelNo;
-    public String type;
-    public String picture1;
-    public String picture2;
-    public String picture3;
-    public String introduction;
-    public String twelveMonth;
-    public String twentyFourMonth;
-    public String thirtySixMonth;
-    public String dailyRental;
-    public String monthlyRental;
-    public String quarterRental;
-    public String delFlag;
-    public String createBy;
-    public String createDate;
-    public String updateBy;
-    public String updateDate;
-
+    public String color;
+    public String carPrice;
+    public String dimension;
+    public String wheelbase;
+    public String maxSpeed;
+    public String carWeight;
+    public String runRange;
+    public String maxClimb;
+    public List<CarPicBean> carPicture;
+    public List<CarBizBean> carBizPlan;
 
     @Override
     public int describeContents() {
@@ -34,25 +32,20 @@ public class RentCarInfoBean implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.id);
-        dest.writeString(this.price);
+        dest.writeString(this.carCode);
+        dest.writeString(this.carName);
         dest.writeString(this.brand);
         dest.writeString(this.modelNo);
-        dest.writeString(this.type);
-        dest.writeString(this.picture1);
-        dest.writeString(this.picture2);
-        dest.writeString(this.picture3);
-        dest.writeString(this.introduction);
-        dest.writeString(this.twelveMonth);
-        dest.writeString(this.twentyFourMonth);
-        dest.writeString(this.thirtySixMonth);
-        dest.writeString(this.dailyRental);
-        dest.writeString(this.monthlyRental);
-        dest.writeString(this.quarterRental);
-        dest.writeString(this.delFlag);
-        dest.writeString(this.createBy);
-        dest.writeString(this.createDate);
-        dest.writeString(this.updateBy);
-        dest.writeString(this.updateDate);
+        dest.writeString(this.color);
+        dest.writeString(this.carPrice);
+        dest.writeString(this.dimension);
+        dest.writeString(this.wheelbase);
+        dest.writeString(this.maxSpeed);
+        dest.writeString(this.carWeight);
+        dest.writeString(this.runRange);
+        dest.writeString(this.maxClimb);
+        dest.writeList(this.carPicture);
+        dest.writeList(this.carBizPlan);
     }
 
     public RentCarInfoBean() {
@@ -60,25 +53,22 @@ public class RentCarInfoBean implements Parcelable {
 
     protected RentCarInfoBean(Parcel in) {
         this.id = in.readString();
-        this.price = in.readString();
+        this.carCode = in.readString();
+        this.carName = in.readString();
         this.brand = in.readString();
         this.modelNo = in.readString();
-        this.type = in.readString();
-        this.picture1 = in.readString();
-        this.picture2 = in.readString();
-        this.picture3 = in.readString();
-        this.introduction = in.readString();
-        this.twelveMonth = in.readString();
-        this.twentyFourMonth = in.readString();
-        this.thirtySixMonth = in.readString();
-        this.dailyRental = in.readString();
-        this.monthlyRental = in.readString();
-        this.quarterRental = in.readString();
-        this.delFlag = in.readString();
-        this.createBy = in.readString();
-        this.createDate = in.readString();
-        this.updateBy = in.readString();
-        this.updateDate = in.readString();
+        this.color = in.readString();
+        this.carPrice = in.readString();
+        this.dimension = in.readString();
+        this.wheelbase = in.readString();
+        this.maxSpeed = in.readString();
+        this.carWeight = in.readString();
+        this.runRange = in.readString();
+        this.maxClimb = in.readString();
+        this.carPicture = new ArrayList<CarPicBean>();
+        in.readList(this.carPicture, CarPicBean.class.getClassLoader());
+        this.carBizPlan = new ArrayList<CarBizBean>();
+        in.readList(this.carBizPlan, CarBizBean.class.getClassLoader());
     }
 
     public static final Creator<RentCarInfoBean> CREATOR = new Creator<RentCarInfoBean>() {

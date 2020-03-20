@@ -7,8 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.xfcar.driver.R;
-import com.xfcar.driver.model.bean.BuyRentItemBean;
-
+import com.xfcar.driver.model.adapterbean.CarBizBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,12 +24,12 @@ public class BuyRentItemAdapter extends RecyclerView.Adapter<BuyRentItemAdapter.
     /**
      * 智能家电
      */
-    public List<BuyRentItemBean> mBribs = new ArrayList<>();
+    public List<CarBizBean> mBribs = new ArrayList<>();
     private Context mContext;
-    private Action1<BuyRentItemBean> mCallback;
+    private Action1<CarBizBean> mCallback;
     private boolean mIsBuyPlan = true;
 
-    public void setCallback(Action1<BuyRentItemBean> callback) {
+    public void setCallback(Action1<CarBizBean> callback) {
         this.mCallback = callback;
     }
 
@@ -39,7 +38,7 @@ public class BuyRentItemAdapter extends RecyclerView.Adapter<BuyRentItemAdapter.
         this.mIsBuyPlan = isBuyPlan;
     }
 
-    public void setData(List<BuyRentItemBean> beans) {
+    public void setData(List<CarBizBean> beans) {
         this.mBribs.clear();
         this.mBribs.addAll(beans);
         notifyDataSetChanged();
@@ -55,11 +54,11 @@ public class BuyRentItemAdapter extends RecyclerView.Adapter<BuyRentItemAdapter.
     @Override
     public void onBindViewHolder(@NonNull BalanceHolder holder, int position) {
         if (mBribs != null) {
-            final BuyRentItemBean stb = mBribs.get(position);
+            final CarBizBean stb = mBribs.get(position);
             holder.mTvItemName.setText(mIsBuyPlan ? "首付" : "押金");
-            holder.mTvItemValue.setText(stb.value1);
-            holder.mTvItemValue2.setText(stb.value2);
-            holder.mTvItemValue3.setText(stb.value3);
+            holder.mTvItemValue.setText(stb.deposit);
+            holder.mTvItemValue2.setText(stb.paymentAmount);
+            holder.mTvItemValue3.setText(stb.monthCount);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -123,7 +123,7 @@ public interface ApiService {
     Observable<Response<List<RentCarInfoBean>>> appCarSellModelGetList();
 
     @POST("/ioc/app/car/carInfoConfig/getList")
-    Observable<Response<List<RentCarInfoBean>>> carInfoConfigGetList(@Body UserId ui);
+    Observable<Response<List<RentCarInfoBean>>> carInfoConfigGetList(@Body BusinessType ui);
 
     //App平台销卖出租车型表
     @POST("ioc/app/car/sellModel/info/{id}")

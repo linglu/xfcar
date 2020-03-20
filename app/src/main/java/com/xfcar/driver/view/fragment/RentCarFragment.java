@@ -4,9 +4,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.xfcar.driver.R;
+import com.xfcar.driver.model.adapterbean.CarBizBean;
 import com.xfcar.driver.model.adapterbean.RentCarInfoBean;
 import com.xfcar.driver.model.bean.BuyRentItemBean;
 import com.xfcar.driver.mvp.BaseFragment;
@@ -20,6 +22,9 @@ public class RentCarFragment extends BaseFragment implements Action1<String> {
     private boolean mIsBuyPlan = true;
     private RecyclerView mRvList;
     private BuyRentItemAdapter mAdapter;
+    private ImageView mIvUpPlate;
+    private ImageView mIvInsurance;
+    private ImageView mIvMaintain;
 
     public static RentCarFragment newInstance(Bundle args) {
         RentCarFragment fragment = new RentCarFragment();
@@ -40,16 +45,48 @@ public class RentCarFragment extends BaseFragment implements Action1<String> {
     }
 
     public void init() {
+
+        RentCarInfoBean rcib = getArguments().getParcelable("bean");
         mRvList = mRootView.findViewById(R.id.rv_list);
+        mIvUpPlate = mRootView.findViewById(R.id.iv_up_plate);
+        mIvInsurance = mRootView.findViewById(R.id.iv_insurance);
+        mIvMaintain = mRootView.findViewById(R.id.iv_maintain);
         mAdapter = new BuyRentItemAdapter(mActivity, false);
-        mAdapter.setCallback(new Action1<BuyRentItemBean>() {
+        mAdapter.setCallback(new Action1<CarBizBean>() {
             @Override
-            public void call(BuyRentItemBean b) {
+            public void call(CarBizBean b) {
 
             }
         });
         mRvList.setAdapter(mAdapter);
-        mAdapter.setData(BuyRentItemBean.mockRent());
+        mAdapter.setData(rcib.carBizPlan);
+
+        if (rcib.carBizPlan.size() > 0) {
+            setChecked(rcib.carBizPlan.get(0));
+        }
+
+        update(getArguments());
+    }
+
+    private void setChecked(CarBizBean biz) {
+
+        if (biz.containTax.equals("1")) {
+            mIvUpPlate.setImageResource(R.mipmap.ic_buy_select);
+        } else {
+            mIvUpPlate.setImageResource(R.mipmap.ic_buy_not_select);
+        }
+
+        if (biz.containInsurance.equals("1")) {
+            mIvInsurance.setImageResource(R.mipmap.ic_buy_select);
+        } else {
+            mIvInsurance.setImageResource(R.mipmap.ic_buy_not_select);
+        }
+
+        if (biz.containWarranty.equals("1")) {
+            mIvMaintain.setImageResource(R.mipmap.ic_buy_select);
+        } else {
+            mIvMaintain.setImageResource(R.mipmap.ic_buy_not_select);
+        }
     }
 
     @Override
@@ -58,6 +95,11 @@ public class RentCarFragment extends BaseFragment implements Action1<String> {
     }
 
     public void update(Bundle bundle) {
+        RentCarInfoBean rcib = bundle.getParcelable("bean");
+        mAdapter.setData(rcib.carBizPlan);
 
+        if (rcib.carBizPlan.size() > 0) {
+            setChecked(rcib.carBizPlan.get(0));
+        }
     }
 }

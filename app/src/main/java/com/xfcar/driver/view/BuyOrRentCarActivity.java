@@ -20,15 +20,15 @@ import com.xfcar.driver.view.fragment.RentCarFragment;
 import com.xfcar.driver.view.fragment.ShowCarInfoFragment;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
+import rx.functions.Action1;
 
-public class BuyOrRentCarActivity extends BaseActivity implements View.OnClickListener {
+public class BuyOrRentCarActivity extends BaseActivity implements View.OnClickListener, Action1<Boolean> {
 
     private Spinner mSpinner;
     private CarInfoSpinnerAdapter mSAdapter;
@@ -46,6 +46,8 @@ public class BuyOrRentCarActivity extends BaseActivity implements View.OnClickLi
     private BuyCarFragment mBuyCarFragment;
     private ShowCarInfoFragment mShowCarInfoFragment;
     private RentCarFragment mRentCarFragment;
+    private boolean mShowPic = false;
+    private boolean mShowCarIntro = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +55,14 @@ public class BuyOrRentCarActivity extends BaseActivity implements View.OnClickLi
         setContentView(R.layout.activity_buy_or_rent_car);
 
         mIsBuyPlan = getIntent().getExtras().getBoolean("is_buy_car", false);
+        String type = "30";
+        if (mIsBuyPlan) {
+            type = "20";
+        }
 
         initView();
-        mRequester.appCarSellModelGetList(mInstance, new ResultCallback<List<RentCarInfoBean>>() {
-//        mRequester.appCarSellModelGetList(mInstance, mDataManager.getUserId(), new ResultCallback<List<RentCarInfoBean>>() {
+        mRequester.carInfoConfigGetList(mInstance, mDataManager.getUserId(), type, new ResultCallback<List<RentCarInfoBean>>() {
+
             @Override
             public void onSuccess(List<RentCarInfoBean> s) {
                 mSAdapter.setData(s);
@@ -143,21 +149,18 @@ public class BuyOrRentCarActivity extends BaseActivity implements View.OnClickLi
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 L.i("on item selected");
                 mRentCarInfoBean = (RentCarInfoBean) view.getTag();
-                mTvPrice.setText(String.format("¥%s", mRentCarInfoBean.price));
+                mTvPrice.setText(String.format("¥%s", mRentCarInfoBean.carPrice));
 //                showBuyAndRent();
 
-                List<String> pics = new ArrayList<>();
-                pics.add(mRentCarInfoBean.picture1);
-                pics.add(mRentCarInfoBean.picture2);
-                pics.add(mRentCarInfoBean.picture3);
-                mVpAdapter.setData(pics);
+                mVpAdapter.setData(mRentCarInfoBean.carPicture);
 
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("bean", mRentCarInfoBean);
-                if (mShowCarInfoFragment != null) {
-                    mShowCarInfoFragment.update(bundle);
-                }
-                if (mIsBuyPlan) {
+                if (mShowCarIntro) {
+                    if (mShowCarInfoFragment != null) {
+                        mShowCarInfoFragment.update(bundle, true);
+                    }
+                } else if (mIsBuyPlan) {
                     if (mBuyCarFragment != null) {
                         mBuyCarFragment.update(bundle);
                     }
@@ -190,6 +193,7 @@ public class BuyOrRentCarActivity extends BaseActivity implements View.OnClickLi
         if (id == R.id.rl_return_back) {
             finish();
         } else if (id == R.id.tv_buy_plan) {
+            mShowCarIntro = false;
             mTvBuyPlan.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary));
             mVBuyPlan.setVisibility(View.VISIBLE);
             mTvCarIntro.setTextColor(ContextCompat.getColor(this, R.color.font_gray3));
@@ -199,24 +203,17 @@ public class BuyOrRentCarActivity extends BaseActivity implements View.OnClickLi
             bundle.putParcelable("bean", mRentCarInfoBean);
 
             if (mIsBuyPlan) {
-                if (mBuyCarFragment == null) {
-                    mBuyCarFragment = BuyCarFragment.newInstance(bundle);
-                } else {
-                    mBuyCarFragment.update(bundle);
-                }
+                mBuyCarFragment = BuyCarFragment.newInstance(bundle);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fl_container,
                         mBuyCarFragment, "buy_plan").commit();
             } else {
-                if (mRentCarFragment == null) {
-                    mRentCarFragment = RentCarFragment.newInstance(bundle);
-                } else {
-                    mRentCarFragment.update(bundle);
-                }
+                mRentCarFragment = RentCarFragment.newInstance(bundle);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fl_container,
                         mRentCarFragment, "rent_plan").commit();
             }
 
         } else if (id == R.id.tv_car_intro) {
+            mShowCarIntro = true;
             mTvCarIntro.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary));
             mVCarIntro.setVisibility(View.VISIBLE);
             mTvBuyPlan.setTextColor(ContextCompat.getColor(this, R.color.font_gray3));
@@ -224,17 +221,14 @@ public class BuyOrRentCarActivity extends BaseActivity implements View.OnClickLi
 
             Bundle bundle = new Bundle();
             bundle.putParcelable("bean", mRentCarInfoBean);
-
-            if (mShowCarInfoFragment == null) {
-                mShowCarInfoFragment = ShowCarInfoFragment.newInstance(bundle);
-            } else {
-                mShowCarInfoFragment.update(bundle);
-            }
-
+            bundle.putBoolean("show_pic", mShowPic);
+            mShowCarInfoFragment = ShowCarInfoFragment.newInstance(bundle);
             getSupportFragmentManager().beginTransaction().replace(R.id.fl_container,
                     mShowCarInfoFragment, "car_info").commit();
         }
     }
+
+
 
     private void showBuyAndRent() {
 
@@ -248,10 +242,11 @@ public class BuyOrRentCarActivity extends BaseActivity implements View.OnClickLi
                     RentCarFragment.newInstance(bundle), "rent").commit();
         }
 
-        List<String> pics = new ArrayList<>();
-        pics.add(mRentCarInfoBean.picture1);
-        pics.add(mRentCarInfoBean.picture2);
-        pics.add(mRentCarInfoBean.picture3);
-        mVpAdapter.setData(pics);
+        mVpAdapter.setData(mRentCarInfoBean.carPicture);
+    }
+
+    @Override
+    public void call(Boolean show) {
+        this.mShowPic = show;
     }
 }

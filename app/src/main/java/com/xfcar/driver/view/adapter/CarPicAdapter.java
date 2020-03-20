@@ -5,8 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.wangpeiyuan.cycleviewpager2.adapter.CyclePagerAdapter;
 import com.xfcar.driver.R;
 import com.xfcar.driver.model.adapterbean.CarPicBean;
 import com.xfcar.driver.utils.ImageLoadHelper;
@@ -22,12 +22,12 @@ import rx.functions.Action1;
 /**
  * @author Linky
  */
-public class ViewPagerAdapterStr extends CyclePagerAdapter<ViewPagerAdapterStr.ViewPageHolder> {
+public class CarPicAdapter extends RecyclerView.Adapter<CarPicAdapter.FuncHolder> {
 
     /**
      * 智能家电
      */
-    public List<CarPicBean> mViewPageApps = new ArrayList<>();
+    public List<CarPicBean> mCarPicBeans = new ArrayList<>();
     private Context mContext;
     private Action1<CarPicBean> mCallback;
 
@@ -35,33 +35,28 @@ public class ViewPagerAdapterStr extends CyclePagerAdapter<ViewPagerAdapterStr.V
         this.mCallback = callback;
     }
 
-    public ViewPagerAdapterStr(Context context) {
+    public CarPicAdapter(Context context) {
         mContext = context;
     }
 
     public void setData(List<CarPicBean> beans) {
-        this.mViewPageApps.clear();
-        this.mViewPageApps.addAll(beans);
+        this.mCarPicBeans.clear();
+        this.mCarPicBeans.addAll(beans);
         notifyDataSetChanged();
     }
 
     @NonNull
     @Override
-    public ViewPageHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
+    public FuncHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_view_pager, viewGroup, false);
-        return new ViewPageHolder(view);
+        return new FuncHolder(view);
     }
 
     @Override
-    public int getRealItemCount() {
-        return mViewPageApps == null ? 0 : mViewPageApps.size();
-    }
-
-    @Override
-    public void onBindRealViewHolder(@NonNull ViewPageHolder holder, int position) {
-        if (mViewPageApps != null) {
-            final CarPicBean pb = mViewPageApps.get(position);
-            L.i("ViewPagerAdapterStr onBindRealViewHolder str " + pb);
+    public void onBindViewHolder(@NonNull FuncHolder holder, int position) {
+        if (mCarPicBeans != null) {
+            final CarPicBean pb = mCarPicBeans.get(position);
+            L.i("CarPicAdapter onBindViewHolder picUrl : " + pb.picUrl);
             ImageLoadHelper.loadImage(mContext, pb.picUrl, holder.ivPager);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -74,14 +69,18 @@ public class ViewPagerAdapterStr extends CyclePagerAdapter<ViewPagerAdapterStr.V
         }
     }
 
-    public class ViewPageHolder extends RecyclerView.ViewHolder {
+    @Override
+    public int getItemCount() {
+        return mCarPicBeans == null ? 0 : mCarPicBeans.size();
+    }
+
+    public class FuncHolder extends RecyclerView.ViewHolder {
 
         ImageView ivPager;
 
-        public ViewPageHolder(@NonNull View itemView) {
+        public FuncHolder(@NonNull View itemView) {
             super(itemView);
             ivPager = itemView.findViewById(R.id.iv_pager);
         }
     }
 }
-

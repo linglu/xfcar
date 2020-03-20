@@ -24,6 +24,7 @@
         >
 
             <ImageView
+                android:id="@+id/iv_contain_tax"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/ic_buy_select"
@@ -43,6 +44,7 @@
             />
 
             <ImageView
+                android:id="@+id/iv_first_insurance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/ic_buy_not_select"
@@ -52,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/space10"
-                android:text="包上牌.购置税"
+                android:text="送首年保险"
                 android:textColor="#ff666666"
                 android:textSize="12sp"
             />
@@ -63,6 +65,7 @@
             />
 
             <ImageView
+                android:id="@+id/iv_factory_ensure"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/ic_buy_not_select"
