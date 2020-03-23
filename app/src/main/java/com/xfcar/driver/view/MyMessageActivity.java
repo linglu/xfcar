@@ -45,6 +45,7 @@ public class MyMessageActivity extends BaseActivity implements View.OnClickListe
     private void initView() {
         findViewById(R.id.iv_return_back).setOnClickListener(this);
         findViewById(R.id.ll_leave_msg).setOnClickListener(this);
+        findViewById(R.id.ll_contact_service).setOnClickListener(this);
         mRvMsg = findViewById(R.id.rv_message);
 
         mMsgAdapter = new MsgAdapter(this);
@@ -59,6 +60,8 @@ public class MyMessageActivity extends BaseActivity implements View.OnClickListe
             finish();
         } else if (id == R.id.ll_leave_msg) {
             startActivity(AdviceMsgActivity.class);
+        } else if (id == R.id.ll_contact_service) {
+            startActivity(ContactUsActivity.class);
         }
     }
 }

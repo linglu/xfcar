@@ -13,21 +13,17 @@ import com.xfcar.driver.model.bean.UserEntity;
 import com.xfcar.driver.mvp.BaseFragment;
 import com.xfcar.driver.utils.ImageLoadHelper;
 import com.xfcar.driver.view.BalanceActivity;
+import com.xfcar.driver.view.CashActivity;
 import com.xfcar.driver.view.MyMessageActivity;
 import com.xfcar.driver.view.MyScoreActivity;
 import com.xfcar.driver.view.ReceiptActivity;
 import com.xfcar.driver.view.SettingActivity;
-import com.xfcar.driver.view.adapter.FunctionAdapter;
-
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * @author linky
  */
 public class MineFragment extends BaseFragment implements View.OnClickListener {
 
-    private RecyclerView mRvFunction;
-    private FunctionAdapter mAdapter;
     private ImageView mIvAvatar;
     private TextView mTvUserName;
 
@@ -35,7 +31,6 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
     protected int getContentViewLayoutId() {
         return R.layout.fragment_mine;
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -58,6 +53,7 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
         mRootView.findViewById(R.id.ll_score).setOnClickListener(this);
         mRootView.findViewById(R.id.ll_message).setOnClickListener(this);
         mRootView.findViewById(R.id.ll_permission).setOnClickListener(this);
+        mRootView.findViewById(R.id.ll_cash).setOnClickListener(this);
     }
 
     private UserEntity getUser() {
@@ -78,6 +74,8 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
             startActivity(MyMessageActivity.class);
         } else if (id == R.id.ll_permission) {
             startActivity(SettingActivity.class);
+        } else if (id == R.id.ll_cash) {
+            startActivity(CashActivity.class);
         }
     }
 }

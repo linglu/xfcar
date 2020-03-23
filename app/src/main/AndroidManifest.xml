@@ -207,5 +207,10 @@
             android:name=".view.AdviceMsgActivity"
             android:screenOrientation="portrait"
         />
+
+        <activity
+            android:name=".view.CashActivity"
+            android:screenOrientation="portrait"
+        />
     </application>
 </manifest>

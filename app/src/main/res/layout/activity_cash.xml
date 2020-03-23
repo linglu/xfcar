@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space44"
+        android:background="@color/white"
+    >
+
+        <ImageView
+            android:id="@+id/iv_return_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/space20"
+            android:src="@mipmap/ic_return_back"
+        />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="提现"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font16"
+        />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+    >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space56"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/space22"
+        >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="平台余额"
+                android:textColor="#ff666666"
+                android:textSize="15sp"
+            />
+
+            <TextView
+                android:id="@+id/tv_balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space6"
+                android:text="77,777"
+                android:textColor="#ff9f553a"
+                android:textSize="25sp"
+            />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space0.5"
+            android:background="#ffe3e3e3"
+            android:layout_marginLeft="@dimen/space22"
+            android:layout_marginRight="@dimen/space22"
+        />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space56"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/space22"
+        >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="可提现余额"
+                android:textColor="#ff666666"
+                android:textSize="15sp"
+            />
+
+
+            <TextView
+                android:id="@+id/tv_can_cash"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space6"
+                android:layout_weight="1.0"
+                android:text="77,777"
+                android:textColor="#ff9f553a"
+                android:textSize="25sp"
+            />
+
+            <TextView
+                android:id="@+id/tv_cash"
+                android:layout_width="@dimen/space70"
+                android:layout_height="@dimen/space30"
+                android:layout_marginRight="@dimen/space20"
+                android:background="@drawable/shape_gradient_orange_btn"
+                android:gravity="center"
+                android:text="提现"
+                android:textColor="#ffffffff"
+                android:textSize="14sp"
+            />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space25"
+        android:orientation="horizontal"
+    >
+
+        <View
+            android:layout_width="@dimen/space2"
+            android:layout_height="@dimen/space12"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/space20"
+            android:background="@color/color_yellow"
+        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space10"
+            android:text="提现记录"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font15"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_cash_records"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/space15"
+    />
+
+
+</LinearLayout>

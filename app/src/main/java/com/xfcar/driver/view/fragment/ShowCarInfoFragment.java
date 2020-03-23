@@ -40,7 +40,6 @@ public class ShowCarInfoFragment extends BaseFragment implements Action1<String>
     private TextView[] tvs = new TextView[6];
     private CarPicAdapter adapter;
     private RentCarInfoBean mRentCarInfoBean;
-    private boolean mShowParams = true;
     private Action1<Boolean> mListener;
     private boolean mShowPic;
 
@@ -89,13 +88,9 @@ public class ShowCarInfoFragment extends BaseFragment implements Action1<String>
         mTvCarPic = mRootView.findViewById(R.id.tv_car_pic);
         mVCarPic = mRootView.findViewById(R.id.v_car_pic);
 
-//        String[] is = rcib.introduction.split("  ");
-//        for (int i = 0; i < is.length; i++) {
-//            tvs[i] = mRootView.findViewById(ps[i]);
-//            String label = is[i].split("：")[0];
-//            String value = is[i].split("：")[1];
-//            tvs[i].setText(String.format("%s : %s", label, value));
-//        }
+        for (int i = 0; i < tvs.length; i++) {
+            tvs[i] = mRootView.findViewById(ps[i]);
+        }
 
         mRootView.findViewById(R.id.tv_car_config).setOnClickListener(this);
         mRootView.findViewById(R.id.v_car_config).setOnClickListener(this);
@@ -164,13 +159,13 @@ public class ShowCarInfoFragment extends BaseFragment implements Action1<String>
             mShowPic = bundle.getBoolean("show_pic", false);
         }
 
-//        String[] is = rcib.introduction.split("  ");
-//        for (int i = 0; i < is.length; i++) {
-//            String label = is[i].split("：")[0];
-//            String value = is[i].split("：")[1];
-//            tvs[i].setText(String.format("%s : %s", label, value));
-//        }
-//
+        String[] is = mRentCarInfoBean.params.substring(1, mRentCarInfoBean.params.length()-1).split(",");
+        for (int i = 0; i < is.length; i++) {
+            String label = is[i].split(":")[0].replace("\"", "");
+            String value = is[i].split(":")[1].replace("\"", "");
+            tvs[i].setText(String.format("%s : %s", label, value));
+        }
+
         adapter.setData(mRentCarInfoBean.carPicture);
 
         if (mShowPic) {
