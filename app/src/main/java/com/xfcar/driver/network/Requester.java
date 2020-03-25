@@ -10,6 +10,7 @@ import com.xfcar.driver.model.bean.BusinessBean;
 import com.xfcar.driver.model.bean.BusinessResp;
 import com.xfcar.driver.model.bean.BusinessType;
 import com.xfcar.driver.model.bean.CarObjectId;
+import com.xfcar.driver.model.bean.CarPositionBean;
 import com.xfcar.driver.model.bean.CarSecurityBean;
 import com.xfcar.driver.model.bean.Command;
 import com.xfcar.driver.model.bean.ContactDTO;
@@ -167,15 +168,15 @@ public class Requester {
                 });
     }
 
-    public void monitorPosition(FragmentActivity act, String objectId, final ResultCallback<String> callback) {
+    public void monitorPosition(FragmentActivity act, String objectId, final ResultCallback<CarPositionBean> callback) {
         showLoadingDialog(act);
         service.appMonitorPosition(new CarObjectId(objectId))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new NetworkSubscriber<String>() {
+                .subscribe(new NetworkSubscriber<CarPositionBean>() {
 
                     @Override
-                    public void onSuccess(String o) {
+                    public void onSuccess(CarPositionBean o) {
                         dismissLoadingDialog();
                         callback.onSuccess(o);
                     }

@@ -7,6 +7,7 @@ import com.xfcar.driver.model.adapterbean.RepairBean;
 import com.xfcar.driver.model.bean.AlarmRecordEntity;
 import com.xfcar.driver.model.bean.BusinessResp;
 import com.xfcar.driver.model.bean.BusinessType;
+import com.xfcar.driver.model.bean.CarPositionBean;
 import com.xfcar.driver.model.bean.CarSecurityBean;
 import com.xfcar.driver.model.bean.Command;
 import com.xfcar.driver.model.bean.ContactDTO;
@@ -159,7 +160,7 @@ public interface ApiService {
 
     //App车况监控: 参数：objectid（车牌号和手机串号绑定后生成返回的ID，保存在车辆信息表中）
     @POST("ioc/app/monitor/position")
-    Observable<Response<String>> appMonitorPosition(@Body Object object);
+    Observable<Response<CarPositionBean>> appMonitorPosition(@Body Object object);
 
     //App充值: JSON格式传参userId
     @POST("ioc/app/recharge/getRechargeByUser")
