@@ -107,7 +107,7 @@ public class BuyOrRentCarActivity extends BaseActivity implements View.OnClickLi
                     type = "20";
                 }
 
-                String curDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+                String curDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
                 mRequester.carShortRentAdd(BuyOrRentCarActivity.this, mDataManager.getUserId(),
                         type, curDate, new ResultCallback<String>() {
                             @Override

@@ -7,18 +7,17 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.xfcar.driver.mvp.BaseActivity;
-import com.xfcar.driver.utils.DataManager;
 import com.xfcar.driver.utils.L;
 import com.xfcar.driver.utils.Utils;
 import com.xfcar.driver.view.LoginActivity;
 import com.xfcar.driver.view.fragment.HomePageFragment;
 import com.xfcar.driver.view.fragment.MineFragment;
 import com.xfcar.driver.view.fragment.SendBillFragment;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 public class MainActivity extends BaseActivity {
 

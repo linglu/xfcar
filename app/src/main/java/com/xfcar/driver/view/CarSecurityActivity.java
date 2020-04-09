@@ -11,6 +11,7 @@ import com.xfcar.driver.mvp.BaseActivity;
 import com.xfcar.driver.network.Requester;
 import com.xfcar.driver.network.ResultCallback;
 import com.xfcar.driver.utils.DataManager;
+import com.xfcar.driver.utils.ToastUtils;
 
 public class CarSecurityActivity extends BaseActivity implements View.OnClickListener {
 
@@ -27,9 +28,14 @@ public class CarSecurityActivity extends BaseActivity implements View.OnClickLis
         mRequester.appCarGetSecurityInfo(mInstance, mDataManager.getUserId(), new ResultCallback<CarSecurityBean>() {
             @Override
             public void onSuccess(CarSecurityBean bean) {
-                mTvEngineNo.setText(String.format("%s", bean.engineNo));
-                mTvMobile.setText(String.format("%s", bean.mobile));
-                mTvCarInfo.setText(String.format("%s", bean.carInfo));
+                if (bean != null) {
+                    mTvEngineNo.setText(String.format("%s", bean.engineNo));
+                    mTvMobile.setText(String.format("%s", bean.mobile));
+                    mTvCarInfo.setText(String.format("%s", bean.carInfo));
+                } else {
+                    ToastUtils.show(CarSecurityActivity.this, "该用户无车辆安全数据");
+                    finish();
+                }
             }
 
             @Override

@@ -59,12 +59,49 @@
             />
 
         <TextView
-            android:id="@+id/tv_date_pick"
+            android:id="@+id/tv_date_pick_start"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@null"
             android:gravity="center_vertical"
-            android:hint="转租时间"
+            android:hint="转租开始时间"
+            android:paddingLeft="@dimen/space9"
+            android:maxLength="11"
+            android:textColor="@color/font_primary"
+            android:textColorHint="@color/hint_text_color"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/font14"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space40"
+        android:layout_marginTop="@dimen/space15"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/space20"
+        android:layout_marginRight="@dimen/space20"
+        android:paddingLeft="@dimen/space15"
+        android:paddingRight="@dimen/space15"
+        android:elevation="@dimen/space1"
+        android:background="@drawable/shape_round"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/shijian"
+            />
+
+        <TextView
+            android:id="@+id/tv_date_pick_end"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="转租结束时间"
             android:paddingLeft="@dimen/space9"
             android:maxLength="11"
             android:textColor="@color/font_primary"

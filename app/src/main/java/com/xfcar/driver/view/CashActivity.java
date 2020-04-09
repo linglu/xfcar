@@ -31,17 +31,17 @@ public class CashActivity extends BaseActivity implements View.OnClickListener {
         setContentView(R.layout.activity_cash);
         initView();
 
-//        mRequester.userIntegrallogCounts(this, mDataManager.getUserId(), new ResultCallback<String>() {
-//            @Override
-//            public void onSuccess(String s) {
-//
-//            }
-//
-//            @Override
-//            public void onFail(String msg) {
-//
-//            }
-//        });
+        mRequester.carDrawMoneyAdd(this, mDataManager.getUserId(), mDataManager.getUser().username, "", new ResultCallback<String>() {
+            @Override
+            public void onSuccess(String s) {
+
+            }
+
+            @Override
+            public void onFail(String msg) {
+
+            }
+        });
 
     }
 

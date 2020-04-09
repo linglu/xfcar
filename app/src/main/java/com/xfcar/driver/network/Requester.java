@@ -12,6 +12,7 @@ import com.xfcar.driver.model.bean.BusinessType;
 import com.xfcar.driver.model.bean.CarObjectId;
 import com.xfcar.driver.model.bean.CarPositionBean;
 import com.xfcar.driver.model.bean.CarSecurityBean;
+import com.xfcar.driver.model.bean.CashEntity;
 import com.xfcar.driver.model.bean.Command;
 import com.xfcar.driver.model.bean.ContactDTO;
 import com.xfcar.driver.model.bean.EnLogoGram;
@@ -41,6 +42,8 @@ import com.xfcar.driver.network.converter.FastjsonConverterFactory;
 import com.xfcar.driver.utils.DialogLoading;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import androidx.fragment.app.FragmentActivity;
@@ -319,6 +322,27 @@ public class Requester {
 
     }
 
+    public void carDrawMoneyAdd(FragmentActivity act, int userId, String userName, String amount, final ResultCallback<String> callback) {
+        showLoadingDialog(act);
+        service.carDrawMoneyAdd(new CashEntity(String.valueOf(userId), userName, "20", amount))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new NetworkSubscriber<String>() {
+
+                    @Override
+                    public void onSuccess(String o) {
+                        dismissLoadingDialog();
+                        callback.onSuccess(o);
+                    }
+
+                    @Override
+                    public void onFail(String msg) {
+                        dismissLoadingDialog();
+                        callback.onFail(msg);
+                    }
+                });
+    }
+
     public void userIntegrallogCounts(FragmentActivity act, int userId, final ResultCallback<String> callback) {
         showLoadingDialog(act);
         service.userIntegrallogCounts(new UserId(userId))
@@ -405,10 +429,16 @@ public class Requester {
 
     public void appCarShortRentAdd(FragmentActivity act, int userId, String carNo, String date, final ResultCallback<String> callback) {
         showLoadingDialog(act);
+
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String curDate = df.format(new Date());
+
         ShortRentEntity entity = new ShortRentEntity();
         entity.userId = userId;
         entity.carNo = carNo;
-        entity.subletDate = date;
+        entity.subletDate = curDate;
+        entity.remark = date;
+        entity.appointmentType = "10";
         service.appCarShortRentAdd(entity)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

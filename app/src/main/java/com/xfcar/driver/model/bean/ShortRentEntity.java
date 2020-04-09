@@ -13,4 +13,6 @@ public class ShortRentEntity {
 	public String createDate; // 创建时间
 	public Integer updateBy; // 修改人
 	public String updateDate; // 修改时间
+	public String appointmentType; // 预约类型(10:返租预约;  20:买车预约;  30:租车预约)
+	public String remark; 	// 2020-04-05~2020-04-15
 }

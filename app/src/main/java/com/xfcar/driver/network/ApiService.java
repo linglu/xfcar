@@ -9,6 +9,7 @@ import com.xfcar.driver.model.bean.BusinessResp;
 import com.xfcar.driver.model.bean.BusinessType;
 import com.xfcar.driver.model.bean.CarPositionBean;
 import com.xfcar.driver.model.bean.CarSecurityBean;
+import com.xfcar.driver.model.bean.CashEntity;
 import com.xfcar.driver.model.bean.Command;
 import com.xfcar.driver.model.bean.ContactDTO;
 import com.xfcar.driver.model.bean.EnLogoGram;
@@ -83,6 +84,10 @@ public interface ApiService {
     //账目总览、奖励记录
     @POST("ioc/app/user/integralLog/find")
     Observable<Response<ScoreRespBean>> userIntegrallogFind(@Body UserId ui);
+
+    // 提现申请
+    @POST("ioc/app/car/drawMoney/add")
+    Observable<Response<String>> carDrawMoneyAdd(@Body CashEntity ce);
 
     @POST("ioc/app/user/integralLog/counts")
     Observable<Response<String>> userIntegrallogCounts(@Body UserId ui);
